@@ -13,11 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-<<<<<<<< HEAD:vendor/laravel/framework/src/Illuminate/Queue/Console/stubs/failed_jobs.stub
-        Schema::create('{{table}}', function (Blueprint $table) {
-========
         Schema::create('customers', function (Blueprint $table) {
->>>>>>>> origin/dev:database/migrations/2023_02_01_125412_create_customers_table.php
             $table->id();
             $table->timestamps();
             $table->string('first_name',45);
@@ -35,10 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-<<<<<<<< HEAD:vendor/laravel/framework/src/Illuminate/Queue/Console/stubs/failed_jobs.stub
-        Schema::dropIfExists('{{table}}');
-========
         Schema::dropIfExists('customers');
->>>>>>>> origin/dev:database/migrations/2023_02_01_125412_create_customers_table.php
     }
 };
