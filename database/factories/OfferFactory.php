@@ -17,7 +17,11 @@ class OfferFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => fake()->word(),
+            'description' => fake()->sentence(),
+            'url_image' => fake()->imageUrl(),
+            'begin_date' => fake()->date(),
+            'end_date' => fake()->date()
         ];
     }
 }
