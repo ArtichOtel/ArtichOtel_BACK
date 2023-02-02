@@ -17,7 +17,10 @@ class AdvantageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => fake()->word(),
+            'description' => fake()->sentence(),
+            'icon' => fake()->word(),
+            'order' => fake()->randomNumber()
         ];
     }
 }
