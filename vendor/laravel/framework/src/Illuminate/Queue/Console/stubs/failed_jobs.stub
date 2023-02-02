@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+<<<<<<<< HEAD:vendor/laravel/framework/src/Illuminate/Queue/Console/stubs/failed_jobs.stub
+        Schema::create('{{table}}', function (Blueprint $table) {
+========
+        Schema::create('customers', function (Blueprint $table) {
+>>>>>>>> origin/dev:database/migrations/2023_02_01_125412_create_customers_table.php
+            $table->id();
+            $table->timestamps();
+            $table->string('first_name',45);
+            $table->string('last_name',45);
+            $table->string('phone_number',10);
+            $table->string('lang',10);
+            $table->string('avatar_url',255);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+<<<<<<<< HEAD:vendor/laravel/framework/src/Illuminate/Queue/Console/stubs/failed_jobs.stub
+        Schema::dropIfExists('{{table}}');
+========
+        Schema::dropIfExists('customers');
+>>>>>>>> origin/dev:database/migrations/2023_02_01_125412_create_customers_table.php
+    }
+};
