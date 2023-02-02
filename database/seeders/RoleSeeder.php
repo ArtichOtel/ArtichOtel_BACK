@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Review;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ReviewSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,6 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        Review::factory()->create([
-            'title' => 'Parfait !',
-            'description' => 'Mon séjour a été un régal.',
-            'note' => 5
-        ]);
+        Role::factory()->create()
     }
 }
