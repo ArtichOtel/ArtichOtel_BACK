@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\New_info;
+use App\Models\NewInfo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +15,6 @@ class NewInfoSeeder extends Seeder
      */
     public function run()
     {
-        New_info::factory()->count(5)->create();
+        NewInfo::factory()->count(5)->create();
     }
 }
