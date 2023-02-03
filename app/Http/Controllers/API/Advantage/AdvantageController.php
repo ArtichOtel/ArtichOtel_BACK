@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Advantage;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
