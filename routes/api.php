@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\Advantage\AdvantageController;
 use App\Http\Controllers\API\Advantage\AdvantagesController;
-use App\Http\Controllers\API\NewInfoController;
-use App\Http\Controllers\API\NewsInfoController;
+use App\Http\Controllers\API\NewInfo\NewInfoController;
+use App\Http\Controllers\API\NewInfo\NewsInfoController;
 use App\Http\Controllers\API\OfferController;
 use App\Http\Controllers\API\OffersController;
 use App\Http\Controllers\API\RoomsTypesController;
