@@ -138,7 +138,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::qRbx6p7cyQH6A0UJ',
+            '_route' => 'generated::QPz5touG6rlrOuHx',
           ),
           1 => NULL,
           2 => 
@@ -194,7 +194,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::C7khUcHdFLqxd7X5',
+            '_route' => 'generated::dzCNn5sPwekclrGX',
           ),
           1 => NULL,
           2 => 
@@ -250,7 +250,27 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::6XCQNNcr4CaXzwyV',
+            '_route' => 'generated::8K8ApMoCLX2pYO7U',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/room-types' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::f2lfkPRM7BHYOSnl',
           ),
           1 => NULL,
           2 => 
@@ -270,7 +290,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::jwhRiPbw331sKvwx',
+            '_route' => 'generated::sSd7rd7eY7DnTuV5',
           ),
           1 => NULL,
           2 => 
@@ -821,7 +841,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::qRbx6p7cyQH6A0UJ' => 
+    'generated::QPz5touG6rlrOuHx' => 
     array (
       'methods' => 
       array (
@@ -842,7 +862,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::qRbx6p7cyQH6A0UJ',
+        'as' => 'generated::QPz5touG6rlrOuHx',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1041,7 +1061,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::C7khUcHdFLqxd7X5' => 
+    'generated::dzCNn5sPwekclrGX' => 
     array (
       'methods' => 
       array (
@@ -1062,7 +1082,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::C7khUcHdFLqxd7X5',
+        'as' => 'generated::dzCNn5sPwekclrGX',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1261,7 +1281,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::6XCQNNcr4CaXzwyV' => 
+    'generated::8K8ApMoCLX2pYO7U' => 
     array (
       'methods' => 
       array (
@@ -1282,7 +1302,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::6XCQNNcr4CaXzwyV',
+        'as' => 'generated::8K8ApMoCLX2pYO7U',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1298,7 +1318,44 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::jwhRiPbw331sKvwx' => 
+    'generated::f2lfkPRM7BHYOSnl' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/room-types',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\API\\RoomsTypesController@__invoke',
+        'controller' => 'App\\Http\\Controllers\\API\\RoomsTypesController',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::f2lfkPRM7BHYOSnl',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::sSd7rd7eY7DnTuV5' => 
     array (
       'methods' => 
       array (
@@ -1314,13 +1371,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:262:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:44:"function () {
     return \\view(\'welcome\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000008b10000000000000000";}";s:4:"hash";s:44:"6wyAc6Kv+w7N033yrAP1GI316ifd46IJnAffieyLbsU=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000088f0000000000000000";}";s:4:"hash";s:44:"v7T7/KViWqHw22JKvByQfrHyMfofJtHXH/d0UYdlZ4k=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::jwhRiPbw331sKvwx',
+        'as' => 'generated::sSd7rd7eY7DnTuV5',
       ),
       'fallback' => false,
       'defaults' => 

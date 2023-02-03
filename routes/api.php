@@ -9,6 +9,7 @@ use App\Http\Controllers\API\NewInfoController;
 use App\Http\Controllers\API\NewsInfoController;
 use App\Http\Controllers\API\OfferController;
 use App\Http\Controllers\API\OffersController;
+use App\Http\Controllers\API\RoomsTypesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::apiResource('new', NewInfoController::class);
 Route::get('/news', NewsInfoController::class);
 Route::apiResource('offer', OfferController::class);
 Route::get('/offers', OffersController::class);
+Route::get('/room-types', RoomsTypesController::class);
