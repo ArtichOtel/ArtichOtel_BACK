@@ -20,3 +20,6 @@ yarn-error.log
 /public/adminer.php
 /logs
 /bootstrap/cache
+/bootstrap/cache/
+/bootstrap/cache/*
+routes-v7.php
