@@ -15,6 +15,33 @@ class AdvantageSeeder extends Seeder
      */
     public function run()
     {
-        Advantage::factory()->count(4)->create();
+        Advantage::create([
+            'title' => 'Proximitée',
+            'description' => "Proximité\nAutoroute\nAéroport",
+            'url_image' => fake()->imageUrl(),
+            'order' => 1
+        ]);
+
+        Advantage::create([
+            'title' => 'Wifi',
+            'description' => "Proximité\nAutoroute\nAéroport",
+            'url_image' => fake()->imageUrl(),
+            'order' => 2
+        ]);
+
+        Advantage::create([
+            'title' => 'Le calme de la campagne',
+            'description' => "Loin du bruit,\nDans un cadre de verdure,\ncalme et reposant.",
+            'url_image' => fake()->imageUrl(),
+            'order' => 3
+        ]);
+
+        Advantage::create([
+            'title' => 'Petit déjeuner',
+            'description' => "Sucré et salé, il est composé de sorte à ce que chacun y trouve son bonheur et se régale.",
+            'url_image' => fake()->imageUrl(),
+            'order' => 4
+        ]);
+
     }
 }
