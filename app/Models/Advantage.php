@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Advantage extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'icon',
+        'order'
+    ];
 }

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class NewInfo extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'url_image',
+        'order'
+    ];
 }
