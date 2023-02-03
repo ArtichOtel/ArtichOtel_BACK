@@ -15,11 +15,13 @@ use App\Http\Controllers\API\VideoController;
 use App\Http\Controllers\API\Hero\HeroController;
 use App\Http\Controllers\API\Link\LinkController;
 use App\Http\Controllers\API\Link\LinksController;
-use App\Http\Controllers\API\User\Login;
-use App\Http\Controllers\API\User\Users;
+use App\Http\Controllers\API\User\LoginController;
+use App\Http\Controllers\API\User\UsersController;
 use App\Http\Controllers\API\Footer\FooterController;
 use App\Http\Controllers\API\Footer\FootersController;
 use App\Http\Controllers\API\Section\SectionController;
+use App\Http\Controllers\API\Review\ReviewController;
+use App\Http\Controllers\API\Review\ReviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +37,10 @@ use App\Http\Controllers\API\Section\SectionController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+Route::apiResource('users', UsersController::class);
+Route::post('/user/login', LoginController::class);
 Route::get('/sections', SectionController::class);
-Route::apiResource('users', Users::class);
-Route::post('/user/login', Login::class);
-// Sections needed
 Route::apiResource('hero', HeroController::class);
 Route::get('/offers', OffersController::class);
 Route::apiResource('offer', OfferController::class);
@@ -47,7 +49,8 @@ Route::apiResource('advantage', AdvantageController::class);
 Route::get('/news', NewsInfoController::class);
 Route::apiResource('new', NewInfoController::class);
 Route::apiResource('video', VideoController::class);
-// Reviews needed
+Route::get('/reviews', ReviewsController::class);
+Route::apiResource('review', ReviewController::class);
 Route::get('/footers', FootersController::class);
 Route::apiResource('footer', FooterController::class);
 Route::get('/room-types', RoomsTypesController::class);

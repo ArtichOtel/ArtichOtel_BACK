@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API\User;
+namespace App\Http\Controllers\API\Review;
 
 use App\Http\Controllers\Controller;
-use http\Message\Body;
+use App\Models\Review;
 use Illuminate\Http\Request;
-use PHPUnit\Util\Json;
 
-class Login extends Controller
+class ReviewsController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -17,10 +16,9 @@ class Login extends Controller
      */
     public function __invoke(Request $request)
     {
+        // get the list of review
+        $reviews = Review::all();
 
-        $data = $request.Body::class;
-
-        // wait for a valid payload
-        return response()->json($data, 222); // lucky status
+        return response()->json($reviews, 200);
     }
 }
