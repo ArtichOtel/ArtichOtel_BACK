@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Hero;
+use App\Models\Link;
+use App\Models\Footer;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +23,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Footer::factory()->count(10)->create();
+        $ids = range(1, 10);
+        Link::factory()->count(40)->create()->each(function ($link) use ($ids) {
+            shuffle($ids);
+            $link->footers()->attach(array_slice($ids, 0, rand(1, 4)));
+        });
+
+
+        Hero::factory()->count(10)->create();
+        $ids = range(1, 10);
+        Link::factory()->count(40)->create()->each(function ($link) use ($ids) {
+            shuffle($ids);
+            $link->heroes()->attach(array_slice($ids, 0, rand(1, 4)));
+        });
     }
 }

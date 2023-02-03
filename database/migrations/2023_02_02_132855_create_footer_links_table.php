@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('footer_link', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 60);
-            $table->string('description', 300);
-            $table->longText('url_video', 255);
             $table->timestamps();
+            $table->foreignId('footer_id');
+            $table->foreignId('link_id');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('footer_link');
     }
 };

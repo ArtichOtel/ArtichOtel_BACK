@@ -1,7 +1,11 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\HeroController;
+use App\Http\Controllers\API\LinkController;
+use App\Http\Controllers\API\FooterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::apiResource('heroes', HeroController::class);
+Route::apiResource('Links', LinkController::class);
+Route::apiResource('Footer', FooterController::class);
