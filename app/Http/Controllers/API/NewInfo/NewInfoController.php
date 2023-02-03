@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\NewInfo;
 
 use App\Http\Controllers\Controller;
+use App\Models\NewInfo;
 use Illuminate\Http\Request;
-use App\Models\Offer;
 
-class OfferController extends Controller
+class NewInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //$erroMsg = "Perhaps you wanted one of these: GET /Offer/{id} || GET /Offers";
+        //$erroMsg = "Perhaps you wanted one of these: GET /new/{id} || GET /news";
 
         return response()->json("RTFM", 405);
     }
@@ -32,17 +32,19 @@ class OfferController extends Controller
             'title' => 'required|max:60',
             'description' => 'required|max:300',
             'url_image' => 'required|max:255',
+            'order' => 'required'
         ]);
 
-        $newOffer = new Offer([
+        $newNewInfo = new NewInfo([
             'title' => $request->get('title'),
             'description' => $request->get('description'),
             'url_image' => $request->get('url_image'),
+            'order' => $request->get('order'),
         ]);
 
-        $newOffer->save();
+        $newNewInfo->save();
 
-        return response()->json($newOffer);
+        return response()->json($newNewInfo);
     }
 
     /**
@@ -53,9 +55,9 @@ class OfferController extends Controller
      */
     public function show($id)
     {
-        $offer = Offer::findOrFail($id);
+        $newInfo = NewInfo::findOrFail($id);
 
-        return response()->json($offer);
+        return response()->json($newInfo);
     }
 
     /**
@@ -67,21 +69,23 @@ class OfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $offer = Offer::findOrFail($id);
+        $newInfo = NewInfo::findOrFail($id);
 
         $request->validate([
             'title' => 'required|max:60',
             'description' => 'required|max:300',
             'url_image' => 'required|max:255',
+            'order' => 'required'
         ]);
 
-        $offer->title = $request->get('title');
-        $offer->description = $request->get('description');
-        $offer->url_image = $request->get('url_image');
+        $newInfo->title = $request->get('title');
+        $newInfo->description = $request->get('description');
+        $newInfo->url_image = $request->get('url_image');
+        $newInfo->order = $request->get('order');
 
-        $offer->save();
+        $newInfo->save();
 
-        return response()->json($offer);
+        return response()->json($newInfo);
     }
 
     /**
@@ -92,10 +96,10 @@ class OfferController extends Controller
      */
     public function destroy($id)
     {
-        $offer = Offer::findOrfail($id);
+        $newInfo = NewInfo::findOrFail($id);
 
-        $offer->delete();
+        $newInfo->delete();
 
-        return response()->json(Offer::all());
+        return response()->json(NewInfo::all());
     }
 }

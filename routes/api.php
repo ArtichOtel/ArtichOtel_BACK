@@ -4,14 +4,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\API\AdvantageController;
-use App\Http\Controllers\API\AdvantagesController;
-use App\Http\Controllers\API\NewInfoController;
-use App\Http\Controllers\API\NewInfosController;
-use App\Http\Controllers\API\OfferController;
-use App\Http\Controllers\API\OffersController;
-use App\Http\Controllers\API\RoomsTypesController;
-use App\Http\Controllers\API\VideoController;
+use App\Http\Controllers\API\Advantage\AdvantageController;
+use App\Http\Controllers\API\Advantage\AdvantagesController;
+use App\Http\Controllers\API\NewInfo\NewInfoController;
+use App\Http\Controllers\API\NewInfo\NewInfoSController;
+use App\Http\Controllers\API\Offer\OfferController;
+use App\Http\Controllers\API\Offer\OffersController;
+use App\Http\Controllers\API\RoomsType\RoomsTypesController;
+use App\Http\Controllers\API\Video\VideoController;
 use App\Http\Controllers\API\Hero\HeroController;
 use App\Http\Controllers\API\Link\LinkController;
 use App\Http\Controllers\API\Link\LinksController;

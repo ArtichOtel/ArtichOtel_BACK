@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\NewInfo;
 
 use App\Http\Controllers\Controller;
-use App\Models\Advantage;
+use App\Models\NewInfo;
 
-class AdvantagesController extends Controller
+class NewInfosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class AdvantagesController extends Controller
      */
     public function __invoke()
     {
-        $advantages = Advantage::all();
+        $newInfos = NewInfo::all();
 
-        return response()->json($advantages, 200);
+        return response()->json($newInfos, 200);
     }
 }

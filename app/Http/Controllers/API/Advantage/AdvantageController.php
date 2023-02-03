@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Advantage;
 
 use App\Http\Controllers\Controller;
-use App\Models\NewInfo;
 use Illuminate\Http\Request;
+use App\Models\Advantage;
 
-class NewInfoController extends Controller
+class AdvantageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class NewInfoController extends Controller
      */
     public function index()
     {
-        //$erroMsg = "Perhaps you wanted one of these: GET /new/{id} || GET /news";
+        //$erroMsg = "Perhaps you wanted one of these: GET /advantage/{id} || GET /advantages";
 
         return response()->json("RTFM", 405);
     }
@@ -31,20 +31,20 @@ class NewInfoController extends Controller
         $request->validate([
             'title' => 'required|max:60',
             'description' => 'required|max:300',
-            'url_image' => 'required|max:255',
+            'icon' => 'required|max:20',
             'order' => 'required'
         ]);
 
-        $newNewInfo = new NewInfo([
+        $newAdvantage = new Advantage([
             'title' => $request->get('title'),
             'description' => $request->get('description'),
-            'url_image' => $request->get('url_image'),
+            'icon' => $request->get('icon'),
             'order' => $request->get('order'),
         ]);
 
-        $newNewInfo->save();
+        $newAdvantage->save();
 
-        return response()->json($newNewInfo);
+        return response()->json($newAdvantage);
     }
 
     /**
@@ -55,9 +55,9 @@ class NewInfoController extends Controller
      */
     public function show($id)
     {
-        $newInfo = NewInfo::findOrFail($id);
+        $advantage = Advantage::findOrFail($id);
 
-        return response()->json($newInfo);
+        return response()->json($advantage);
     }
 
     /**
@@ -69,23 +69,23 @@ class NewInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $newInfo = NewInfo::findOrFail($id);
+        $advantage = Advantage::findOrFail($id);
 
         $request->validate([
             'title' => 'required|max:60',
             'description' => 'required|max:300',
-            'url_image' => 'required|max:255',
+            'icon' => 'required|max:20',
             'order' => 'required'
         ]);
 
-        $newInfo->title = $request->get('title');
-        $newInfo->description = $request->get('description');
-        $newInfo->url_image = $request->get('url_image');
-        $newInfo->order = $request->get('order');
+        $advantage->title = $request->get('title');
+        $advantage->description = $request->get('description');
+        $advantage->icon = $request->get('icon');
+        $advantage->order = $request->get('order');
 
-        $newInfo->save();
+        $advantage->save();
 
-        return response()->json($newInfo);
+        return response()->json($advantage);
     }
 
     /**
@@ -96,10 +96,10 @@ class NewInfoController extends Controller
      */
     public function destroy($id)
     {
-        $newInfo = NewInfo::findOrFail($id);
+        $advantage = Advantage::findOrFail($id);
 
-        $newInfo->delete();
+        $advantage->delete();
 
-        return response()->json(NewInfo::all());
+        return response()->json(Advantage::all());
     }
 }
