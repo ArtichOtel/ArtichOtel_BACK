@@ -7,6 +7,8 @@ use App\Http\Controllers\API\AdvantageController;
 use App\Http\Controllers\API\AdvantagesController;
 use App\Http\Controllers\API\NewInfoController;
 use App\Http\Controllers\API\NewsInfoController;
+use App\Http\Controllers\API\OfferController;
+use App\Http\Controllers\API\OffersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,5 @@ Route::apiResource('advantage', AdvantageController::class);
 Route::get('/advantages', AdvantagesController::class);
 Route::apiResource('new', NewInfoController::class);
 Route::get('/news', NewsInfoController::class);
+Route::apiResource('offer', OfferController::class);
+Route::get('/offers', OffersController::class);

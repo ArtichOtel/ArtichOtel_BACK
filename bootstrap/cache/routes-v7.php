@@ -138,7 +138,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::h9ezOAb7AodSrA58',
+            '_route' => 'generated::qRbx6p7cyQH6A0UJ',
           ),
           1 => NULL,
           2 => 
@@ -194,7 +194,63 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::L6sFYdG7hMtPTyUv',
+            '_route' => 'generated::C7khUcHdFLqxd7X5',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/offer' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'offer.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'offer.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/offers' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::6XCQNNcr4CaXzwyV',
           ),
           1 => NULL,
           2 => 
@@ -214,7 +270,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::egszv8msmvEUxQG2',
+            '_route' => 'generated::jwhRiPbw331sKvwx',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +287,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/api/(?|advantage/([^/]++)(?|(*:36))|new/([^/]++)(?|(*:59))))/?$}sDu',
+      0 => '{^(?|/api/(?|advantage/([^/]++)(?|(*:36))|new/([^/]++)(?|(*:59))|offer/([^/]++)(?|(*:84))))/?$}sDu',
     ),
     3 => 
     array (
@@ -348,6 +404,68 @@ app('router')->setCompiledRoutes(
           1 => 
           array (
             0 => 'new',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      84 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'offer.show',
+          ),
+          1 => 
+          array (
+            0 => 'offer',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'offer.update',
+          ),
+          1 => 
+          array (
+            0 => 'offer',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'offer.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'offer',
           ),
           2 => 
           array (
@@ -703,7 +821,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::h9ezOAb7AodSrA58' => 
+    'generated::qRbx6p7cyQH6A0UJ' => 
     array (
       'methods' => 
       array (
@@ -724,7 +842,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::h9ezOAb7AodSrA58',
+        'as' => 'generated::qRbx6p7cyQH6A0UJ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -923,7 +1041,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::L6sFYdG7hMtPTyUv' => 
+    'generated::C7khUcHdFLqxd7X5' => 
     array (
       'methods' => 
       array (
@@ -944,7 +1062,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::L6sFYdG7hMtPTyUv',
+        'as' => 'generated::C7khUcHdFLqxd7X5',
       ),
       'fallback' => false,
       'defaults' => 
@@ -960,7 +1078,227 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::egszv8msmvEUxQG2' => 
+    'offer.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/offer',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'offer.index',
+        'uses' => 'App\\Http\\Controllers\\API\\OfferController@index',
+        'controller' => 'App\\Http\\Controllers\\API\\OfferController@index',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'offer.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/offer',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'offer.store',
+        'uses' => 'App\\Http\\Controllers\\API\\OfferController@store',
+        'controller' => 'App\\Http\\Controllers\\API\\OfferController@store',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'offer.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/offer/{offer}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'offer.show',
+        'uses' => 'App\\Http\\Controllers\\API\\OfferController@show',
+        'controller' => 'App\\Http\\Controllers\\API\\OfferController@show',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'offer.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'api/offer/{offer}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'offer.update',
+        'uses' => 'App\\Http\\Controllers\\API\\OfferController@update',
+        'controller' => 'App\\Http\\Controllers\\API\\OfferController@update',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'offer.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'api/offer/{offer}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'offer.destroy',
+        'uses' => 'App\\Http\\Controllers\\API\\OfferController@destroy',
+        'controller' => 'App\\Http\\Controllers\\API\\OfferController@destroy',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::6XCQNNcr4CaXzwyV' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/offers',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\API\\OffersController@__invoke',
+        'controller' => 'App\\Http\\Controllers\\API\\OffersController',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::6XCQNNcr4CaXzwyV',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::jwhRiPbw331sKvwx' => 
     array (
       'methods' => 
       array (
@@ -976,13 +1314,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:262:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:44:"function () {
     return \\view(\'welcome\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004d70000000000000000";}";s:4:"hash";s:44:"eWnoP5eUZ15kMgXUHpNZRIbaclTpt+sRDn4DjbZOp24=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000008b10000000000000000";}";s:4:"hash";s:44:"6wyAc6Kv+w7N033yrAP1GI316ifd46IJnAffieyLbsU=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::egszv8msmvEUxQG2',
+        'as' => 'generated::jwhRiPbw331sKvwx',
       ),
       'fallback' => false,
       'defaults' => 
