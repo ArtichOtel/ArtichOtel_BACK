@@ -3,7 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
+use Database\Seeders\HeroSeeder;
+use Database\Seeders\RoleSeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\FooterSeeder;
+use Database\Seeders\ReviewSeeder;
+use Database\Seeders\CustomerSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +21,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
@@ -26,7 +31,13 @@ class DatabaseSeeder extends Seeder
             NewInfoSeeder::class,
             OfferSeeder::class,
             RoomsTypeSeeder::class,
-            VideoSeeder::class
+            VideoSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
+            CustomerSeeder::class,
+            ReviewSeeder::class,
+            HeroSeeder::class,
+            FooterSeeder::class,
         ]);
     }
 }
