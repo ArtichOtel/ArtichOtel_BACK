@@ -138,7 +138,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::QPz5touG6rlrOuHx',
+            '_route' => 'generated::jgxCEHDbTPzUJeUo',
           ),
           1 => NULL,
           2 => 
@@ -194,7 +194,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::dzCNn5sPwekclrGX',
+            '_route' => 'generated::DLo0qcwQG6Ro0z6U',
           ),
           1 => NULL,
           2 => 
@@ -250,7 +250,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::8K8ApMoCLX2pYO7U',
+            '_route' => 'generated::6vy5qE3Ov807JRbl',
           ),
           1 => NULL,
           2 => 
@@ -270,7 +270,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::f2lfkPRM7BHYOSnl',
+            '_route' => 'generated::cLTaoEGNHk9q30mD',
           ),
           1 => NULL,
           2 => 
@@ -284,13 +284,49 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/api/video' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'video.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'video.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::sSd7rd7eY7DnTuV5',
+            '_route' => 'generated::ED6ReZDO9CR9DFMK',
           ),
           1 => NULL,
           2 => 
@@ -307,7 +343,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/api/(?|advantage/([^/]++)(?|(*:36))|new/([^/]++)(?|(*:59))|offer/([^/]++)(?|(*:84))))/?$}sDu',
+      0 => '{^(?|/api/(?|advantage/([^/]++)(?|(*:36))|new/([^/]++)(?|(*:59))|offer/([^/]++)(?|(*:84))|video/([^/]++)(?|(*:109))))/?$}sDu',
     ),
     3 => 
     array (
@@ -486,6 +522,68 @@ app('router')->setCompiledRoutes(
           1 => 
           array (
             0 => 'offer',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      109 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'video.show',
+          ),
+          1 => 
+          array (
+            0 => 'video',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'video.update',
+          ),
+          1 => 
+          array (
+            0 => 'video',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'video.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'video',
           ),
           2 => 
           array (
@@ -841,7 +939,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::QPz5touG6rlrOuHx' => 
+    'generated::jgxCEHDbTPzUJeUo' => 
     array (
       'methods' => 
       array (
@@ -862,7 +960,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::QPz5touG6rlrOuHx',
+        'as' => 'generated::jgxCEHDbTPzUJeUo',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1061,7 +1159,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::dzCNn5sPwekclrGX' => 
+    'generated::DLo0qcwQG6Ro0z6U' => 
     array (
       'methods' => 
       array (
@@ -1082,7 +1180,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::dzCNn5sPwekclrGX',
+        'as' => 'generated::DLo0qcwQG6Ro0z6U',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1281,7 +1379,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::8K8ApMoCLX2pYO7U' => 
+    'generated::6vy5qE3Ov807JRbl' => 
     array (
       'methods' => 
       array (
@@ -1302,7 +1400,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::8K8ApMoCLX2pYO7U',
+        'as' => 'generated::6vy5qE3Ov807JRbl',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1318,7 +1416,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::f2lfkPRM7BHYOSnl' => 
+    'generated::cLTaoEGNHk9q30mD' => 
     array (
       'methods' => 
       array (
@@ -1339,7 +1437,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::f2lfkPRM7BHYOSnl',
+        'as' => 'generated::cLTaoEGNHk9q30mD',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1355,7 +1453,190 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::sSd7rd7eY7DnTuV5' => 
+    'video.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/video',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'video.index',
+        'uses' => 'App\\Http\\Controllers\\API\\VideoController@index',
+        'controller' => 'App\\Http\\Controllers\\API\\VideoController@index',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'video.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/video',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'video.store',
+        'uses' => 'App\\Http\\Controllers\\API\\VideoController@store',
+        'controller' => 'App\\Http\\Controllers\\API\\VideoController@store',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'video.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/video/{video}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'video.show',
+        'uses' => 'App\\Http\\Controllers\\API\\VideoController@show',
+        'controller' => 'App\\Http\\Controllers\\API\\VideoController@show',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'video.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'api/video/{video}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'video.update',
+        'uses' => 'App\\Http\\Controllers\\API\\VideoController@update',
+        'controller' => 'App\\Http\\Controllers\\API\\VideoController@update',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'video.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'api/video/{video}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'video.destroy',
+        'uses' => 'App\\Http\\Controllers\\API\\VideoController@destroy',
+        'controller' => 'App\\Http\\Controllers\\API\\VideoController@destroy',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::ED6ReZDO9CR9DFMK' => 
     array (
       'methods' => 
       array (
@@ -1371,13 +1652,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:262:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:44:"function () {
     return \\view(\'welcome\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000088f0000000000000000";}";s:4:"hash";s:44:"v7T7/KViWqHw22JKvByQfrHyMfofJtHXH/d0UYdlZ4k=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000008950000000000000000";}";s:4:"hash";s:44:"Czd/1a439iBcjwJwm3txnOUCNThPClcmHa4hPZbmiFo=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::sSd7rd7eY7DnTuV5',
+        'as' => 'generated::ED6ReZDO9CR9DFMK',
       ),
       'fallback' => false,
       'defaults' => 

@@ -10,6 +10,7 @@ use App\Http\Controllers\API\NewsInfoController;
 use App\Http\Controllers\API\OfferController;
 use App\Http\Controllers\API\OffersController;
 use App\Http\Controllers\API\RoomsTypesController;
+use App\Http\Controllers\API\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,4 @@ Route::get('/news', NewsInfoController::class);
 Route::apiResource('offer', OfferController::class);
 Route::get('/offers', OffersController::class);
 Route::get('/room-types', RoomsTypesController::class);
+Route::apiResource('video', VideoController::class);
