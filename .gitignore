@@ -22,4 +22,6 @@ yarn-error.log
 /bootstrap/cache
 /bootstrap/cache/
 /bootstrap/cache/*
+/bootstrap/cache/
+/bootstrap/cache/*
 routes-v7.php
