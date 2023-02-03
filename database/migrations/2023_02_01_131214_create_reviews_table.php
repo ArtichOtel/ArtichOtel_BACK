@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title',60);
             $table->string('description',300);
+            $table->smallInteger('note');
             $table->foreignId('customer_id')->constrained();
         });
     }
