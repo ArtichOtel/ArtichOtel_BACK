@@ -10,6 +10,6 @@ class Review extends Model
     use HasFactory;
 
     function customer() {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(Customer::class);
     }
 }
