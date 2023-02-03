@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Footer;
 
 use App\Http\Controllers\Controller;
-use App\Models\Hero;
+use App\Models\Footer;
 use Illuminate\Http\Request;
 
 
 
-class HeroController extends Controller
+class FooterController extends Controller
 {
     /**
      * Display a listing of the resources
@@ -17,11 +17,11 @@ class HeroController extends Controller
      */
     public function index()
     {
-        // Recup all Heros
-        $heroes =  Hero::all();
+        // Recup all Footers
+        $error = "Not good URI, watch your url api syntax";
 
-        // Return all information Heros in JSON
-        return response()->json($heroes, 200);
+        // Return all information Footers in JSON
+        return response()->json($error, 405);
     }
 
 
@@ -35,19 +35,17 @@ class HeroController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'subtitle' => 'required',
-            'url_image' => 'required'
+            'order' => 'required',
         ]);
 
-        $newHeroes = new Hero([
+        $newFooteres = new Footer([
             'title' => $request->get('title'),
-            'subtitle' => $request->get('subtitle'),
-            'url_image' => $request->get('url_image'),
+            'order' => $request->get('order'),
         ]);
 
-        $newHeroes->save();
+        $newFooteres->save();
 
-        return response()->json($newHeroes, 200);
+        return response()->json($newFooteres, 200);
     }
 
 
@@ -59,8 +57,8 @@ class HeroController extends Controller
      */
     public function show($id)
     {
-        $heroe = Hero::findOrFail($id);
-        return response()->json($heroe, 200);
+        $footer = Footer::findOrFail($id);
+        return response()->json($footer, 200);
     }
 
 
@@ -75,37 +73,36 @@ class HeroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $heroe = Hero::findOrFail($id);
+        $footer = Footer::findOrFail($id);
 
         $request->validate([
             'title' => 'required', //|max:60',
-            'subtitle' => 'required', //'required|max:60',
-            'url_image' => 'required'
+            'order' => 'required', //'required|max:60',
+
         ]);
 
-        $heroe->title = $request->get('title');
-        $heroe->subtitle = $request->get('subtitle');
-        $heroe->url_image = $request->get('url_image');
+        $footer->title = $request->get('title');
+        $footer->order = $request->get('order');
 
-        $heroe->save();
+        $footer->save();
 
-        return response()->json($heroe, 200);
+        return response()->json($footer, 201);
     }
 
 
 
     /**
      * 
-     * Remove the specified hero from the storage.
+     * Remove the specified Footer from the storage.
      * 
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        $heroe = Hero::findOrFail($id);
-        $heroe->delete();
+        $Footer = Footer::findOrFail($id);
+        $Footer->delete();
 
-        return response()->json($heroe::all());
+        return response()->json($Footer::all());
     }
 }

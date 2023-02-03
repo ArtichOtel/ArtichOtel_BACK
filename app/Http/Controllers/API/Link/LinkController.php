@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Link;
 
 use App\Http\Controllers\Controller;
 use App\Models\Link;
@@ -18,10 +18,10 @@ class LinkController extends Controller
     public function index()
     {
         // Recup all Links
-        $Links =  Link::all();
+        $errorMessage =  "Bad URI, watch your URL syntax";
 
         // Return all information Links in JSON
-        return response()->json($Links, 200);
+        return response()->json($errorMessage, 404);
     }
 
 
@@ -47,7 +47,7 @@ class LinkController extends Controller
 
         $newLinkes->save();
 
-        return response()->json($newLinkes, 200);
+        return response()->json($newLinkes, 201);
     }
 
 
