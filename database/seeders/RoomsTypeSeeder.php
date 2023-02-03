@@ -15,6 +15,25 @@ class RoomsTypeSeeder extends Seeder
      */
     public function run()
     {
-        RoomsType::factory()->count(3)->create();
+        RoomsType::create([
+            'title' => 'Chambre standard',
+            'description' => fake()->sentence(),
+            'url_image' => fake()->imageUrl(),
+            'price' => 70
+        ]);
+
+        RoomsType::create([
+            'title' => 'Chambre luxe',
+            'description' => fake()->sentence(),
+            'url_image' => fake()->imageUrl(),
+            'price' => 140
+        ]);
+
+        RoomsType::create([
+            'title' => 'Suite',
+            'description' => fake()->sentence(),
+            'url_image' => fake()->imageUrl(),
+            'price' => 280
+        ]);
     }
 }
