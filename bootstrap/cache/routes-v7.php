@@ -96,13 +96,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/api/advantages' => 
+      '/api/advantage' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'advantages.index',
+            '_route' => 'advantage.index',
           ),
           1 => NULL,
           2 => 
@@ -119,7 +119,63 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'advantages.store',
+            '_route' => 'advantage.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/advantages' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::LJpvopc60rb117ob',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/new' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'new.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'new.store',
           ),
           1 => NULL,
           2 => 
@@ -138,7 +194,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::1DKdOa0wERUgaeM0',
+            '_route' => 'generated::kMuoeR1sF1MvJPqs',
           ),
           1 => NULL,
           2 => 
@@ -155,17 +211,17 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/api/advantages/([^/]++)(?|(*:34)))/?$}sDu',
+      0 => '{^(?|/api/(?|advantage/([^/]++)(?|(*:36))|new/([^/]++)(?|(*:59))))/?$}sDu',
     ),
     3 => 
     array (
-      34 => 
+      36 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'advantages.show',
+            '_route' => 'advantage.show',
           ),
           1 => 
           array (
@@ -185,7 +241,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'advantages.update',
+            '_route' => 'advantage.update',
           ),
           1 => 
           array (
@@ -205,11 +261,73 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'advantages.destroy',
+            '_route' => 'advantage.destroy',
           ),
           1 => 
           array (
             0 => 'advantage',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      59 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'new.show',
+          ),
+          1 => 
+          array (
+            0 => 'new',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'new.update',
+          ),
+          1 => 
+          array (
+            0 => 'new',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'new.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'new',
           ),
           2 => 
           array (
@@ -382,21 +500,21 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'advantages.index' => 
+    'advantage.index' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'api/advantages',
+      'uri' => 'api/advantage',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
-        'as' => 'advantages.index',
+        'as' => 'advantage.index',
         'uses' => 'App\\Http\\Controllers\\API\\AdvantageController@index',
         'controller' => 'App\\Http\\Controllers\\API\\AdvantageController@index',
         'namespace' => NULL,
@@ -419,20 +537,20 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'advantages.store' => 
+    'advantage.store' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'api/advantages',
+      'uri' => 'api/advantage',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
-        'as' => 'advantages.store',
+        'as' => 'advantage.store',
         'uses' => 'App\\Http\\Controllers\\API\\AdvantageController@store',
         'controller' => 'App\\Http\\Controllers\\API\\AdvantageController@store',
         'namespace' => NULL,
@@ -455,21 +573,21 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'advantages.show' => 
+    'advantage.show' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'api/advantages/{advantage}',
+      'uri' => 'api/advantage/{advantage}',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
-        'as' => 'advantages.show',
+        'as' => 'advantage.show',
         'uses' => 'App\\Http\\Controllers\\API\\AdvantageController@show',
         'controller' => 'App\\Http\\Controllers\\API\\AdvantageController@show',
         'namespace' => NULL,
@@ -492,21 +610,21 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'advantages.update' => 
+    'advantage.update' => 
     array (
       'methods' => 
       array (
         0 => 'PUT',
         1 => 'PATCH',
       ),
-      'uri' => 'api/advantages/{advantage}',
+      'uri' => 'api/advantage/{advantage}',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
-        'as' => 'advantages.update',
+        'as' => 'advantage.update',
         'uses' => 'App\\Http\\Controllers\\API\\AdvantageController@update',
         'controller' => 'App\\Http\\Controllers\\API\\AdvantageController@update',
         'namespace' => NULL,
@@ -529,20 +647,20 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'advantages.destroy' => 
+    'advantage.destroy' => 
     array (
       'methods' => 
       array (
         0 => 'DELETE',
       ),
-      'uri' => 'api/advantages/{advantage}',
+      'uri' => 'api/advantage/{advantage}',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
-        'as' => 'advantages.destroy',
+        'as' => 'advantage.destroy',
         'uses' => 'App\\Http\\Controllers\\API\\AdvantageController@destroy',
         'controller' => 'App\\Http\\Controllers\\API\\AdvantageController@destroy',
         'namespace' => NULL,
@@ -565,7 +683,227 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::1DKdOa0wERUgaeM0' => 
+    'generated::LJpvopc60rb117ob' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/advantages',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\API\\AdvantagesController@__invoke',
+        'controller' => 'App\\Http\\Controllers\\API\\AdvantagesController',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::LJpvopc60rb117ob',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'new.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/new',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'new.index',
+        'uses' => 'App\\Http\\Controllers\\API\\NewInfoController@index',
+        'controller' => 'App\\Http\\Controllers\\API\\NewInfoController@index',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'new.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/new',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'new.store',
+        'uses' => 'App\\Http\\Controllers\\API\\NewInfoController@store',
+        'controller' => 'App\\Http\\Controllers\\API\\NewInfoController@store',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'new.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/new/{new}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'new.show',
+        'uses' => 'App\\Http\\Controllers\\API\\NewInfoController@show',
+        'controller' => 'App\\Http\\Controllers\\API\\NewInfoController@show',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'new.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'api/new/{new}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'new.update',
+        'uses' => 'App\\Http\\Controllers\\API\\NewInfoController@update',
+        'controller' => 'App\\Http\\Controllers\\API\\NewInfoController@update',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'new.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'api/new/{new}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'new.destroy',
+        'uses' => 'App\\Http\\Controllers\\API\\NewInfoController@destroy',
+        'controller' => 'App\\Http\\Controllers\\API\\NewInfoController@destroy',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::kMuoeR1sF1MvJPqs' => 
     array (
       'methods' => 
       array (
@@ -581,13 +919,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:262:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:44:"function () {
     return \\view(\'welcome\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004d80000000000000000";}";s:4:"hash";s:44:"Y1bZjR3RLl/wAVbz1esV8c/Smu6FOHYjjWUGkkjPkxs=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004d90000000000000000";}";s:4:"hash";s:44:"LQ6HckKdMpYV4mVjmjp6Fz6b6r8X3fca+ippHnvZtEE=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::1DKdOa0wERUgaeM0',
+        'as' => 'generated::kMuoeR1sF1MvJPqs',
       ),
       'fallback' => false,
       'defaults' => 
