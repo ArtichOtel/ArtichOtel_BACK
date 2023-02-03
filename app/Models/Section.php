@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class New_info extends Model
+class Section extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title'
+    ];
 }

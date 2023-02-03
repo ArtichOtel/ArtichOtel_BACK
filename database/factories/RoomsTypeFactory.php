@@ -17,7 +17,10 @@ class RoomsTypeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => fake()->word(),
+            'description' => fake()->sentence(),
+            'url_image' => fake()->imageUrl(),
+            'price' => fake()->numberBetween(1,300)
         ];
     }
 }

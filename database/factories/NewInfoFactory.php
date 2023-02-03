@@ -17,7 +17,10 @@ class NewInfoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => fake()->word(),
+            'description' => fake()->sentence(),
+            'url_image' => fake()->imageUrl(),
+            'order' => fake()->randomNumber()
         ];
     }
 }
