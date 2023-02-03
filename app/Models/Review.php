@@ -9,6 +9,12 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'note',
+    ];
+
     function customer() {
         return $this->hasOne(Customer::class);
     }
