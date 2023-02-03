@@ -27,7 +27,6 @@ use App\Http\Controllers\API\Footer\FootersController;
 
 Route::apiResource('hero', HeroController::class);
 Route::apiResource('link', LinkController::class);
-
 Route::apiResource('footer', FooterController::class);
 Route::get('/footers', FootersController::class);
 Route::get('/links', LinksController::class);
