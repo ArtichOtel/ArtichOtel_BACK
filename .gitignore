@@ -16,3 +16,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/adminer.css
+/public/adminer.php
+/logs
+/bootstrap/cache

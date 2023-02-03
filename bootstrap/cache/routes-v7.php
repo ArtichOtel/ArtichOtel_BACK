@@ -96,12 +96,17 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+<<<<<<< HEAD
       '/api/hero' => 
+=======
+      '/api/users' => 
+>>>>>>> dev
       array (
         0 => 
         array (
           0 => 
           array (
+<<<<<<< HEAD
             '_route' => 'hero.index',
           ),
           1 => NULL,
@@ -231,12 +236,50 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'generated::WSIHLlujg8bOKxor',
+=======
+            '_route' => 'users.index',
+>>>>>>> dev
           ),
           1 => NULL,
           2 => 
           array (
             'GET' => 0,
             'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'users.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/user/login' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::PttYJNItyBEOmFS5',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -250,7 +293,11 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
+<<<<<<< HEAD
             '_route' => 'generated::O5RAXJSQxHVQ1HHM',
+=======
+            '_route' => 'generated::gyQINi6fJzBqENPR',
+>>>>>>> dev
           ),
           1 => NULL,
           2 => 
@@ -267,21 +314,37 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
+<<<<<<< HEAD
       0 => '{^(?|/api/(?|hero/([^/]++)(?|(*:31))|link/([^/]++)(?|(*:55))|footer/([^/]++)(?|(*:81))))/?$}sDu',
     ),
     3 => 
     array (
       31 => 
+=======
+      0 => '{^(?|/api/users/([^/]++)(?|(*:29)))/?$}sDu',
+    ),
+    3 => 
+    array (
+      29 => 
+>>>>>>> dev
       array (
         0 => 
         array (
           0 => 
           array (
+<<<<<<< HEAD
             '_route' => 'hero.show',
           ),
           1 => 
           array (
             0 => 'hero',
+=======
+            '_route' => 'users.show',
+          ),
+          1 => 
+          array (
+            0 => 'user',
+>>>>>>> dev
           ),
           2 => 
           array (
@@ -297,11 +360,19 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
+<<<<<<< HEAD
             '_route' => 'hero.update',
           ),
           1 => 
           array (
             0 => 'hero',
+=======
+            '_route' => 'users.update',
+          ),
+          1 => 
+          array (
+            0 => 'user',
+>>>>>>> dev
           ),
           2 => 
           array (
@@ -317,6 +388,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
+<<<<<<< HEAD
             '_route' => 'hero.destroy',
           ),
           1 => 
@@ -446,6 +518,13 @@ app('router')->setCompiledRoutes(
           1 => 
           array (
             0 => 'footer',
+=======
+            '_route' => 'users.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'user',
+>>>>>>> dev
           ),
           2 => 
           array (
@@ -618,23 +697,37 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+<<<<<<< HEAD
     'hero.index' => 
+=======
+    'users.index' => 
+>>>>>>> dev
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
+<<<<<<< HEAD
       'uri' => 'api/hero',
+=======
+      'uri' => 'api/users',
+>>>>>>> dev
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
+<<<<<<< HEAD
         'as' => 'hero.index',
         'uses' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@index',
         'controller' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@index',
+=======
+        'as' => 'users.index',
+        'uses' => 'App\\Http\\Controllers\\API\\User\\Users@index',
+        'controller' => 'App\\Http\\Controllers\\API\\User\\Users@index',
+>>>>>>> dev
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
@@ -655,22 +748,36 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+<<<<<<< HEAD
     'hero.store' => 
+=======
+    'users.store' => 
+>>>>>>> dev
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
+<<<<<<< HEAD
       'uri' => 'api/hero',
+=======
+      'uri' => 'api/users',
+>>>>>>> dev
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
+<<<<<<< HEAD
         'as' => 'hero.store',
         'uses' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@store',
         'controller' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@store',
+=======
+        'as' => 'users.store',
+        'uses' => 'App\\Http\\Controllers\\API\\User\\Users@store',
+        'controller' => 'App\\Http\\Controllers\\API\\User\\Users@store',
+>>>>>>> dev
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
@@ -691,23 +798,37 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+<<<<<<< HEAD
     'hero.show' => 
+=======
+    'users.show' => 
+>>>>>>> dev
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
+<<<<<<< HEAD
       'uri' => 'api/hero/{hero}',
+=======
+      'uri' => 'api/users/{user}',
+>>>>>>> dev
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
+<<<<<<< HEAD
         'as' => 'hero.show',
         'uses' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@show',
         'controller' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@show',
+=======
+        'as' => 'users.show',
+        'uses' => 'App\\Http\\Controllers\\API\\User\\Users@show',
+        'controller' => 'App\\Http\\Controllers\\API\\User\\Users@show',
+>>>>>>> dev
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
@@ -728,23 +849,37 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+<<<<<<< HEAD
     'hero.update' => 
+=======
+    'users.update' => 
+>>>>>>> dev
     array (
       'methods' => 
       array (
         0 => 'PUT',
         1 => 'PATCH',
       ),
+<<<<<<< HEAD
       'uri' => 'api/hero/{hero}',
+=======
+      'uri' => 'api/users/{user}',
+>>>>>>> dev
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
+<<<<<<< HEAD
         'as' => 'hero.update',
         'uses' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@update',
         'controller' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@update',
+=======
+        'as' => 'users.update',
+        'uses' => 'App\\Http\\Controllers\\API\\User\\Users@update',
+        'controller' => 'App\\Http\\Controllers\\API\\User\\Users@update',
+>>>>>>> dev
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
@@ -765,22 +900,36 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+<<<<<<< HEAD
     'hero.destroy' => 
+=======
+    'users.destroy' => 
+>>>>>>> dev
     array (
       'methods' => 
       array (
         0 => 'DELETE',
       ),
+<<<<<<< HEAD
       'uri' => 'api/hero/{hero}',
+=======
+      'uri' => 'api/users/{user}',
+>>>>>>> dev
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
+<<<<<<< HEAD
         'as' => 'hero.destroy',
         'uses' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@destroy',
         'controller' => 'App\\Http\\Controllers\\API\\Hero\\HeroController@destroy',
+=======
+        'as' => 'users.destroy',
+        'uses' => 'App\\Http\\Controllers\\API\\User\\Users@destroy',
+        'controller' => 'App\\Http\\Controllers\\API\\User\\Users@destroy',
+>>>>>>> dev
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
@@ -801,6 +950,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+<<<<<<< HEAD
     'link.index' => 
     array (
       'methods' => 
@@ -839,26 +989,42 @@ app('router')->setCompiledRoutes(
       'withTrashed' => false,
     ),
     'link.store' => 
+=======
+    'generated::PttYJNItyBEOmFS5' => 
+>>>>>>> dev
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
+<<<<<<< HEAD
       'uri' => 'api/link',
+=======
+      'uri' => 'api/user/login',
+>>>>>>> dev
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
         ),
+<<<<<<< HEAD
         'as' => 'link.store',
         'uses' => 'App\\Http\\Controllers\\API\\Link\\LinkController@store',
         'controller' => 'App\\Http\\Controllers\\API\\Link\\LinkController@store',
+=======
+        'uses' => 'App\\Http\\Controllers\\API\\User\\Login@__invoke',
+        'controller' => 'App\\Http\\Controllers\\API\\User\\Login',
+>>>>>>> dev
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
+<<<<<<< HEAD
+=======
+        'as' => 'generated::PttYJNItyBEOmFS5',
+>>>>>>> dev
       ),
       'fallback' => false,
       'defaults' => 
@@ -874,6 +1040,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+<<<<<<< HEAD
     'link.show' => 
     array (
       'methods' => 
@@ -1242,6 +1409,9 @@ app('router')->setCompiledRoutes(
       'withTrashed' => false,
     ),
     'generated::O5RAXJSQxHVQ1HHM' => 
+=======
+    'generated::gyQINi6fJzBqENPR' => 
+>>>>>>> dev
     array (
       'methods' => 
       array (
@@ -1257,13 +1427,21 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:262:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:44:"function () {
     return \\view(\'welcome\');
+<<<<<<< HEAD
 }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000008b10000000000000000";}";s:4:"hash";s:44:"6wyAc6Kv+w7N033yrAP1GI316ifd46IJnAffieyLbsU=";}}',
+=======
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004d70000000000000000";}";s:4:"hash";s:44:"eWnoP5eUZ15kMgXUHpNZRIbaclTpt+sRDn4DjbZOp24=";}}',
+>>>>>>> dev
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
+<<<<<<< HEAD
         'as' => 'generated::O5RAXJSQxHVQ1HHM',
+=======
+        'as' => 'generated::gyQINi6fJzBqENPR',
+>>>>>>> dev
       ),
       'fallback' => false,
       'defaults' => 

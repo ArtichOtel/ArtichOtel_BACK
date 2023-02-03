@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Hero;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Link;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class HeroSeeder extends Seeder
 {
@@ -15,6 +16,12 @@ class HeroSeeder extends Seeder
      */
     public function run()
     {
-        Hero::factory()->times(3)->create();
+
+        Hero::factory()->count(10)->create();
+        $ids = range(1, 10);
+        Link::factory()->count(40)->create()->each(function ($link) use ($ids) {
+            shuffle($ids);
+            $link->heroes()->attach(array_slice($ids, 0, rand(1, 4)));
+        });
     }
 }
