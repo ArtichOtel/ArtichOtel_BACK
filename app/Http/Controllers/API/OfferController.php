@@ -15,9 +15,9 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $erroMsg = "Perhaps you wanted one of these: GET /Offer/{id} || GET /Offers";
+        //$erroMsg = "Perhaps you wanted one of these: GET /Offer/{id} || GET /Offers";
 
-        return response()->json($erroMsg, 405);
+        return response()->json("RTFM", 405);
     }
 
     /**

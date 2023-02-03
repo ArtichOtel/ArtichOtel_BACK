@@ -15,8 +15,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
-        return response()->json("no no", 405);
+        // no  list at this uri
+        return response()->json("RTFM", 405);
     }
 
     /**
@@ -69,7 +69,7 @@ class ReviewController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $review = Link::findOrFail($id);
+        $review = Review::findOrFail($id);
 
         $request->validate([
             'title' => 'required',

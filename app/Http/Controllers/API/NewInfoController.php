@@ -15,9 +15,9 @@ class NewInfoController extends Controller
      */
     public function index()
     {
-        $erroMsg = "Perhaps you wanted one of these: GET /new/{id} || GET /news";
+        //$erroMsg = "Perhaps you wanted one of these: GET /new/{id} || GET /news";
 
-        return response()->json($erroMsg, 405);
+        return response()->json("RTFM", 405);
     }
 
     /**

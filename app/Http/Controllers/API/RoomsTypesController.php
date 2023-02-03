@@ -14,8 +14,8 @@ class RoomsTypesController extends Controller
      */
     public function __invoke()
     {
-        $roomsType = RoomsType::all();
+        $roomsTypes = RoomsType::all();
 
-        return response()->json($roomsType, 200);
+        return response()->json($roomsTypes, 200);
     }
 }

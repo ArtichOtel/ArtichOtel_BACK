@@ -12,15 +12,15 @@ class LinksController extends Controller
 {
     /**
      * Display a listing of the resources
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function __invoke()
     {
         // Recup all Links
-        $Links =  Link::all();
+        $links =  Link::all();
 
         // Return all information Links in JSON
-        return response()->json($Links, 200);
+        return response()->json($links, 200);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\NewInfo;
 
-class NewsInfoController extends Controller
+class NewInfosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class NewsInfoController extends Controller
      */
     public function __invoke()
     {
-        $newInfo = NewInfo::all();
+        $newInfos = NewInfo::all();
 
-        return response()->json($newInfo, 200);
+        return response()->json($newInfos, 200);
     }
 }

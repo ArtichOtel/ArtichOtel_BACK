@@ -15,9 +15,9 @@ class AdvantageController extends Controller
      */
     public function index()
     {
-        $erroMsg = "Perhaps you wanted one of these: GET /advantage/{id} || GET /advantages";
+        //$erroMsg = "Perhaps you wanted one of these: GET /advantage/{id} || GET /advantages";
 
-        return response()->json($erroMsg, 405);
+        return response()->json("RTFM", 405);
     }
 
     /**

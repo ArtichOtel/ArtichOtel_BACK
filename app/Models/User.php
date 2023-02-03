@@ -9,6 +9,12 @@ class User extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'email',
+        'pseudo',
+        'password',
+    ];
+
     function role() {
         return $this->hasOne(Role::class);
     }

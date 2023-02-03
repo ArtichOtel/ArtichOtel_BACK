@@ -30,7 +30,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         // add new user SPRINT 2
-        return response()->json("not implemented, maybe later", 405);
+        return response()->json("RTFM", 405);
     }
 
     /**
@@ -57,7 +57,7 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         // user to update SPRINT 2
-        return response()->json("not implemented, maybe later", 405);
+        return response()->json("RTFM", 405);
     }
 
     /**
@@ -69,6 +69,6 @@ class UsersController extends Controller
     public function destroy($id)
     {
         // user to delete SPRINT 2
-        return response()->json("not implemented, maybe later", 405);
+        return response()->json("RTFM", 405);
     }
 }

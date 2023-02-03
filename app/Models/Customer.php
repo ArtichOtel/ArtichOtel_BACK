@@ -9,6 +9,14 @@ class Customer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'phone_number',
+        'lang',
+        'avatar_url'
+    ];
+
     function user() {
         return $this->hasOne(User::class);
     }
