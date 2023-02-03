@@ -4,8 +4,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\API\AdvantageController;
-use App\Http\Controllers\API\AdvantagesController;
+use App\Http\Controllers\API\Advantage\AdvantageController;
+use App\Http\Controllers\API\Advantage\AdvantagesController;
 use App\Http\Controllers\API\NewInfoController;
 use App\Http\Controllers\API\NewsInfoController;
 use App\Http\Controllers\API\OfferController;
