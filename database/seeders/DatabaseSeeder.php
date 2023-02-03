@@ -10,6 +10,7 @@ use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\FooterSeeder;
 use Database\Seeders\ReviewSeeder;
+use Database\Seeders\SectionSeeder;
 use Database\Seeders\CustomerSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
             ReviewSeeder::class,
             HeroSeeder::class,
             FooterSeeder::class,
+            SectionSeeder::class
         ]);
     }
 }

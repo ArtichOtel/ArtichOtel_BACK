@@ -19,6 +19,7 @@ use App\Http\Controllers\API\User\Login;
 use App\Http\Controllers\API\User\Users;
 use App\Http\Controllers\API\Footer\FooterController;
 use App\Http\Controllers\API\Footer\FootersController;
+use App\Http\Controllers\API\Section\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ use App\Http\Controllers\API\Footer\FootersController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+Route::get('/sections', SectionController::class);
 Route::apiResource('users', Users::class);
 Route::post('/user/login', Login::class);
 // Sections needed
