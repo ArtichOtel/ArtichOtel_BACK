@@ -11,7 +11,7 @@ use App\Http\Controllers\API\NewInfo\NewsInfoController;
 use App\Http\Controllers\API\Offer\OfferController;
 use App\Http\Controllers\API\Offer\OffersController;
 use App\Http\Controllers\API\RoomsType\RoomsTypesController;
-use App\Http\Controllers\API\VideoController;
+use App\Http\Controllers\API\Video\VideoController;
 use App\Http\Controllers\API\Hero\HeroController;
 use App\Http\Controllers\API\Link\LinkController;
 use App\Http\Controllers\API\Link\LinksController;
