@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AdvantageController;
+use App\Http\Controllers\API\AdvantagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ use App\Http\Controllers\API\AdvantageController;
 //     return $request->user();
 // });
 
-Route::apiResource('advantages', AdvantageController::class);
+Route::apiResource('advantage', AdvantageController::class);
+Route::get('/advantages', AdvantagesController::class);
