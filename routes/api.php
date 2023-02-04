@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Advantage\AdvantageController;
 use App\Http\Controllers\API\Advantage\AdvantagesController;
 use App\Http\Controllers\API\NewInfo\NewInfoController;
-use App\Http\Controllers\API\NewInfo\NewInfoSController;
+use App\Http\Controllers\API\NewInfo\NewInfosController;
 use App\Http\Controllers\API\Offer\OfferController;
 use App\Http\Controllers\API\Offer\OffersController;
 use App\Http\Controllers\API\RoomsType\RoomsTypesController;
