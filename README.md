@@ -1,66 +1,289 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## API References
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<details>
+    <summary>🔹 /api/users </summary>
+    <br />
 
-## About Laravel
+| Method   | Summary             | Responses | Reject responses | Content (application/json) |
+|----------|---------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                     |           | 405              |                            |
+| `GET`    | Get a list of users | 200       | 400, 401, 404    | A list of user objects     |
+| `PUT`    |                     |           | 405              |                            |
+| `DELETE` |                     |           | 405              |                            |
+</details>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<details>
+    <summary>🔹 /api/users/login </summary>
+    <br />
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Method   | Summary                 | Responses | Reject responses | Content (application/json) |
+|----------|-------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   | Send connection payload | 201       | 400, 401         | Connection data            |
+| `GET`    |                         |           | 405              |                            |
+| `PUT`    |                         |           | 405              |                            |
+| `DELETE` |                         |           | 405              |                            |
+</details>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<details>
+    <summary>🔹 /api/sections </summary>
+    <br />
 
-## Learning Laravel
+| Method   | Summary                | Responses | Reject responses | Content (application/json) |
+|----------|------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                        |           | 405              |                            |
+| `GET`    | Get a list of sections | 200       | 400, 401, 404    | A list of section objects  |
+| `PUT`    |                        |           | 405              |                            |
+| `DELETE` |                        |           | 405              |                            |
+</details>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<details>
+    <summary>🔹 /api/hero </summary>
+    <br />
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| Method   | Summary          | Responses | Reject responses | Content (application/json) |
+|----------|------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                  |           | 405              |                            |
+| `GET`    | Get hero data    | 200       | 400, 401, 404    | Hero object                |
+| `PUT`    | Update hero data | 200       | 400, 401, 404    |                            |
+| `DELETE` |                  |           | 405              |                            |
+</details>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<details>
+    <summary>🔹 /api/offers </summary>
+    <br />
 
-## Laravel Sponsors
+| Method   | Summary              | Responses | Reject responses | Content (application/json) |
+|----------|----------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                      |           | 405              |                            |
+| `GET`    | Get a list of offers | 200       | 400, 401, 404    | A list of offer objects    |
+| `PUT`    |                      |           | 405              |                            |
+| `DELETE` |                      |           | 405              |                            |
+</details>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<details>
+    <summary>🔹 /api/offer </summary>
+    <br />
 
-### Premium Partners
+| Method   | Summary            | Responses | Reject responses | Content (application/json) |
+|----------|--------------------|:---------:|:----------------:|----------------------------|
+| `POST`   | Create a new offer | 201       | 400, 401         | A offer object             |
+| `GET`    |                    |           | 405              |                            |
+| `PUT`    |                    |           | 405              |                            |
+| `DELETE` |                    |           | 405              |                            |
+</details>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+<details>
+    <summary>🔹 /api/offer/{id} </summary>
+    <br />
 
-## Contributing
+| Method   | Summary                  | Responses | Reject responses | Content (application/json) |
+|----------|--------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                          |           | 405              |                            |
+| `GET`    | Get a offer by its id    | 200       | 400, 401, 404    | a offer object             |
+| `PUT`    | Modify a offer by its id | 200       | 400, 401, 404    | a offer object             |
+| `DELETE` | Delete a offer by its id | 204       | 400, 401, 404    |                            |
+</details>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<details>
+    <summary>🔹 /api/advantages </summary>
+    <br />
 
-## Code of Conduct
+| Method   | Summary                  | Responses | Reject responses | Content (application/json)  |
+|----------|--------------------------|:---------:|:----------------:|-----------------------------|
+| `POST`   |                          |           | 405              |                             |
+| `GET`    | Get a list of advantages | 200       | 400, 401, 404    | a list of advantage objects |
+| `PUT`    |                          |           | 405              |                             |
+| `DELETE` |                          |           | 405              |                             |
+</details>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<details>
+    <summary>🔹 /api/advantage </summary>
+    <br />
 
-## Security Vulnerabilities
+| Method   | Summary                | Responses | Reject responses | Content (application/json) |
+|----------|------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   | Create a new advantage | 201       | 400, 401         | a advantage object         |
+| `GET`    |                        |           | 405              |                            |
+| `PUT`    |                        |           | 405              |                            |
+| `DELETE` |                        |           | 405              |                            |
+</details>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<details>
+    <summary>🔹 /api/advantage/{id} </summary>
+    <br />
 
-## License
+| Method   | Summary                      | Responses | Reject responses | Content (application/json) |
+|----------|------------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                              |           | 405              |                            |
+| `GET`    | Get a advantage by its id    | 200       | 400, 401, 404    | a advantage object         |
+| `PUT`    | Modify a advantage by its id | 200       | 400, 401, 404    | a advantage object         |
+| `DELETE` | Delete a advantage by its id | 204       | 400, 401, 404    |                            |
+</details>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<details>
+    <summary>🔹 /api/news </summary>
+    <br />
+
+| Method   | Summary            | Responses | Reject responses | Content (application/json) |
+|----------|--------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                    |           | 405              |                            |
+| `GET`    | Get a list of news | 200       | 400, 401, 404    | a list of new objects      |
+| `PUT`    |                    |           | 405              |                            |
+| `DELETE` |                    |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/new </summary>
+    <br />
+
+| Method   | Summary          | Responses | Reject responses | Content (application/json) |
+|----------|------------------|:---------:|:----------------:|----------------------------|
+| `POST`   | Create a new new | 201       | 400, 401         | a new object               |
+| `GET`    |                  |           | 405              |                            |
+| `PUT`    |                  |           | 405              |                            |
+| `DELETE` |                  |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/new/{id} </summary>
+    <br />
+
+| Method   | Summary                | Responses | Reject responses | Content (application/json) |
+|----------|------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                        |           | 405              |                            |
+| `GET`    | Get a new by its id    | 200       | 400, 401, 404    | a new object               |
+| `PUT`    | Modify a new by its id | 200       | 400, 401, 404    | a new object               |
+| `DELETE` | Delete a new by its id | 204       | 400, 401, 404    |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/video </summary>
+    <br />
+
+| Method   | Summary           | Responses | Reject responses | Content (application/json) |
+|----------|-------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                   |           | 405              |                            |
+| `GET`    | Get video data    | 200       | 400, 401, 404    | video object               |
+| `PUT`    | Update video data | 200       | 400, 401, 404    |                            |
+| `DELETE` |                   |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/reviews </summary>
+    <br />
+
+| Method   | Summary               | Responses | Reject responses | Content (application/json) |
+|----------|-----------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                       |           | 405              |                            |
+| `GET`    | Get a list of reviews | 200       | 400, 401, 404    | a list of review objects   |
+| `PUT`    |                       |           | 405              |                            |
+| `DELETE` |                       |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/review </summary>
+    <br />
+
+| Method   | Summary             | Responses | Reject responses | Content (application/json) |
+|----------|---------------------|:---------:|:----------------:|----------------------------|
+| `POST`   | Create a new review | 201       | 400, 401         | a review object            |
+| `GET`    |                     |           | 405              |                            |
+| `PUT`    |                     |           | 405              |                            |
+| `DELETE` |                     |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/review/{id} </summary>
+    <br />
+
+| Method   | Summary                   | Responses | Reject responses | Content (application/json) |
+|----------|---------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                           |           | 405              |                            |
+| `GET`    | Get a review by its id    | 200       | 400, 401, 404    | a review object            |
+| `PUT`    | Modify a review by its id | 200       | 400, 401, 404    | a review object            |
+| `DELETE` | Delete a review by its id | 204       | 400, 401, 404    |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/footers </summary>
+    <br />
+
+| Method   | Summary               | Responses | Reject responses | Content (application/json) |
+|----------|-----------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                       |           | 405              |                            |
+| `GET`    | Get a list of footers | 200       | 400, 401, 404    | a list of footer objects   |
+| `PUT`    |                       |           | 405              |                            |
+| `DELETE` |                       |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/footer </summary>
+    <br />
+
+| Method   | Summary                | Responses | Reject responses | Content (application/json) |
+|----------|------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   | Create a footer column | 201       | 400, 401         | a footer column object     |
+| `GET`    |                        |           | 405              |                            |
+| `PUT`    |                        |           | 405              |                            |
+| `DELETE` |                        |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/footer/{id} </summary>
+    <br />
+
+| Method   | Summary                   | Responses | Reject responses | Content (application/json) |
+|----------|---------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                           |           | 405              |                            |
+| `GET`    | Get a footer by its id    | 200       | 400, 401, 404    | a footer object            |
+| `PUT`    | Modify a footer by its id | 200       | 400, 401, 404    | a footer object            |
+| `DELETE` | Delete a footer by its id | 204       | 400, 401, 404    |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/room-types </summary>
+    <br />
+
+| Method   | Summary                  | Responses | Reject responses | Content (application/json)  |
+|----------|--------------------------|:---------:|:----------------:|-----------------------------|
+| `POST`   |                          |           | 405              |                             |
+| `GET`    | Get a list of room-types | 200       | 400, 401, 404    | a list of room-type objects |
+| `PUT`    |                          |           | 405              |                             |
+| `DELETE` |                          |           | 405              |                             |
+</details>
+
+<details>
+    <summary>🔹 /api/links </summary>
+    <br />
+
+| Method   | Summary             | Responses | Reject responses | Content (application/json) |
+|----------|---------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                     |           | 405              |                            |
+| `GET`    | Get a list of links | 200       | 400, 401, 404    | a list of link objects     |
+| `PUT`    |                     |           | 405              |                            |
+| `DELETE` |                     |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/link </summary>
+    <br />
+
+| Method   | Summary           | Responses | Reject responses | Content (application/json) |
+|----------|-------------------|:---------:|:----------------:|----------------------------|
+| `POST`   | Create a new link | 201       | 400, 401         | a link object              |
+| `GET`    |                   |           | 405              |                            |
+| `PUT`    |                   |           | 405              |                            |
+| `DELETE` |                   |           | 405              |                            |
+</details>
+
+<details>
+    <summary>🔹 /api/link/{id} </summary>
+    <br />
+
+| Method   | Summary                 | Responses | Reject responses | Content (application/json) |
+|----------|-------------------------|:---------:|:----------------:|----------------------------|
+| `POST`   |                         |           | 405              |                            |
+| `GET`    | Get a link by its id    | 200       | 400, 401, 404    | a link object              |
+| `PUT`    | Modify a link by its id | 200       | 400, 401, 404    | a link object              |
+| `DELETE` | Delete a link by its id | 204       | 400, 401, 404    |                            |
+</details>
