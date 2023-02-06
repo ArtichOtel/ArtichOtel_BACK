@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use http\Message\Body;
 use Illuminate\Http\Request;
 use PHPUnit\Util\Json;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -18,20 +20,37 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
-        if (Auth::attempt(['pseudo' => $request->pseudo, 'password' => $request->password])) {
+        try {
+            $validateUser = Validator::make($request->all(), [
+                'pseudo' => 'required',
+                'password' => 'required'
+            ]);
+
+            if ($validateUser->fails()) {
+                return response()->json([
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors()
+                ], 401);
+            }
+
+            if (!Auth::attempt($request->only(['pseudo', 'password']))) {
+                return response()->json([
+                    'message' => 'Pseudo & password does not match.',
+                ], 401);
+            }
+
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')->plainTextToken;
-            $success['pseudo'] = $user->pseudo;
 
-            return response()->json($success, 200);
-        } else {
-            return response()->json('Unauthorized', 401);
+            return response()->json([
+                'message' => 'User logged in successfully',
+                'token' => $user->createToken('MyApp')->plainTextToken
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
-
-
-        // $data = $request.Body::class;
-
-        // // wait for a valid payload
-        // return response()->json($data, 222); // lucky status
     }
 }
