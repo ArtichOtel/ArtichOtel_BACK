@@ -15,8 +15,8 @@ class OffersController extends Controller
      */
     public function __invoke()
     {
-        $offer = Offer::all();
+        $offers = Offer::all();
 
-        return response()->json($offer, 200);
+        return response()->json($offers, 200);
     }
 }
