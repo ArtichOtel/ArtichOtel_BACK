@@ -76,8 +76,8 @@ class FooterController extends Controller
         $footer = Footer::findOrFail($id);
 
         $request->validate([
-            'title' => ['required', 'max:60', 'alpha_num:ascii'],
-            'order' => ['required', 'numeric:integer'],
+            'title' => ['max:60', 'alpha_num:ascii'],
+            'order' => ['numeric:integer'],
             
         ]);
 
