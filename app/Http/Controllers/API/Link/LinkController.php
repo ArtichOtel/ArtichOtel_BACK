@@ -31,9 +31,9 @@ class LinkController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'text' => 'required',
-            'url' => 'required',
-            'icon' => 'required'
+            'text' => ['required', 'max:20', 'alpha_num:ascii'],
+            'url' => ['url', 'max:255'],
+            'icon' => ['alpha_num:ascii', 'max:20']
         ]);
 
         $newLinks = new Link([
@@ -75,9 +75,9 @@ class LinkController extends Controller
         $link = Link::findOrFail($id);
 
         $request->validate([
-            'text' => 'required', //|max:60',
-            'url' => 'required', //'required|max:60',
-            'icon' => 'required'
+            'text' => ['max:20', 'alpha_num:ascii'],
+            'url' => ['url', 'max:255'],
+            'icon' => ['alpha_num:ascii', 'max:20']
         ]);
 
         $link->text = $request->get('text');
