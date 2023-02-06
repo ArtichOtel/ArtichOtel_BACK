@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Advantage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Advantage;
+use Illuminate\Support\Facades\Validator;
 
 class AdvantageController extends Controller
 {
@@ -27,13 +28,19 @@ class AdvantageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => ['required', 'max:60', 'alpha_num:ascii'],
-            'description' => ['required', 'max:300', 'alpha_num:ascii'],
-            'icon' => ['required', 'max:20', 'alpha_num:ascii'],
+        $validateAdvantage = Validator::make($request->all(), [
+            'title' => ['required', 'max:60', 'string:ascii'],
+            'description' => ['required', 'max:300', 'string:ascii'],
+            'icon' => ['required', 'max:20', 'string:ascii'],
             'order' => ['required', 'numeric:integer'],
-            'url_video' => ['url']
         ]);
+
+        if ($validateAdvantage->fails()) {
+            return response()->json([
+                'message' => 'validation error',
+                'errors' => $validateAdvantage->errors()
+            ], 400);
+        }
 
         $newAdvantage = new Advantage([
             'title' => $request->get('title'),
@@ -69,20 +76,31 @@ class AdvantageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $advantage = Advantage::findOrFail($id);
 
-        $request->validate([
-            'title' => ['max:60', 'alpha_num:ascii'],
-            'description' => ['max:300', 'alpha_num:ascii'],
-            'icon' => ['max:20', 'alpha_num:ascii'],
+        $validateAdvantage = Validator::make($request->all(), [
+            'title' => ['max:60', 'string:ascii'],
+            'description' => ['max:300', 'string:ascii'],
+            'icon' => ['max:20', 'string:ascii'],
             'order' => ['numeric:integer'],
-            'url_video' => ['url']
         ]);
 
-        $advantage->title = $request->get('title');
-        $advantage->description = $request->get('description');
-        $advantage->icon = $request->get('icon');
-        $advantage->order = $request->get('order');
+        if ($validateAdvantage->fails()) {
+            return response()->json([
+                'message' => 'validation error',
+                'errors' => $validateAdvantage->errors()
+            ], 400);
+        }
+
+        $advantage = Advantage::findOrFail($id);
+
+        foreach ($request->all() as $key => $value) {
+            $advantage[$$key] = $value; // TODO : make dynamic var
+        }
+
+        // $advantage->title = $request->get('title');
+        // $advantage->description = $request->get('description');
+        // $advantage->icon = $request->get('icon');
+        // $advantage->order = $request->get('order');
 
         $advantage->save();
 
