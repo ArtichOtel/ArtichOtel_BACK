@@ -12,15 +12,13 @@ class LinkController extends Controller
 {
     /**
      * Display a listing of the resources
+     * Not implemented
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        // no list at this uri
-        $errorMessage =  "RTFM";
-
-        return response()->json($errorMessage, 404);
+        return response()->json("RTFM", 404);
     }
 
 
