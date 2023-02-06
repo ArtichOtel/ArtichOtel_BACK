@@ -29,10 +29,11 @@ class AdvantageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'icon' => 'required|max:20',
-            'order' => 'required'
+            'title' => ['required', 'max:60', 'alpha_num:ascii'],
+            'description' => ['required', 'max:300', 'alpha_num:ascii'],
+            'icon' => ['required', 'max:20', 'alpha_num:ascii'],
+            'order' => ['required', 'numeric:integer'],
+            'url_vdeo' => ['url']
         ]);
 
         $newAdvantage = new Advantage([
@@ -72,10 +73,11 @@ class AdvantageController extends Controller
         $advantage = Advantage::findOrFail($id);
 
         $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'icon' => 'required|max:20',
-            'order' => 'required'
+            'title' => ['required', 'max:60', 'alpha_num:ascii'],
+            'description' => ['required', 'max:300', 'alpha_num:ascii'],
+            'icon' => ['required', 'max:20', 'alpha_num:ascii'],
+            'order' => ['required', 'numeric:integer'],
+            'url_vdeo' => ['url']
         ]);
 
         $advantage->title = $request->get('title');
