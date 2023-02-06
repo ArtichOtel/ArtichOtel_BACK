@@ -10,13 +10,12 @@ class AdvantageController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Not implemented
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //$erroMsg = "Perhaps you wanted one of these: GET /advantage/{id} || GET /advantages";
-
         return response()->json("RTFM", 405);
     }
 
