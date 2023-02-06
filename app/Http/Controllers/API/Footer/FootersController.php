@@ -13,15 +13,15 @@ class FootersController extends Controller
 {
   /**
    * Display a listing of the resources
-   * 
+   *
    * @return \Illuminate\Http\JsonResponse
    */
   public function __invoke()
   {
     // Recup all Footers
-    $Footers =  Footer::all();
+    $footers =  Footer::all();
 
     // Return all information Footers in JSON
-    return response()->json($Footers, 200);
+    return response()->json($footers, 200);
   }
 }

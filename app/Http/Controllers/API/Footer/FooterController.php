@@ -12,22 +12,21 @@ class FooterController extends Controller
 {
     /**
      * Display a listing of the resources
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        // Recup all Footers
-        $error = "Not good URI, watch your url api syntax";
+        // no lists at this uri
+        $error = "RTFM";
 
-        // Return all information Footers in JSON
         return response()->json($error, 405);
     }
 
 
     /**
      * Display a listing of the resources
-     * 
+     *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -51,7 +50,7 @@ class FooterController extends Controller
 
     /**
      * Display the specified resource.
-     * 
+     *
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
@@ -66,7 +65,7 @@ class FooterController extends Controller
     /**
      *  Update the specified resource in storage.
      *
-     * 
+     *
      * @param \Illuminate\Http\Request $request
      * @param int $id
      * @param \Illuminate\Http\JsonResponse
@@ -92,17 +91,17 @@ class FooterController extends Controller
 
 
     /**
-     * 
+     *
      * Remove the specified Footer from the storage.
-     * 
+     *
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        $Footer = Footer::findOrFail($id);
-        $Footer->delete();
+        $footer = Footer::findOrFail($id);
+        $footer->delete();
 
-        return response()->json($Footer::all());
+        return response()->json($footer::all());
     }
 }

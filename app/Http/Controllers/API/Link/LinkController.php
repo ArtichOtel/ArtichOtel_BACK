@@ -12,22 +12,21 @@ class LinkController extends Controller
 {
     /**
      * Display a listing of the resources
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        // Recup all Links
-        $errorMessage =  "Bad URI, watch your URL syntax";
+        // no list at this uri
+        $errorMessage =  "RTFM";
 
-        // Return all information Links in JSON
         return response()->json($errorMessage, 404);
     }
 
 
     /**
      * Display a listing of the resources
-     * 
+     *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -39,28 +38,28 @@ class LinkController extends Controller
             'icon' => 'required'
         ]);
 
-        $newLinkes = new Link([
+        $newLinks = new Link([
             'text' => $request->get('text'),
             'url' => $request->get('url'),
             'icon' => $request->get('icon'),
         ]);
 
-        $newLinkes->save();
+        $newLinks->save();
 
-        return response()->json($newLinkes, 201);
+        return response()->json($newLinks, 201);
     }
 
 
     /**
      * Display the specified resource.
-     * 
+     *
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        $Link = Link::findOrFail($id);
-        return response()->json($Link, 200);
+        $link = Link::findOrFail($id);
+        return response()->json($link, 200);
     }
 
 
@@ -68,14 +67,14 @@ class LinkController extends Controller
     /**
      *  Update the specified resource in storage.
      *
-     * 
+     *
      * @param \Illuminate\Http\Request $request
      * @param int $id
      * @param \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
-        $Link = Link::findOrFail($id);
+        $link = Link::findOrFail($id);
 
         $request->validate([
             'text' => 'required', //|max:60',
@@ -83,29 +82,29 @@ class LinkController extends Controller
             'icon' => 'required'
         ]);
 
-        $Link->text = $request->get('text');
-        $Link->url = $request->get('url');
-        $Link->icon = $request->get('icon');
+        $link->text = $request->get('text');
+        $link->url = $request->get('url');
+        $link->icon = $request->get('icon');
 
-        $Link->save();
+        $link->save();
 
-        return response()->json($Link, 200);
+        return response()->json($link, 200);
     }
 
 
 
     /**
-     * 
+     *
      * Remove the specified Link from the storage.
-     * 
+     *
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        $Link = Link::findOrFail($id);
-        $Link->delete();
+        $link = Link::findOrFail($id);
+        $link->delete();
 
-        return response()->json($Link::all());
+        return response()->json($link::all());
     }
 }

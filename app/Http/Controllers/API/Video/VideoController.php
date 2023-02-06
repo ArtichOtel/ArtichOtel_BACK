@@ -15,7 +15,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return response()->json('', 405);
+        return response()->json('RTFM', 405);
     }
 
     /**
@@ -25,7 +25,7 @@ class VideoController extends Controller
      */
     public function store()
     {
-        return response()->json('', 405);
+        return response()->json('RTFM', 405);
     }
 
     /**
@@ -75,6 +75,6 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        return response()->json('', 405);
+        return response()->json('RTFM', 405);
     }
 }
