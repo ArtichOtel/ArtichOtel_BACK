@@ -28,6 +28,7 @@ class AdvantageController extends Controller
      */
     public function store(Request $request)
     {
+
         $validateAdvantage = Validator::make($request->all(), [
             'title' => ['required', 'max:60', 'string:ascii'],
             'description' => ['required', 'max:300', 'string:ascii'],
@@ -42,12 +43,12 @@ class AdvantageController extends Controller
             ], 400);
         }
 
-        $newAdvantage = new Advantage([
-            'title' => $request->get('title'),
-            'description' => $request->get('description'),
-            'icon' => $request->get('icon'),
-            'order' => $request->get('order'),
-        ]);
+        $validatedReq = $validateAdvantage->validated();
+
+        $newAdvantage = new Advantage;
+        foreach ($validatedReq as $key => $value) {
+            $newAdvantage["{$key}"] = $value;
+        }
 
         $newAdvantage->save();
 
@@ -78,10 +79,10 @@ class AdvantageController extends Controller
     {
 
         $validateAdvantage = Validator::make($request->all(), [
-            'title' => ['max:60', 'string:ascii'],
-            'description' => ['max:300', 'string:ascii'],
-            'icon' => ['max:20', 'string:ascii'],
-            'order' => ['numeric:integer'],
+            'title' => ['sometimes', 'max:60', 'string:ascii'],
+            'description' => ['sometimes', 'max:300', 'string:ascii'],
+            'icon' => ['sometimes', 'max:20', 'string:ascii'],
+            'order' => ['sometimes', 'numeric:integer'],
         ]);
 
         if ($validateAdvantage->fails()) {
@@ -92,15 +93,11 @@ class AdvantageController extends Controller
         }
 
         $advantage = Advantage::findOrFail($id);
+        $validatedReq = $validateAdvantage->validated();
 
-        foreach ($request->all() as $key => $value) {
-            $advantage[$$key] = $value; // TODO : make dynamic var
+        foreach($validatedReq as $key => $value) {
+            $advantage["{$key}"] = $value;
         }
-
-        // $advantage->title = $request->get('title');
-        // $advantage->description = $request->get('description');
-        // $advantage->icon = $request->get('icon');
-        // $advantage->order = $request->get('order');
 
         $advantage->save();
 
