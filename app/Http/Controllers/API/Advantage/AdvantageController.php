@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\API\Advantage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Advantage\AdvantagePostRequest;
+use App\Http\Requests\Advantage\AdvantageUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Advantage;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdvantageController extends Controller
 {
@@ -26,33 +30,14 @@ class AdvantageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(AdvantagePostRequest $request)
     {
+        $validatedData = $request->validated();
+        $advantage = new Advantage;
+        $advantage->setRawAttributes($validatedData);
+        $advantage->save();
 
-        $validateAdvantage = Validator::make($request->all(), [
-            'title' => ['required', 'max:60', 'string:ascii'],
-            'description' => ['required', 'max:300', 'string:ascii'],
-            'icon' => ['required', 'max:20', 'string:ascii'],
-            'order' => ['required', 'numeric:integer'],
-        ]);
-
-        if ($validateAdvantage->fails()) {
-            return response()->json([
-                'message' => 'validation error',
-                'errors' => $validateAdvantage->errors()
-            ], 400);
-        }
-
-        $validatedReq = $validateAdvantage->validated();
-
-        $newAdvantage = new Advantage;
-        foreach ($validatedReq as $key => $value) {
-            $newAdvantage["{$key}"] = $value;
-        }
-
-        $newAdvantage->save();
-
-        return response()->json($newAdvantage);
+        return response()->json($advantage, Response::HTTP_CREATED);
     }
 
     /**
@@ -61,11 +46,11 @@ class AdvantageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Advantage $advantage)
     {
-        $advantage = Advantage::findOrFail($id);
+        // $advantage = Advantage::findOrFail($id);
 
-        return response()->json($advantage);
+        return response()->json($advantage, Response::HTTP_OK);
     }
 
     /**
@@ -75,33 +60,13 @@ class AdvantageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(AdvantageUpdateRequest $request, Advantage $advantage)
     {
+        $validatedData = $request->validated();
 
-        $validateAdvantage = Validator::make($request->all(), [
-            'title' => ['sometimes', 'max:60', 'string:ascii'],
-            'description' => ['sometimes', 'max:300', 'string:ascii'],
-            'icon' => ['sometimes', 'max:20', 'string:ascii'],
-            'order' => ['sometimes', 'numeric:integer'],
-        ]);
+        $advantage->update($validatedData);
 
-        if ($validateAdvantage->fails()) {
-            return response()->json([
-                'message' => 'validation error',
-                'errors' => $validateAdvantage->errors()
-            ], 400);
-        }
-
-        $advantage = Advantage::findOrFail($id);
-        $validatedReq = $validateAdvantage->validated();
-
-        foreach($validatedReq as $key => $value) {
-            $advantage["{$key}"] = $value;
-        }
-
-        $advantage->save();
-
-        return response()->json($advantage);
+        return response()->json($advantage, Response::HTTP_OK);
     }
 
     /**
@@ -110,12 +75,10 @@ class AdvantageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Advantage $advantage)
     {
-        $advantage = Advantage::findOrFail($id);
-
         $advantage->delete();
 
-        return response()->json(Advantage::all());
+        return response()->json(Advantage::all(), Response::HTTP_OK);
     }
 }
