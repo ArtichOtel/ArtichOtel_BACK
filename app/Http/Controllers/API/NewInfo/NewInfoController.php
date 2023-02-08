@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\API\NewInfo;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewInfo\NewInfoPostRequest;
+use App\Http\Requests\NewInfo\NewInfoUpdateRequest;
 use App\Models\NewInfo;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class NewInfoController extends Controller
 {
@@ -20,85 +23,63 @@ class NewInfoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * It creates a new NewInfo object and saves it to the database.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param  NewInfoPostRequest request The request object.
+     * 
+     * @return \Illuminate\Http\JsonResponse of the newly object.
      */
-    public function store(Request $request)
+    public function store(NewInfoPostRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'max:60', 'alpha_num:ascii'],
-            'description' => ['required', 'max:300', 'alpha_num:ascii'],
-            'url_image' => ['required', 'max:255', 'url'],
-            'order' => ['required', 'numeric;integer']
-        ]);
-
-        $newNewInfo = new NewInfo([
-            'title' => $request->get('title'),
-            'description' => $request->get('description'),
-            'url_image' => $request->get('url_image'),
-            'order' => $request->get('order'),
-        ]);
-
-        $newNewInfo->save();
-
-        return response()->json($newNewInfo);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show($id)
-    {
-        $newInfo = NewInfo::findOrFail($id);
-
-        return response()->json($newInfo);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update(Request $request, $id)
-    {
-        $newInfo = NewInfo::findOrFail($id);
-
-        $request->validate([
-            'title' => ['max:60', 'alpha_num:ascii'],
-            'description' => ['max:300', 'alpha_num:ascii'],
-            'url_image' => ['max:255', 'url'],
-            'order' => ['numeric;integer']
-        ]);
-
-        $newInfo->title = $request->get('title');
-        $newInfo->description = $request->get('description');
-        $newInfo->url_image = $request->get('url_image');
-        $newInfo->order = $request->get('order');
-
+        $validatedData = $request->validated();
+        $newInfo = new NewInfo;
+        $newInfo->setRawAttributes($validatedData);
         $newInfo->save();
 
-        return response()->json($newInfo);
+        return response()->json($newInfo, Response::HTTP_CREATED);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display the specified `NewInfo` byt its id.
      *
-     * @param  int  $id
+     * @param  NewInfo newInfo The model name
+     * 
+     * @return \Illuminate\Http\JsonResponse of the NewInfo model.
+     */
+    public function show(NewInfo $newInfo)
+    {
+        return response()->json($newInfo, Response::HTTP_OK);
+    }
+
+    /**
+     * It takes a NewInfoUpdateRequest, validates it, and then updates the NewInfo model with the
+     * validated data.
+     *
+     * @param  NewInfoUpdateRequest request The request object.
+     * @param  NewInfo newInfo The model that we're updating.
+     * 
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function update(NewInfoUpdateRequest $request, NewInfo $newInfo)
     {
-        $newInfo = NewInfo::findOrFail($id);
+        $validatedData = $request->validated();
 
+        $newInfo->update($validatedData);
+
+        return response()->json($newInfo, Response::HTTP_OK);
+    }
+
+    /**
+     * It deletes the newInfo from the database.
+     *
+     * @param  NewInfo newInfo The model that we're using.
+     * 
+     * @return \Illuminate\Http\JsonResponse of all newInfos in the database.
+     */
+    public function destroy(NewInfo $newInfo)
+    {
         $newInfo->delete();
 
-        return response()->json(NewInfo::all());
+        return response()->json(NewInfo::all(), Response::HTTP_OK);
     }
 }
