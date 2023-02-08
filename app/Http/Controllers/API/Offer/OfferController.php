@@ -10,13 +10,12 @@ class OfferController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Not implemented
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //$erroMsg = "Perhaps you wanted one of these: GET /Offer/{id} || GET /Offers";
-
         return response()->json("RTFM", 405);
     }
 
@@ -29,9 +28,11 @@ class OfferController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'url_image' => 'required|max:255',
+            'title' => ['required', 'max:60', 'alpha_num:ascii'],
+            'description' => ['required', 'max:300', 'alpha_num:ascii'],
+            'url_image' => ['required', 'max:255', 'url'],
+            'begin_date' => ['date'],
+            'end_date' => ['date']
         ]);
 
         $newOffer = new Offer([
@@ -70,9 +71,11 @@ class OfferController extends Controller
         $offer = Offer::findOrFail($id);
 
         $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'url_image' => 'required|max:255',
+            'title' => ['max:60', 'alpha_num:ascii'],
+            'description' => ['max:300', 'alpha_num:ascii'],
+            'url_image' => ['max:255', 'url'],
+            'begin_date' => ['date'],
+            'end_date' => ['date']
         ]);
 
         $offer->title = $request->get('title');

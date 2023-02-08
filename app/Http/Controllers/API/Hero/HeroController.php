@@ -25,6 +25,27 @@ class HeroController extends Controller
         return response()->json($heros, 200);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     * Not implemented
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(Request $request) {
+        return response()->json("RTFM", 405);
+    }
+
+    /**
+     * Display the specified resource.
+     * Not implemented
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id) {
+        return response()->json("RTFM", 405);
+    }
 
     /**
      *  Update the specified resource in storage.
@@ -38,9 +59,9 @@ class HeroController extends Controller
         $hero = Hero::findOrFail($id);
 
         $request->validate([
-            'title' => 'required', //|max:60',
-            'subtitle' => 'required', //'required|max:60',
-            'url_image' => 'required'
+            'title' => ['required', 'max:60', 'alpha_num:ascii'],
+            'subtitle' => ['max:60', 'alpha_num:ascii'],
+            'url_image' => ['required', 'url']
         ]);
 
         $hero->title = $request->get('title');
@@ -52,60 +73,15 @@ class HeroController extends Controller
         return response()->json($hero, 200);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     * Not implemented
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($id) {
+        return response()->json("RTFM", 405);
+    }
 
 }
-
-
-/**
- * Display a listing of the resources
- *
- * @param \Illuminate\Http\Request $request
- * @return \Illuminate\Http\JsonResponse
- */
-// public function store(Request $request)
-// {
-//     $request->validate([
-//         'title' => 'required',
-//         'subtitle' => 'required',
-//         'url_image' => 'required'
-//     ]);
-
-//     $newHeroes = new Hero([
-//         'title' => $request->get('title'),
-//         'subtitle' => $request->get('subtitle'),
-//         'url_image' => $request->get('url_image'),
-//     ]);
-
-//     $newHeroes->save();
-
-//     return response()->json($newHeroes, 200);
-// }
-
-
-/**
- * Display the specified resource.
- *
- * @param int $id
- * @return \Illuminate\Http\JsonResponse
- */
-// public function show($id)
-// {
-//     $heroe = Hero::findOrFail($id);
-//     return response()->json($heroe, 200);
-// }
-
-
-/**
- *
- * Remove the specified hero from the storage.
- *
- * @param int $id
- * @return \Illuminate\Http\JsonResponse
- */
-// public function destroy($id)
-// {
-//     $hero = Hero::findOrFail($id);
-//     $hero->delete();
-
-//     return response()->json($hero::all());
-// }

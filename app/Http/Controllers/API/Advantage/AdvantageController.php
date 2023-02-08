@@ -3,20 +3,24 @@
 namespace App\Http\Controllers\API\Advantage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Advantage\AdvantagePostRequest;
+use App\Http\Requests\Advantage\AdvantageUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Advantage;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdvantageController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Not implemented
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //$erroMsg = "Perhaps you wanted one of these: GET /advantage/{id} || GET /advantages";
-
         return response()->json("RTFM", 405);
     }
 
@@ -26,25 +30,14 @@ class AdvantageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(AdvantagePostRequest $request)
     {
-        $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'icon' => 'required|max:20',
-            'order' => 'required'
-        ]);
+        $validatedData = $request->validated();
+        $advantage = new Advantage;
+        $advantage->setRawAttributes($validatedData);
+        $advantage->save();
 
-        $newAdvantage = new Advantage([
-            'title' => $request->get('title'),
-            'description' => $request->get('description'),
-            'icon' => $request->get('icon'),
-            'order' => $request->get('order'),
-        ]);
-
-        $newAdvantage->save();
-
-        return response()->json($newAdvantage);
+        return response()->json($advantage, Response::HTTP_CREATED);
     }
 
     /**
@@ -53,11 +46,11 @@ class AdvantageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Advantage $advantage)
     {
-        $advantage = Advantage::findOrFail($id);
+        // $advantage = Advantage::findOrFail($id);
 
-        return response()->json($advantage);
+        return response()->json($advantage, Response::HTTP_OK);
     }
 
     /**
@@ -67,25 +60,13 @@ class AdvantageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(AdvantageUpdateRequest $request, Advantage $advantage)
     {
-        $advantage = Advantage::findOrFail($id);
+        $validatedData = $request->validated();
 
-        $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'icon' => 'required|max:20',
-            'order' => 'required'
-        ]);
+        $advantage->update($validatedData);
 
-        $advantage->title = $request->get('title');
-        $advantage->description = $request->get('description');
-        $advantage->icon = $request->get('icon');
-        $advantage->order = $request->get('order');
-
-        $advantage->save();
-
-        return response()->json($advantage);
+        return response()->json($advantage, Response::HTTP_OK);
     }
 
     /**
@@ -94,12 +75,10 @@ class AdvantageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Advantage $advantage)
     {
-        $advantage = Advantage::findOrFail($id);
-
         $advantage->delete();
 
-        return response()->json(Advantage::all());
+        return response()->json(Advantage::all(), Response::HTTP_OK);
     }
 }

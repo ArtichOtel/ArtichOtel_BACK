@@ -10,13 +10,12 @@ class NewInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Not implemented
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //$erroMsg = "Perhaps you wanted one of these: GET /new/{id} || GET /news";
-
         return response()->json("RTFM", 405);
     }
 
@@ -29,10 +28,10 @@ class NewInfoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'url_image' => 'required|max:255',
-            'order' => 'required'
+            'title' => ['required', 'max:60', 'alpha_num:ascii'],
+            'description' => ['required', 'max:300', 'alpha_num:ascii'],
+            'url_image' => ['required', 'max:255', 'url'],
+            'order' => ['required', 'numeric;integer']
         ]);
 
         $newNewInfo = new NewInfo([
@@ -72,10 +71,10 @@ class NewInfoController extends Controller
         $newInfo = NewInfo::findOrFail($id);
 
         $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'url_image' => 'required|max:255',
-            'order' => 'required'
+            'title' => ['max:60', 'alpha_num:ascii'],
+            'description' => ['max:300', 'alpha_num:ascii'],
+            'url_image' => ['max:255', 'url'],
+            'order' => ['numeric;integer']
         ]);
 
         $newInfo->title = $request->get('title');

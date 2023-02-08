@@ -33,8 +33,9 @@ class FooterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'order' => 'required',
+            'title' => ['required', 'max:60', 'alpha_num:ascii'],
+            'order' => ['required', 'numeric:integer'],
+
         ]);
 
         $newFooteres = new Footer([
@@ -75,9 +76,9 @@ class FooterController extends Controller
         $footer = Footer::findOrFail($id);
 
         $request->validate([
-            'title' => 'required', //|max:60',
-            'order' => 'required', //'required|max:60',
-
+            'title' => ['max:60', 'alpha_num:ascii'],
+            'order' => ['numeric:integer'],
+            
         ]);
 
         $footer->title = $request->get('title');
