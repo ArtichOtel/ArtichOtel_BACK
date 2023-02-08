@@ -27,21 +27,21 @@ class UserSeeder extends Seeder
         User::create([
             'email' => fake()->unique()->safeEmail(),
             'pseudo' => fake()->unique()->userName(),
-            'password' => fake()->password(),
+            'password' => Hash::make('toto'),
             'role_id' => 2
         ]);
 
         User::create([
             'email' => fake()->safeEmail(),
             'pseudo' => fake()->userName(),
-            'password' => fake()->password(),
+            'password' => Hash::make('toto'),
             'role_id' => 2
         ]);
 
         User::create([
             'email' => fake()->safeEmail(),
             'pseudo' => fake()->userName(),
-            'password' => fake()->password(),
+            'password' => Hash::make('tutu'),
             'role_id' => 2
         ]);
     }
