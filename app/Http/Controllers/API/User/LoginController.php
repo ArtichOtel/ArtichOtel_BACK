@@ -45,7 +45,6 @@ class LoginController extends Controller
                 'message' => 'User logged in successfully',
                 'token' => $user->createToken('MyApp')->plainTextToken
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
