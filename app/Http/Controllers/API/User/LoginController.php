@@ -31,6 +31,8 @@ class LoginController extends Controller
 
             $user = Auth::user();
 
+            $user->tokens()->delete();
+
             return response()->json([
                 'message' => 'User logged in successfully',
                 'token' => $user->createToken('MyApp')->plainTextToken
