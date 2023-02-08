@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Footer;
+namespace App\Http\Requests\Review;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FooterUpdateRequest extends FormRequest
+class ReviewUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,10 @@ class FooterUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['sometimes', 'max:60', 'string:ascii'],
-            'order' => ['sometimes', 'numeric:integer'],
+            'title' => ['required', 'max:60', 'string:ascii'],
+            'description' => ['required', 'max:300', 'string:ascii'],
+            'note' => ['required', 'numeric:integer'],
+            'customer_id' => ['required', 'exists:customers,id'],
         ];
     }
 }

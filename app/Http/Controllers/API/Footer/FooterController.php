@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API\Footer;
 
 use App\Models\Footer;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Footer\FooterPostRequest;
 use App\Http\Requests\Footer\FooterUpdateRequest;
+use Symfony\Component\HttpFoundation\Response;
+
 
 
 
@@ -30,7 +30,7 @@ class FooterController extends Controller
     /**
      * Display a listing of the resources
      *
-     * @param \Illuminate\Http\Request $request
+     * @param FooterPostRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(FooterPostRequest $request)
@@ -40,7 +40,7 @@ class FooterController extends Controller
         $footer->setRawAttributes($validateData);
         $footer->save();
 
-        return response()->json($footer, Response::HTTP_OK);
+        return response()->json($footer, Response::HTTP_CREATED);
     }
 
 
@@ -67,8 +67,8 @@ class FooterController extends Controller
      */
     public function update(FooterUpdateRequest $request, Footer $footer)
     {
-        $validateData = $request->validate();
-        $footer->update($validateData);
+        $validatedData = $request->validate();
+        $footer->update($validatedData);
 
         return response()->json($footer, Response::HTTP_OK);
     }

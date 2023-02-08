@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\API\Review;
 
-use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\Review\ReviewUpdateRequest;
 
 class ReviewController extends Controller
 {
@@ -16,7 +18,7 @@ class ReviewController extends Controller
     public function index()
     {
         // no  list at this uri
-        return response()->json("RTFM", 405);
+        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
 
     /**
@@ -25,25 +27,14 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(ReviewUpdateRequest $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'note' => 'required',
-            'customer_id' => 'required'
-    ]);
+        $validatedData =  $request->validate();
+        $review = new Review;
+        $review->setRawAttributes($validatedData);
+        $review->save();
 
-        $newReview = new Review([
-            'title' => $request->get('title'),
-            'description' => $request->get('description'),
-            'note' => $request->get('note'),
-            'customer_id' => $request->get('customer_id'),
-        ]);
-
-        $newReview->save();
-
-        return response()->json($newReview, 201);
+        return response()->json($review, Response::HTTP_CREATED);
     }
 
     /**
@@ -52,40 +43,24 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Review $review)
     {
-        //
-        $review = Review::findOrFail($id);
-        return response()->json($review, 200);
+        return response()->json($review, Response::HTTP_OK);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(ReviewUpdateRequest $request, Review $review)
     {
-        //
-        $review = Review::findOrFail($id);
+        $validatedData = $request->validate();
+        $review->update($validatedData);
 
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'note' => 'required',
-            'customer_id' => 'required'
-        ]);
-
-        $review->title = $request->get('title');
-        $review->description = $request->get('description');
-        $review->note = $request->get('note');
-        $review->customer_id = $request->get('customer_id');
-
-        $review->save();
-
-        return response()->json($review, 200);
+        return response()->json($review, Response::HTTP_OK);
     }
 
     /**
@@ -94,12 +69,10 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Review $review)
     {
-        //
-        $review = Review::findOrFail($id);
         $review->delete();
 
-        return response()->json($review::all());
+        return response()->json($review::all(), Response::HTTP_OK);
     }
 }

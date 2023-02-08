@@ -5,9 +5,9 @@ namespace App\Http\Controllers\API\Hero;
 use App\Models\Hero;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Hero\HeroUpdateRequest;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\Hero\HeroUpdateRequest;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -48,7 +48,7 @@ class HeroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show()
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
