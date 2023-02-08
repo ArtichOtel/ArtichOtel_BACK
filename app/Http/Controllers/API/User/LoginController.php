@@ -30,16 +30,18 @@ class LoginController extends Controller
                 return response()->json([
                     'message' => 'validation error',
                     'errors' => $validateUser->errors()
-                ], 401);
+                ], 400);
             }
 
             if (!Auth::attempt($request->only(['pseudo', 'password']))) {
                 return response()->json([
                     'message' => 'Pseudo & password does not match.',
-                ], 401);
+                ], 400);
             }
 
             $user = Auth::user();
+
+            $user->tokens()->delete();
 
             return response()->json([
                 'message' => 'User logged in successfully',
