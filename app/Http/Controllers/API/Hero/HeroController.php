@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\API\Hero;
 
-use App\Http\Controllers\Controller;
 use App\Models\Hero;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Hero\HeroUpdateRequest;
+use Symfony\Component\HttpFoundation\Response;
+
 
 
 
@@ -22,18 +26,19 @@ class HeroController extends Controller
         $heros =  Hero::all();
 
         // Return all information Heros in JSON
-        return response()->json($heros, 200);
+        return response()->json($heros, Response::HTTP_OK);
     }
 
     /**
      * Store a newly created resource in storage.
      * Not implemented
      *
-     * @param  \Illuminate\Http\Request  $request
+     * 
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request) {
-        return response()->json("RTFM", 405);
+    public function store()
+    {
+        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
 
     /**
@@ -43,34 +48,24 @@ class HeroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id) {
-        return response()->json("RTFM", 405);
+    public function show($id)
+    {
+        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
 
     /**
      *  Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param Illuminate\Http\Request $request
      * @param int $id
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(HeroUpdateRequest $request, Hero $hero)
     {
-        $hero = Hero::findOrFail($id);
+        $validateData = $request->validated();
+        $hero->update($validateData);
 
-        $request->validate([
-            'title' => ['required', 'max:60', 'alpha_num:ascii'],
-            'subtitle' => ['max:60', 'alpha_num:ascii'],
-            'url_image' => ['required', 'url']
-        ]);
-
-        $hero->title = $request->get('title');
-        $hero->subtitle = $request->get('subtitle');
-        $hero->url_image = $request->get('url_image');
-
-        $hero->save();
-
-        return response()->json($hero, 200);
+        return response()->json($hero, Response::HTTP_OK);
     }
 
     /**
@@ -80,8 +75,8 @@ class HeroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id) {
-        return response()->json("RTFM", 405);
+    public function destroy()
+    {
+        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
-
 }
