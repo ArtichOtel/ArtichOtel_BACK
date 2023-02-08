@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\NewInfo;
+namespace App\Http\Requests\Offer;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NewInfoUpdateRequest extends FormRequest
+class OfferPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class NewInfoUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['sometimes', 'max:60', 'string:ascii'],
-            'description' => ['sometimes', 'max:300', 'string:ascii'],
-            'url_image' => ['sometimes', 'max:255', 'url'],
-            'order' => ['sometimes', 'numeric;integer']
+            'title' => ['required', 'max:60', 'string:ascii'],
+            'description' => ['required', 'max:300', 'string:ascii'],
+            'url_image' => ['required', 'max:255', 'url'],
+            'begin_date' => ['sometimes', 'date'],
+            'end_date' => ['sometimes', 'date']
         ];
     }
 }
