@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\API\Link;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Link\LinkPostRequest;
+use App\Http\Requests\Link\LinkUpdateRequest;
 use App\Models\Link;
-use Illuminate\Http\Request;
-
-
+// use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class LinkController extends Controller
 {
@@ -18,91 +19,70 @@ class LinkController extends Controller
      */
     public function index()
     {
-        return response()->json("RTFM", 404);
+        return response()->json("RTFM", 405);
     }
 
 
     /**
-     * Display a listing of the resources
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * It creates a new Link object and saves it to the database.
+     * 
+     * @param LinkPostRequest request The request object.
+     * 
+     * @return \Illuminate\Http\JsonResponse of the newly object.
      */
-    public function store(Request $request)
+    public function store(LinkPostRequest $request)
     {
-        $request->validate([
-            'text' => ['required', 'max:20', 'alpha_num:ascii'],
-            'url' => ['url', 'max:255'],
-            'icon' => ['alpha_num:ascii', 'max:20']
-        ]);
-
-        $newLinks = new Link([
-            'text' => $request->get('text'),
-            'url' => $request->get('url'),
-            'icon' => $request->get('icon'),
-        ]);
-
-        $newLinks->save();
-
-        return response()->json($newLinks, 201);
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show($id)
-    {
-        $link = Link::findOrFail($id);
-        return response()->json($link, 200);
-    }
-
-
-
-    /**
-     *  Update the specified resource in storage.
-     *
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @param \Illuminate\Http\JsonResponse
-     */
-    public function update(Request $request, $id)
-    {
-        $link = Link::findOrFail($id);
-
-        $request->validate([
-            'text' => ['max:20', 'alpha_num:ascii'],
-            'url' => ['url', 'max:255'],
-            'icon' => ['alpha_num:ascii', 'max:20']
-        ]);
-
-        $link->text = $request->get('text');
-        $link->url = $request->get('url');
-        $link->icon = $request->get('icon');
-
+        $validatedData = $request->validated();
+        $link = new Link;
+        $link->setRawAttributes($validatedData);
         $link->save();
 
-        return response()->json($link, 200);
+        return response()->json($link, Response::HTTP_CREATED);
     }
 
 
+    /**
+     * Display the specified `Link` by its id
+     * 
+     * @param Link link The model name
+     * 
+     * @return \Illuminate\Http\JsonResponse of the Link model.
+     */
+    public function show(Link $link)
+    {
+        return response()->json($link, Response::HTTP_OK);
+    }
+
+    /**
+     * It takes an LinkUpdateRequest, validates it, and then updates the Link model with the
+     * validated data
+     * 
+     * @param LinkUpdateRequest request The request object.
+     * @param Link link The model that we're updating.
+     * 
+     * @return \Illuminate\Http\JsonResponse that was updated.
+     */
+    public function update(LinkUpdateRequest $request, Link $link)
+    {
+        $validatedData = $request->validated();
+
+        $link->update($validatedData);
+
+        return response()->json($link, Response::HTTP_OK);
+    }
 
     /**
      *
-     * Remove the specified Link from the storage.
+     * It deletes the advantage from the database.
      *
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @param Link link The model that we're using.
+     * 
+     * @return \Illuminate\Http\JsonResponse of all the links in the database.
      */
-    public function destroy($id)
+    public function destroy(Link $link)
     {
-        $link = Link::findOrFail($id);
         $link->delete();
 
-        return response()->json($link::all());
+        return response()->json(Link::all(), Response::HTTP_OK);
     }
 }

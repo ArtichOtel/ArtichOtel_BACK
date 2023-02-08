@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\API\Link;
 
-use App\Http\Controllers\Controller;
 use App\Models\Link;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 
 
@@ -21,6 +21,6 @@ class LinksController extends Controller
         $links =  Link::all();
 
         // Return all information Links in JSON
-        return response()->json($links, 200);
+        return response()->json($links, Response::HTTP_OK);
     }
 }

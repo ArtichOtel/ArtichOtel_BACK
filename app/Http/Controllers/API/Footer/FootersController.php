@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\API\Footer;
 
-use App\Http\Controllers\Controller;
 use App\Models\Footer;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 
 
@@ -19,9 +19,9 @@ class FootersController extends Controller
   public function __invoke()
   {
     // Recup all Footers
-    $footers =  Footer::all();
+    $footers = Footer::all();
 
     // Return all information Footers in JSON
-    return response()->json($footers, 200);
+    return response()->json($footers, Response::HTTP_OK);
   }
 }

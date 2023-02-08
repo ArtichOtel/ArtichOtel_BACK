@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
-use App\Models\Role;
 use App\Models\User;
 use http\Message\Body;
 use Illuminate\Http\Request;
 use PHPUnit\Util\Json;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller
 {
@@ -20,25 +19,13 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function __invoke(Request $request)
+    public function __invoke(LoginPostRequest $request)
     {
         try {
-            $validateUser = Validator::make($request->all(), [
-                'pseudo' => 'required',
-                'password' => 'required'
-            ]);
-
-            if ($validateUser->fails()) {
-                return response()->json([
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 400);
-            }
-
             if (!Auth::attempt($request->only(['pseudo', 'password']))) {
                 return response()->json([
                     'message' => 'Pseudo or password does not match.',
-                ], 400);
+                ], Response::HTTP_BAD_REQUEST);
             }
 
             $user = Auth::user();

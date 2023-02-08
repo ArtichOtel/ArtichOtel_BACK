@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\API\Footer;
 
-use App\Http\Controllers\Controller;
 use App\Models\Footer;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Footer\FooterPostRequest;
+use App\Http\Requests\Footer\FooterUpdateRequest;
+use Symfony\Component\HttpFoundation\Response;
+
 
 
 
@@ -20,32 +23,24 @@ class FooterController extends Controller
         // no lists at this uri
         $error = "RTFM";
 
-        return response()->json($error, 405);
+        return response()->json($error, Response::HTTP_METHOD_NOT_ALLOWED);
     }
 
 
     /**
      * Display a listing of the resources
      *
-     * @param \Illuminate\Http\Request $request
+     * @param FooterPostRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(FooterPostRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'max:60', 'alpha_num:ascii'],
-            'order' => ['required', 'numeric:integer'],
+        $validateData = $request->validate();
+        $footer = new Footer;
+        $footer->setRawAttributes($validateData);
+        $footer->save();
 
-        ]);
-
-        $newFooteres = new Footer([
-            'title' => $request->get('title'),
-            'order' => $request->get('order'),
-        ]);
-
-        $newFooteres->save();
-
-        return response()->json($newFooteres, 200);
+        return response()->json($footer, Response::HTTP_CREATED);
     }
 
 
@@ -55,10 +50,9 @@ class FooterController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Footer $footer)
     {
-        $footer = Footer::findOrFail($id);
-        return response()->json($footer, 200);
+        return response()->json($footer, Response::HTTP_OK);
     }
 
 
@@ -71,22 +65,12 @@ class FooterController extends Controller
      * @param int $id
      * @param \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(FooterUpdateRequest $request, Footer $footer)
     {
-        $footer = Footer::findOrFail($id);
+        $validatedData = $request->validate();
+        $footer->update($validatedData);
 
-        $request->validate([
-            'title' => ['max:60', 'alpha_num:ascii'],
-            'order' => ['numeric:integer'],
-            
-        ]);
-
-        $footer->title = $request->get('title');
-        $footer->order = $request->get('order');
-
-        $footer->save();
-
-        return response()->json($footer, 201);
+        return response()->json($footer, Response::HTTP_OK);
     }
 
 
@@ -98,11 +82,10 @@ class FooterController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Footer $footer)
     {
-        $footer = Footer::findOrFail($id);
         $footer->delete();
 
-        return response()->json($footer::all());
+        return response()->json($footer::all(), Response::HTTP_OK);
     }
 }
