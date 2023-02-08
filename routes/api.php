@@ -34,16 +34,13 @@ use App\Http\Controllers\API\Review\ReviewsController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
 Route::middleware(['auth:sanctum'])->group(function () {
   Route::apiResource('users', UsersController::class);
   Route::get('/sections', SectionController::class);
   Route::apiResource('hero', HeroController::class);
-  //Route::get('/offers', OffersController::class);
-  //Route::apiResource('offer', OfferController::class);
+  Route::get('/offers', OffersController::class);
+  Route::apiResource('offer', OfferController::class);
   Route::get('/advantages', AdvantagesController::class);
   Route::apiResource('advantage', AdvantageController::class);
   Route::get('/news', NewInfosController::class);
@@ -57,6 +54,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('/links', LinksController::class);
   Route::apiResource('link', LinkController::class);
 });
-Route::get('/offers', OffersController::class);
-Route::apiResource('offer', OfferController::class);
+
 Route::post('/user/login', LoginController::class);
