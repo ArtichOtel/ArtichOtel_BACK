@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Hero;
+namespace App\Http\Requests\Footer;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdvantageUpdateRequest extends FormRequest
+class AdvantagePostRequest extends FormRequest
 {
   /**
    * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class AdvantageUpdateRequest extends FormRequest
   public function rules()
   {
     return [
-      'title' => ['sometimes', 'max:60', 'string:ascii'],
-      'subtitle' => ['sometimes', 'max:60', 'string:ascii'],
-      'url_image' => ['sometimes', 'url'],
+      'title' => ['required', 'max:60', 'string:ascii'],
+      'order' => ['required', 'numeric:integer'],
     ];
   }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API\Section;
 
 use App\Models\Section;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class SectionController extends Controller
 {
@@ -18,6 +18,6 @@ class SectionController extends Controller
     {
         $section = Section::all();
 
-        return response()->json($section, 200);
+        return response()->json($section, Response::HTTP_OK);
     }
 }

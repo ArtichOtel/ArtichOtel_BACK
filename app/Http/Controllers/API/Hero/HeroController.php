@@ -56,7 +56,7 @@ class HeroController extends Controller
     /**
      *  Update the specified resource in storage.
      *
-     * @param Illuminate\Http\Request $request
+     * @param App\Http\Requests\Hero\HeroUpdateRequest $request
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
