@@ -21,7 +21,7 @@ class AdvantageController extends Controller
      */
     public function index()
     {
-        return response()->json("RTFM", 405);
+        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
     
     /**

@@ -12,7 +12,8 @@ class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Not implemented
+     * 
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
@@ -22,14 +23,15 @@ class ReviewController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * It creates a new Review object and saves it to the database.
+     * 
+     * @param ReviewUpdateRequest request The request object.
+     * 
+     * @return \Illuminate\Http\JsonResponse of the newly object.
      */
     public function store(ReviewUpdateRequest $request)
     {
-        $validatedData =  $request->validate();
+        $validatedData =  $request->validated();
         $review = new Review;
         $review->setRawAttributes($validatedData);
         $review->save();
@@ -38,10 +40,11 @@ class ReviewController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * Display the specified `Review` by its id
+     * 
+     * @param Review review The model name
+     * 
+     * @return \Illuminate\Http\JsonResponse of the Review model.
      */
     public function show(Review $review)
     {
@@ -49,25 +52,28 @@ class ReviewController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * It takes a ReviewUpdateRequest, validates it, and then updates the Review model with the
+     * validated data
+     * 
+     * @param ReviewUpdateRequest request The request object.
+     * @param Review review The model that we're updating.
+     * 
+     * @return \Illuminate\Http\JsonResponse that was updated.
      */
     public function update(ReviewUpdateRequest $request, Review $review)
     {
-        $validatedData = $request->validate();
+        $validatedData = $request->validated();
         $review->update($validatedData);
 
         return response()->json($review, Response::HTTP_OK);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * It deletes the review from the database.
+     * 
+     * @param Review review The model that we're using.
+     * 
+     * @return \Illuminate\Http\JsonResponse of all the reviews in the database.
      */
     public function destroy(Review $review)
     {
