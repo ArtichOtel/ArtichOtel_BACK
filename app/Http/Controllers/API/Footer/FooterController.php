@@ -21,7 +21,11 @@ class FooterController extends Controller
      */
     public function index()
     {
-        return response()->json('RTFM', Response::HTTP_METHOD_NOT_ALLOWED);
+        // Recup all Footers
+        $footers = Footer::all();
+
+        // Return all information Footers in JSON
+        return response()->json($footers, Response::HTTP_OK);
     }
 
 

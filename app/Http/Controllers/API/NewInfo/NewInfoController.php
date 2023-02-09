@@ -19,7 +19,9 @@ class NewInfoController extends Controller
      */
     public function index()
     {
-        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
+        $newInfos = NewInfo::all();
+
+        return response()->json($newInfos, Response::HTTP_OK);
     }
 
     /**
