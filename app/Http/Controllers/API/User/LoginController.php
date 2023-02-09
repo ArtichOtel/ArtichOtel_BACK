@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API\User;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
-use http\Message\Body;
-use Illuminate\Http\Request;
-use PHPUnit\Util\Json;
+use App\Models\Role;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\User\LoginPostRequest;
 
 class LoginController extends Controller
 {
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param LoginPostRequest $request
+     * @return JsonResponse
      */
     public function __invoke(LoginPostRequest $request)
     {
@@ -46,14 +44,14 @@ class LoginController extends Controller
                 'message' => 'User logged in successfully',
                 'user_id' => $user_id,
                 'token' => $user->createToken('MyApp', $abilities)->plainTextToken
-            ], 200);
+            ], Response::HTTP_OK);
 
         } catch (\Throwable $th) {
             return response()->json([
                 'dev' => "bordel de merde",
                 'status' => false,
                 'message' => $th->getMessage()
-            ], 500);
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

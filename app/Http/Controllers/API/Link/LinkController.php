@@ -7,6 +7,7 @@ use App\Http\Requests\Link\LinkPostRequest;
 use App\Http\Requests\Link\LinkUpdateRequest;
 use App\Models\Link;
 // use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class LinkController extends Controller
@@ -15,7 +16,7 @@ class LinkController extends Controller
      * Display a listing of the resources
      * Not implemented
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
@@ -25,10 +26,10 @@ class LinkController extends Controller
 
     /**
      * It creates a new Link object and saves it to the database.
-     * 
-     * @param LinkPostRequest request The request object.
-     * 
-     * @return \Illuminate\Http\JsonResponse of the newly object.
+     *
+     * @param LinkPostRequest $request The request object.
+     *
+     * @return JsonResponse of the new object.
      */
     public function store(LinkPostRequest $request)
     {
@@ -43,10 +44,10 @@ class LinkController extends Controller
 
     /**
      * Display the specified `Link` by its id
-     * 
-     * @param Link link The model name
-     * 
-     * @return \Illuminate\Http\JsonResponse of the Link model.
+     *
+     * @param Link $link The model name
+     *
+     * @return JsonResponse of the Link model.
      */
     public function show(Link $link)
     {
@@ -56,11 +57,11 @@ class LinkController extends Controller
     /**
      * It takes an LinkUpdateRequest, validates it, and then updates the Link model with the
      * validated data
-     * 
-     * @param LinkUpdateRequest request The request object.
-     * @param Link link The model that we're updating.
-     * 
-     * @return \Illuminate\Http\JsonResponse that was updated.
+     *
+     * @param LinkUpdateRequest $request The request object.
+     * @param Link $link The model that we're updating.
+     *
+     * @return JsonResponse that was updated.
      */
     public function update(LinkUpdateRequest $request, Link $link)
     {
@@ -75,9 +76,9 @@ class LinkController extends Controller
      *
      * It deletes the advantage from the database.
      *
-     * @param Link link The model that we're using.
-     * 
-     * @return \Illuminate\Http\JsonResponse of all the links in the database.
+     * @param Link $link The model that we're using.
+     *
+     * @return JsonResponse of all the links in the database.
      */
     public function destroy(Link $link)
     {
