@@ -45,7 +45,7 @@ class HeroController extends Controller
      * @param  int  $id
      * @return JsonResponse
      */
-/*    public function show()
+    /*    public function show()
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }*/
