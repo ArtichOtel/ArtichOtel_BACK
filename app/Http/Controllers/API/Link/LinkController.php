@@ -20,7 +20,11 @@ class LinkController extends Controller
      */
     public function index()
     {
-        return response()->json("RTFM", 405);
+        // Recup all Links
+        $links =  Link::all();
+
+        // Return all information Links in JSON
+        return response()->json($links, Response::HTTP_OK);
     }
 
 

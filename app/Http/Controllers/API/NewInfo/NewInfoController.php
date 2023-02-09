@@ -19,7 +19,9 @@ class NewInfoController extends Controller
      */
     public function index()
     {
-        return response()->json("RTFM", 405);
+        $newInfos = NewInfo::all();
+
+        return response()->json($newInfos, Response::HTTP_OK);
     }
 
     /**

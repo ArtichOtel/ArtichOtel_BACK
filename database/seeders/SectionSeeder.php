@@ -15,17 +15,37 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
+/*        Section::create([
+            "title" => "Header",
+            "uri" => "header"
+        ]);*/
         Section::create([
-            "title" => fake()->text(60)
+            "title" => "Hero",
+            "uri" => "/hero"
         ]);
         Section::create([
-            "title" => fake()->text(60)
+            "title" => "Offers",
+            "uri" => "/offers"
         ]);
         Section::create([
-            "title" => fake()->text(60)
+            "title" => "Advantages",
+            "uri" => "/advantages"
         ]);
         Section::create([
-            "title" => fake()->text(60)
+            "title" => "News",
+            "uri" => "/news"
+        ]);
+        Section::create([
+            "title" => "Reviews",
+            "uri" => "/reviews"
+        ]);
+        Section::create([
+            "title" => "RoomTypes",
+            "uri" => "/room-types"
+        ]);
+        Section::create([
+            "title" => "Footers",
+            "uri" => "/footers"
         ]);
     }
 }
