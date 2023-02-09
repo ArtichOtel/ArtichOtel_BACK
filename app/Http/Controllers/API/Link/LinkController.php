@@ -20,7 +20,11 @@ class LinkController extends Controller
      */
     public function index()
     {
-        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
+        // Recup all Links
+        $links =  Link::all();
+
+        // Return all information Links in JSON
+        return response()->json($links, Response::HTTP_OK);
     }
 
 
