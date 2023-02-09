@@ -9,10 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 class SectionController extends Controller
 {
     /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * It returns a JSON response of all the sections in the database
+     * 
+     * @return \Illuminate\Http\JsonResponse containing all the sections in the database.
      */
     public function __invoke()
     {
