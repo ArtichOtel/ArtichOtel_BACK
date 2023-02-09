@@ -4,16 +4,15 @@ namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LogoutController extends Controller
 {
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param  Request  $request
+     * @return JsonResponse
      */
     public function __invoke(Request $request)
     {
@@ -21,7 +20,7 @@ class LogoutController extends Controller
 
         //Session::flush(); // ?
 
-        return response()->json('Token deleted', 200);
+        return response()->json('Token deleted', Response::HTTP_OK);
 
     }
 }
