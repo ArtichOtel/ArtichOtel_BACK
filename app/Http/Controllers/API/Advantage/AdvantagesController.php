@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Advantage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advantage;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdvantagesController extends Controller
 {
@@ -16,6 +17,6 @@ class AdvantagesController extends Controller
     {
         $advantages = Advantage::all();
 
-        return response()->json($advantages, 200);
+        return response()->json($advantages, Response::HTTP_OK);
     }
 }
