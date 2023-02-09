@@ -21,9 +21,11 @@ class AdvantageController extends Controller
      */
     public function index()
     {
-        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
+        $advantages = Advantage::all();
+
+        return response()->json($advantages, Response::HTTP_OK);
     }
-    
+
     /**
      * It creates a new Advantage object and saves it to the database.
      * 

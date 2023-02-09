@@ -3,11 +3,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\API\Hero\HeroesController;
+
 use App\Http\Controllers\API\Hero\HeroController;
 use App\Http\Controllers\API\Link\LinkController;
 use App\Http\Controllers\API\User\UserController;
-use App\Http\Controllers\API\Link\LinksController;
 use App\Http\Controllers\API\User\LoginController;
 use App\Http\Controllers\API\Offer\OfferController;
 use App\Http\Controllers\API\User\LogoutController;
@@ -15,13 +14,10 @@ use App\Http\Controllers\API\Video\VideoController;
 use App\Http\Controllers\API\Offer\OffersController;
 use App\Http\Controllers\API\Footer\FooterController;
 use App\Http\Controllers\API\Review\ReviewController;
-use App\Http\Controllers\API\Footer\FootersController;
 use App\Http\Controllers\API\Review\ReviewsController;
 use App\Http\Controllers\API\NewInfo\NewInfoController;
 use App\Http\Controllers\API\Section\SectionController;
-use App\Http\Controllers\API\NewInfo\NewInfosController;
 use App\Http\Controllers\API\Advantage\AdvantageController;
-use App\Http\Controllers\API\Advantage\AdvantagesController;
 use App\Http\Controllers\API\RoomsType\RoomsTypesController;
 
 /*
@@ -39,12 +35,12 @@ use App\Http\Controllers\API\RoomsType\RoomsTypesController;
 Route::get('/sections', SectionController::class);
 Route::apiResource('/hero', HeroController::class)->only(['index']);
 Route::apiResource('/offers', OffersController::class)->only(['index']);
-Route::apiResource('/advantages', AdvantagesController::class)->only(['index']);
-Route::apiResource('/news', NewInfosController::class)->only(['index']);
+Route::apiResource('/advantages', AdvantageController::class)->only(['index']);
+Route::apiResource('/news', NewInfoController::class)->only(['index']);
 Route::apiResource('/reviews', ReviewsController::class)->only(['index']);
 Route::apiResource('/room-types', RoomsTypesController::class)->only(['index']);
-Route::apiResource('/footers', FootersController::class)->only(['index']);
-Route::apiResource('/links', LinksController::class)->only(['index']);
+Route::apiResource('/footers', FooterController::class)->only(['index']);
+Route::apiResource('/links', LinkController::class)->only(['index']);
 
 Route::post('/user/login', LoginController::class);
 Route::middleware(['auth:sanctum'])->group(function () {
