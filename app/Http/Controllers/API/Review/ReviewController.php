@@ -13,20 +13,22 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      * Not implemented
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
         // no  list at this uri
-        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
+        $reviews = Review::all();
+
+        return response()->json($reviews, Response::HTTP_OK);
     }
 
     /**
      * It creates a new Review object and saves it to the database.
-     * 
+     *
      * @param ReviewUpdateRequest request The request object.
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse of the newly object.
      */
     public function store(ReviewUpdateRequest $request)
@@ -41,9 +43,9 @@ class ReviewController extends Controller
 
     /**
      * Display the specified `Review` by its id
-     * 
+     *
      * @param Review review The model name
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse of the Review model.
      */
     public function show(Review $review)
@@ -54,10 +56,10 @@ class ReviewController extends Controller
     /**
      * It takes a ReviewUpdateRequest, validates it, and then updates the Review model with the
      * validated data
-     * 
+     *
      * @param ReviewUpdateRequest request The request object.
      * @param Review review The model that we're updating.
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse that was updated.
      */
     public function update(ReviewUpdateRequest $request, Review $review)
@@ -70,9 +72,9 @@ class ReviewController extends Controller
 
     /**
      * It deletes the review from the database.
-     * 
+     *
      * @param Review review The model that we're using.
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse of all the reviews in the database.
      */
     public function destroy(Review $review)

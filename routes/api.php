@@ -38,10 +38,10 @@ use App\Http\Controllers\API\RoomsType\RoomsTypesController;
 // GUESTS routes
 Route::get('/sections', SectionController::class);
 Route::apiResource('/hero', HeroController::class)->only(['index']);
-Route::apiResource('/offers', OffersController::class)->only(['index']);
+Route::apiResource('/offers', OfferController::class)->only(['index']);
 Route::apiResource('/advantages', AdvantagesController::class)->only(['index']);
 Route::apiResource('/news', NewInfosController::class)->only(['index']);
-Route::apiResource('/reviews', ReviewsController::class)->only(['index']);
+Route::apiResource('/reviews', ReviewController::class)->only(['index']);
 Route::apiResource('/room-types', RoomsTypesController::class)->only(['index']);
 Route::apiResource('/footers', FootersController::class)->only(['index']);
 Route::apiResource('/links', LinksController::class)->only(['index']);
