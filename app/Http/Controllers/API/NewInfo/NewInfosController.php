@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\NewInfo;
 
 use App\Http\Controllers\Controller;
 use App\Models\NewInfo;
+use Symfony\Component\HttpFoundation\Response;
 
 class NewInfosController extends Controller
 {
@@ -16,6 +17,6 @@ class NewInfosController extends Controller
     {
         $newInfos = NewInfo::all();
 
-        return response()->json($newInfos, 200);
+        return response()->json($newInfos, Response::HTTP_OK);
     }
 }
