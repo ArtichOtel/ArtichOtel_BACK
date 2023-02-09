@@ -9,10 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 class ReviewsController extends Controller
 {
     /**
-     * Handle the incoming request.
-     *
-     * @param  Symfony\Component\HttpFoundation\Response
-     * @return \Illuminate\Http\JsonResponse
+     * It returns a JSON response of all the reviews in the database
+     * 
+     * @return \Illuminate\Http\JsonResponse with all the reviews.
      */
     public function __invoke()
     {
