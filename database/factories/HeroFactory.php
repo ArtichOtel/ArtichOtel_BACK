@@ -20,8 +20,8 @@ class HeroFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->name(),
-            'subtitle' => fake()->name(),
+            'title' => 'Hôtel L\'Artichaut',
+            'subtitle' => 'Le confort que vous méritez sainement',
             'url_image' => fake()->url(255),
         ];
     }

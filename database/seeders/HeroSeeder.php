@@ -17,7 +17,7 @@ class HeroSeeder extends Seeder
     public function run()
     {
 
-        Hero::factory()->count(10)->create();
+        Hero::factory()->count(1)->create();
         $ids = range(1, 10);
         Link::factory()->count(40)->create()->each(function ($link) use ($ids) {
             shuffle($ids);
