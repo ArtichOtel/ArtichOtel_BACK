@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\API\Hero;
 
 use App\Models\Hero;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Hero\HeroUpdateRequest;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -18,7 +16,7 @@ class HeroController extends Controller
     /**
      * Display a listing of the resources
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
@@ -33,8 +31,7 @@ class HeroController extends Controller
      * Store a newly created resource in storage.
      * Not implemented
      *
-     * 
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store()
     {
@@ -46,19 +43,19 @@ class HeroController extends Controller
      * Not implemented
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function show()
+/*    public function show()
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
-    }
+    }*/
 
     /**
      *  Update the specified resource in storage.
      *
-     * @param App\Http\Requests\Hero\HeroUpdateRequest $request
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @param HeroUpdateRequest $request
+     * @param Hero $hero
+     * @return JsonResponse
      */
     public function update(HeroUpdateRequest $request, Hero $hero)
     {
@@ -72,8 +69,7 @@ class HeroController extends Controller
      * Remove the specified resource from storage.
      * Not implemented
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy()
     {
