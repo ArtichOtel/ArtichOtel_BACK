@@ -24,24 +24,28 @@ class SectionSeeder extends Seeder
             "uri" => "/hero"
         ]);
         Section::create([
-            "title" => "Offers",
+            "title" => "Offres du moment",
             "uri" => "/offers"
         ]);
         Section::create([
-            "title" => "Advantages",
+            "title" => "Nos services",
             "uri" => "/advantages"
         ]);
         Section::create([
-            "title" => "News",
+            "title" => "Actualités",
             "uri" => "/news"
         ]);
         Section::create([
-            "title" => "Reviews",
+            "title" => "Avis",
             "uri" => "/reviews"
         ]);
         Section::create([
-            "title" => "RoomTypes",
+            "title" => "Nos chambres",
             "uri" => "/room-types"
+        ]);
+        Section::create([
+            "title" => "Visite guidée",
+            "uri" => "/video"
         ]);
         Section::create([
             "title" => "Footers",

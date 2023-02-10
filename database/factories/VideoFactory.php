@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Video>
+ * @extends Factory<Video>
  */
 class VideoFactory extends Factory
 {
@@ -14,12 +15,12 @@ class VideoFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'title' => fake()->word(),
-            'description' => fake()->sentence(),
-            'url_video' => fake()->imageUrl()
+            'title' => "Visite guidée",
+            'description' => "Voyagez au coeur de l'hôtel Artichaut, de la terrasse à la piscine, en passant par le grand salon, la salle de restaurant diététique, le spa et le jardin...",
+            'url_video' => "https://www.youtube.com/watch?v=p7YXXieghto"
         ];
     }
 }
