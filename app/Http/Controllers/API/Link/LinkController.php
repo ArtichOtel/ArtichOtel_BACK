@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Link\LinkPostRequest;
 use App\Http\Requests\Link\LinkUpdateRequest;
 use App\Models\Link;
-// use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,7 +17,7 @@ class LinkController extends Controller
      *
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         // Recup all Links
         $links =  Link::all();
@@ -35,7 +34,7 @@ class LinkController extends Controller
      *
      * @return JsonResponse of the new object.
      */
-    public function store(LinkPostRequest $request)
+    public function store(LinkPostRequest $request): JsonResponse
     {
         $validatedData = $request->validated();
         $link = new Link;
@@ -53,7 +52,7 @@ class LinkController extends Controller
      *
      * @return JsonResponse of the Link model.
      */
-    public function show(Link $link)
+    public function show(Link $link): JsonResponse
     {
         return response()->json($link, Response::HTTP_OK);
     }
@@ -67,7 +66,7 @@ class LinkController extends Controller
      *
      * @return JsonResponse that was updated.
      */
-    public function update(LinkUpdateRequest $request, Link $link)
+    public function update(LinkUpdateRequest $request, Link $link): JsonResponse
     {
         $validatedData = $request->validated();
 
@@ -84,7 +83,7 @@ class LinkController extends Controller
      *
      * @return JsonResponse of all the links in the database.
      */
-    public function destroy(Link $link)
+    public function destroy(Link $link): JsonResponse
     {
         $link->delete();
 

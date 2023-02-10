@@ -17,7 +17,7 @@ class LoginController extends Controller
      * @param LoginPostRequest $request
      * @return JsonResponse
      */
-    public function __invoke(LoginPostRequest $request)
+    public function __invoke(LoginPostRequest $request): JsonResponse
     {
         try {
             if (!Auth::attempt($request->only(['pseudo', 'password']))) {

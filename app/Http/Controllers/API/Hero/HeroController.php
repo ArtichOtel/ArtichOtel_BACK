@@ -18,7 +18,7 @@ class HeroController extends Controller
      *
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         // Recup all Heros
         $heros =  Hero::all();
@@ -33,7 +33,7 @@ class HeroController extends Controller
      *
      * @return JsonResponse
      */
-    public function store()
+    public function store(): JsonResponse
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
@@ -57,7 +57,7 @@ class HeroController extends Controller
      * @param Hero $hero
      * @return JsonResponse
      */
-    public function update(HeroUpdateRequest $request, Hero $hero)
+    public function update(HeroUpdateRequest $request, Hero $hero): JsonResponse
     {
         $validateData = $request->validated();
         $hero->update($validateData);
@@ -71,7 +71,7 @@ class HeroController extends Controller
      *
      * @return JsonResponse
      */
-    public function destroy()
+    public function destroy(): JsonResponse
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }

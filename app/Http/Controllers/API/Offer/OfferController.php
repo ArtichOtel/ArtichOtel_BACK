@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API\Offer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Offer\OfferPostRequest;
 use App\Http\Requests\Offer\OfferUpdateRequest;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Models\Offer;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,9 +15,9 @@ class OfferController extends Controller
      * Display a listing of the resource.
      * Not implemented
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $offers = Offer::all();
 
@@ -27,11 +27,11 @@ class OfferController extends Controller
     /**
      * It creates a new Offer object and saves it to the database.
      *
-     * @param  OfferPostRequest request The request object.
+     * @param  OfferPostRequest $request The request object.
      *
-     * @return \Illuminate\Http\JsonResponse of the newly object.
+     * @return JsonResponse of the newly created object.
      */
-    public function store(OfferPostRequest $request)
+    public function store(OfferPostRequest $request): JsonResponse
     {
         $validatedData = $request->validated();
         $offer = new Offer;
@@ -44,11 +44,11 @@ class OfferController extends Controller
     /**
      * Display the specified `Offer` by its id.
      *
-     * @param  Offer offer The model name.
+     * @param  Offer $offer The model name.
      *
-     * @return \Illuminate\Http\JsonResponse of the Offer model.
+     * @return JsonResponse of the Offer model.
      */
-    public function show(Offer $offer)
+    public function show(Offer $offer): JsonResponse
     {
         return response()->json($offer, Response::HTTP_OK);
     }
@@ -57,12 +57,12 @@ class OfferController extends Controller
      * It takes an OfferUpdateRequest, validates it, and then updates the Offer model with the
      * validated data
      *
-     * @param  OfferUpdateRequest request The request object.
-     * @param  Offer offer The model that we're updating.
+     * @param  OfferUpdateRequest $request The request object.
+     * @param  Offer $offer The model that we're updating.
      *
-     * @return \Illuminate\Http\JsonResponse that was updated.
+     * @return JsonResponse that was updated.
      */
-    public function update(OfferUpdateRequest $request, Offer $offer)
+    public function update(OfferUpdateRequest $request, Offer $offer): JsonResponse
     {
         $validatedData = $request->validated();
 
@@ -74,11 +74,11 @@ class OfferController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Offer offer The model that we're using.
+     * @param  Offer $offer The model that we're using.
      *
-     * @return \Illuminate\Http\JsonResponse of all the offers in the database.
+     * @return JsonResponse of all the offers in the database.
      */
-    public function destroy(Offer $offer)
+    public function destroy(Offer $offer): JsonResponse
     {
         $offer->delete();
 

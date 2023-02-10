@@ -5,10 +5,8 @@ namespace App\Http\Controllers\API\Advantage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Advantage\AdvantagePostRequest;
 use App\Http\Requests\Advantage\AdvantageUpdateRequest;
-// use Illuminate\Http\Request;
 use App\Models\Advantage;
-// use Illuminate\Support\Facades\Http;
-// use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdvantageController extends Controller
@@ -17,9 +15,9 @@ class AdvantageController extends Controller
      * Display a listing of the resource.
      * Not implemented
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $advantages = Advantage::all();
 
@@ -28,12 +26,12 @@ class AdvantageController extends Controller
 
     /**
      * It creates a new Advantage object and saves it to the database.
-     * 
-     * @param AdvantagePostRequest request The request object.
-     * 
-     * @return \Illuminate\Http\JsonResponse of the newly object.
+     *
+     * @param AdvantagePostRequest $request The request object.
+     *
+     * @return JsonResponse of the newly created object.
      */
-    public function store(AdvantagePostRequest $request)
+    public function store(AdvantagePostRequest $request): JsonResponse
     {
         $validatedData = $request->validated();
         $advantage = new Advantage;
@@ -45,12 +43,12 @@ class AdvantageController extends Controller
 
     /**
      * Display the specified `Advantage` by its id
-     * 
-     * @param Advantage advantage The model name
-     * 
-     * @return \Illuminate\Http\JsonResponse of the Advantage model.
+     *
+     * @param Advantage $advantage The model name
+     *
+     * @return JsonResponse of the Advantage model.
      */
-    public function show(Advantage $advantage)
+    public function show(Advantage $advantage): JsonResponse
     {
         return response()->json($advantage, Response::HTTP_OK);
     }
@@ -58,13 +56,13 @@ class AdvantageController extends Controller
     /**
      * It takes an AdvantageUpdateRequest, validates it, and then updates the Advantage model with the
      * validated data
-     * 
-     * @param AdvantageUpdateRequest request The request object.
-     * @param Advantage advantage The model that we're updating.
-     * 
-     * @return \Illuminate\Http\JsonResponse that was updated.
+     *
+     * @param AdvantageUpdateRequest $request The request object.
+     * @param Advantage $advantage The model that we're updating.
+     *
+     * @return JsonResponse that was updated.
      */
-    public function update(AdvantageUpdateRequest $request, Advantage $advantage)
+    public function update(AdvantageUpdateRequest $request, Advantage $advantage): JsonResponse
     {
         $validatedData = $request->validated();
 
@@ -75,12 +73,12 @@ class AdvantageController extends Controller
 
     /**
      * It deletes the advantage from the database.
-     * 
-     * @param Advantage advantage The model that we're using.
-     * 
-     * @return \Illuminate\Http\JsonResponse of all the advantages in the database.
+     *
+     * @param Advantage $advantage The model that we're using.
+     *
+     * @return JsonResponse of all the advantages in the database.
      */
-    public function destroy(Advantage $advantage)
+    public function destroy(Advantage $advantage): JsonResponse
     {
         $advantage->delete();
 

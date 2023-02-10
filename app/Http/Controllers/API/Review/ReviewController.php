@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Review;
 
 use App\Models\Review;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Review\ReviewUpdateRequest;
@@ -14,9 +14,9 @@ class ReviewController extends Controller
      * Display a listing of the resource.
      * Not implemented
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         // no  list at this uri
         $reviews = Review::all();
@@ -27,11 +27,11 @@ class ReviewController extends Controller
     /**
      * It creates a new Review object and saves it to the database.
      *
-     * @param ReviewUpdateRequest request The request object.
+     * @param ReviewUpdateRequest $request The request object.
      *
-     * @return \Illuminate\Http\JsonResponse of the newly object.
+     * @return JsonResponse of the newly created object.
      */
-    public function store(ReviewUpdateRequest $request)
+    public function store(ReviewUpdateRequest $request): JsonResponse
     {
         $validatedData =  $request->validated();
         $review = new Review;
@@ -44,11 +44,11 @@ class ReviewController extends Controller
     /**
      * Display the specified `Review` by its id
      *
-     * @param Review review The model name
+     * @param Review $review The model name
      *
-     * @return \Illuminate\Http\JsonResponse of the Review model.
+     * @return JsonResponse of the Review model.
      */
-    public function show(Review $review)
+    public function show(Review $review): JsonResponse
     {
         return response()->json($review, Response::HTTP_OK);
     }
@@ -57,12 +57,12 @@ class ReviewController extends Controller
      * It takes a ReviewUpdateRequest, validates it, and then updates the Review model with the
      * validated data
      *
-     * @param ReviewUpdateRequest request The request object.
-     * @param Review review The model that we're updating.
+     * @param ReviewUpdateRequest $request The request object.
+     * @param Review $review  The model that we're updating.
      *
-     * @return \Illuminate\Http\JsonResponse that was updated.
+     * @return JsonResponse that was updated.
      */
-    public function update(ReviewUpdateRequest $request, Review $review)
+    public function update(ReviewUpdateRequest $request, Review $review): JsonResponse
     {
         $validatedData = $request->validated();
         $review->update($validatedData);
@@ -73,11 +73,11 @@ class ReviewController extends Controller
     /**
      * It deletes the review from the database.
      *
-     * @param Review review The model that we're using.
+     * @param Review $review The model that we're using.
      *
-     * @return \Illuminate\Http\JsonResponse of all the reviews in the database.
+     * @return JsonResponse of all the reviews in the database.
      */
-    public function destroy(Review $review)
+    public function destroy(Review $review): JsonResponse
     {
         $review->delete();
 
