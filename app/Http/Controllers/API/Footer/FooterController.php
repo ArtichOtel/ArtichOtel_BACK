@@ -23,7 +23,13 @@ class FooterController extends Controller
     public function index(): JsonResponse
     {
         // Recup all Footers
-        $footers = Footer::all();
+        // $footers = Footer::all();
+
+        $footers = Footer::query()
+            ->select('footers.*', 'links.*')
+            ->join('footer_link', 'footers.id', '=', 'footer_link.footer_id')
+            ->join('links', 'links.id', '=', 'footer_link.link_id')
+            ->get();
 
         // Return all information Footers in JSON
         return response()->json($footers, Response::HTTP_OK);
