@@ -17,8 +17,8 @@ class FooterLinkFactory extends Factory
     public function definition()
     {
         return [
-            'link_id' => fake()->numberBetween(1, 10),
-            'footer_id' => fake()->numberBetween(1, 10)
+            'link_id' => fake()->numberBetween(1, 5),
+            'footer_id' => fake()->numberBetween(1, 5)
         ];
     }
 }

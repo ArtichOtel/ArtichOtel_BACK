@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Hero;
 
 use App\Models\Hero;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Hero\HeroUpdateRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,13 +19,22 @@ class HeroController extends Controller
      *
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        // Recup all Heros
-        $heros =  Hero::all();
+        // Recup all Heros & Links
 
-        // Return all information Heros in JSON
-        return response()->json($heros, Response::HTTP_OK);
+        $urls =  Hero::query()
+            ->select('hero_link.id', 'links.url', 'links.text', 'links.icon')
+            ->join('hero_link', 'heroes.id', '=', 'hero_link.hero_id')
+            ->join('links', 'hero_link.link_id', '=', 'links.id')
+            ->get();
+
+        $hero = Hero::query()
+            ->select('heroes.title', 'heroes.subtitle', 'heroes.url_image')
+            ->get();
+
+        // Return all information Heros $ Links in JSON
+        return response()->json([$hero, $urls], Response::HTTP_OK);
     }
 
     /**
@@ -33,7 +43,7 @@ class HeroController extends Controller
      *
      * @return JsonResponse
      */
-    public function store()
+    public function store(): JsonResponse
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
@@ -57,7 +67,7 @@ class HeroController extends Controller
      * @param Hero $hero
      * @return JsonResponse
      */
-    public function update(HeroUpdateRequest $request, Hero $hero)
+    public function update(HeroUpdateRequest $request, Hero $hero): JsonResponse
     {
         $validateData = $request->validated();
         $hero->update($validateData);
@@ -71,7 +81,7 @@ class HeroController extends Controller
      *
      * @return JsonResponse
      */
-    public function destroy()
+    public function destroy(): JsonResponse
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }

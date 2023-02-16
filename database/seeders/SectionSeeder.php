@@ -45,7 +45,7 @@ class SectionSeeder extends Seeder
         ]);
         Section::create([
             "title" => "Visite guidée",
-            "uri" => "/room-types"
+            "uri" => "/video"
         ]);
         Section::create([
             "title" => "Footers",

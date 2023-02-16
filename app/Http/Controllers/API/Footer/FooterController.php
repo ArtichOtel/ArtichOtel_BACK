@@ -6,6 +6,7 @@ use App\Models\Footer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Footer\FooterPostRequest;
 use App\Http\Requests\Footer\FooterUpdateRequest;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -17,26 +18,33 @@ class FooterController extends Controller
      * Display a listing of the resource.
      * Not implemented
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         // Recup all Footers
-        $footers = Footer::all();
+        // $footers = Footer::all();
+
+        $urls = Footer::query()
+            ->select('footers.title', 'footers.order', 'footer_link.id', 'links.url', 'links.text', 'links.icon')
+            ->join('footer_link', 'footers.id', '=', 'footer_link.footer_id')
+            ->join('links', 'links.id', '=', 'footer_link.link_id')
+            ->get();
+
 
         // Return all information Footers in JSON
-        return response()->json($footers, Response::HTTP_OK);
+        return response()->json($urls, Response::HTTP_OK);
     }
 
 
     /**
      * It creates a new Footer object and saves it to the database.
      *
-     * @param FooterPostRequest request The request object.
-     * 
-     * @return \Illuminate\Http\JsonResponse of the newly object.
+     * @param FooterPostRequest $request The request object.
+     *
+     * @return JsonResponse of the newly created object.
      */
-    public function store(FooterPostRequest $request)
+    public function store(FooterPostRequest $request): JsonResponse
     {
         $validateData = $request->validated();
         $footer = new Footer;
@@ -50,11 +58,11 @@ class FooterController extends Controller
     /**
      * Display the specified `Footer` by its id.
      *
-     * @param Footer footer The model name.
-     * 
-     * @return \Illuminate\Http\JsonResponse
+     * @param Footer $footer The model name.
+     *
+     * @return JsonResponse
      */
-    public function show(Footer $footer)
+    public function show(Footer $footer): JsonResponse
     {
         return response()->json($footer, Response::HTTP_OK);
     }
@@ -65,12 +73,12 @@ class FooterController extends Controller
      * It takes an FooterUpdateRequest, validates it, and then updates the Footer model with the
      * validated data
      *
-     * @param FooterUpdateRequest request The request object.
-     * @param Footer footer The model that we're updating.
-     * 
-     * @return \Illuminate\Http\JsonResponse that was updated.
+     * @param FooterUpdateRequest $request The request object.
+     * @param Footer $footer The model that we're updating.
+     *
+     * @return JsonResponse that was updated.
      */
-    public function update(FooterUpdateRequest $request, Footer $footer)
+    public function update(FooterUpdateRequest $request, Footer $footer): JsonResponse
     {
         $validatedData = $request->validated();
         $footer->update($validatedData);
@@ -83,11 +91,11 @@ class FooterController extends Controller
     /**
      * It deletes the footer from the database.
      *
-     * @param Footer footer The model that we're using.
-     * 
-     * @return \Illuminate\Http\JsonResponse
+     * @param Footer $footer The model that we're using.
+     *
+     * @return JsonResponse
      */
-    public function destroy(Footer $footer)
+    public function destroy(Footer $footer): JsonResponse
     {
         $footer->delete();
 

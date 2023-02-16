@@ -16,9 +16,10 @@ class FooterFactory extends Factory
      */
     public function definition()
     {
+        static $order = 1;
         return [
             'title' => fake()->name(),
-            'order' => fake()->randomNumber()
+            'order' => $order++
         ];
     }
 }

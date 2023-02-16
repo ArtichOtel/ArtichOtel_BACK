@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\NewInfo\NewInfoPostRequest;
 use App\Http\Requests\NewInfo\NewInfoUpdateRequest;
 use App\Models\NewInfo;
-// use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class NewInfoController extends Controller
@@ -15,9 +15,9 @@ class NewInfoController extends Controller
      * Display a listing of the resource.
      * Not implemented
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $newInfos = NewInfo::all();
 
@@ -27,11 +27,11 @@ class NewInfoController extends Controller
     /**
      * It creates a new NewInfo object and saves it to the database.
      *
-     * @param  NewInfoPostRequest request The request object.
-     * 
-     * @return \Illuminate\Http\JsonResponse of the newly object.
+     * @param  NewInfoPostRequest $request The request object.
+     *
+     * @return JsonResponse of the newly created object.
      */
-    public function store(NewInfoPostRequest $request)
+    public function store(NewInfoPostRequest $request): JsonResponse
     {
         $validatedData = $request->validated();
         $newInfo = new NewInfo;
@@ -44,11 +44,11 @@ class NewInfoController extends Controller
     /**
      * Display the specified `NewInfo` byt its id.
      *
-     * @param  NewInfo newInfo The model name
-     * 
-     * @return \Illuminate\Http\JsonResponse of the NewInfo model.
+     * @param  NewInfo $newInfo The model name
+     *
+     * @return JsonResponse of the NewInfo model.
      */
-    public function show(NewInfo $newInfo)
+    public function show(NewInfo $newInfo): JsonResponse
     {
         return response()->json($newInfo, Response::HTTP_OK);
     }
@@ -57,12 +57,12 @@ class NewInfoController extends Controller
      * It takes a NewInfoUpdateRequest, validates it, and then updates the NewInfo model with the
      * validated data.
      *
-     * @param  NewInfoUpdateRequest request The request object.
-     * @param  NewInfo newInfo The model that we're updating.
-     * 
-     * @return \Illuminate\Http\JsonResponse
+     * @param  NewInfoUpdateRequest $request The request object.
+     * @param  NewInfo $newInfo The model that we're updating.
+     *
+     * @return JsonResponse
      */
-    public function update(NewInfoUpdateRequest $request, NewInfo $newInfo)
+    public function update(NewInfoUpdateRequest $request, NewInfo $newInfo): JsonResponse
     {
         $validatedData = $request->validated();
 
@@ -74,11 +74,11 @@ class NewInfoController extends Controller
     /**
      * It deletes the newInfo from the database.
      *
-     * @param  NewInfo newInfo The model that we're using.
-     * 
-     * @return \Illuminate\Http\JsonResponse of all newInfos in the database.
+     * @param  NewInfo $newInfo The model that we're using.
+     *
+     * @return JsonResponse of all newInfos in the database.
      */
-    public function destroy(NewInfo $newInfo)
+    public function destroy(NewInfo $newInfo): JsonResponse
     {
         $newInfo->delete();
 

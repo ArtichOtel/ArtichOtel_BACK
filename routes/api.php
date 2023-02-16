@@ -35,6 +35,7 @@ Route::apiResource('/hero', HeroController::class)->only(['index']);
 Route::apiResource('/offers', OfferController::class)->only(['index']);
 Route::apiResource('/advantages', AdvantageController::class)->only(['index']);
 Route::apiResource('/news', NewInfoController::class)->only(['index']);
+Route::apiResource('/video', VideoController::class)->only(['index']);
 Route::apiResource('/reviews', ReviewController::class)->only(['index']);
 Route::apiResource('/room-types', RoomsTypesController::class)->only(['index']);
 Route::apiResource('/footers', FooterController::class)->only(['index']);

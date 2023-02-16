@@ -27,7 +27,7 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function store()
+    public function store(): JsonResponse
     {
         // add new user SPRINT 2
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
@@ -39,7 +39,7 @@ class UserController extends Controller
      * @param User $user
      * @return JsonResponse
      */
-    public function show(User $user)
+    public function show(User $user): JsonResponse
     {
         return response()->json($user, Response::HTTP_OK);
     }
@@ -49,7 +49,7 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function update()
+    public function update(): JsonResponse
     {
         // user to update SPRINT 2
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
@@ -60,7 +60,7 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function destroy()
+    public function destroy(): JsonResponse
     {
         // user to delete SPRINT 2
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
