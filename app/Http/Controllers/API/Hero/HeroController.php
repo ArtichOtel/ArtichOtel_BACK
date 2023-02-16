@@ -21,26 +21,20 @@ class HeroController extends Controller
      */
     public function index(): JsonResponse
     {
-        // Recup all Heros
-        // $heros =  Hero::all();
+        // Recup all Heros & Links
 
-        // $heros =  DB::table('heroes')
-        //     ->join('hero_link', 'heroes.id', '=', 'hero_link.hero_id')
-        //     ->join('links', 'hero_link.link_id', '=', 'links.id')
-        //     ->select('heroes.*', 'links.*')
-        //     ->get();
-
-        $hero =  Hero::query()
-            ->select('heroes.*', 'links.url')
+        $urls =  Hero::query()
+            ->select('hero_link.id', 'links.url', 'links.text', 'links.icon')
             ->join('hero_link', 'heroes.id', '=', 'hero_link.hero_id')
             ->join('links', 'hero_link.link_id', '=', 'links.id')
-            ->where('heroes.id', '=', 1)
-            // ->groupBy('')
             ->get();
 
+        $hero = Hero::query()
+            ->select('heroes.title', 'heroes.subtitle', 'heroes.url_image')
+            ->get();
 
-        // Return all information Heros in JSON
-        return response()->json($hero, Response::HTTP_OK);
+        // Return all information Heros $ Links in JSON
+        return response()->json([$hero, $urls], Response::HTTP_OK);
     }
 
     /**
