@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Link;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class LinkSeeder extends Seeder
 {
@@ -14,6 +15,5 @@ class LinkSeeder extends Seeder
      */
     public function run()
     {
-        //
     }
 }

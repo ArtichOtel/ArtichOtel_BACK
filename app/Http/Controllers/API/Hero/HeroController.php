@@ -24,7 +24,7 @@ class HeroController extends Controller
         // Recup all Heros & Links
 
         $urls =  Hero::query()
-            ->select('hero_link.id', 'links.url', 'links.text', 'links.icon')
+            ->select('links.id', 'links.url', 'links.text', 'links.icon')
             ->join('hero_link', 'heroes.id', '=', 'hero_link.hero_id')
             ->join('links', 'hero_link.link_id', '=', 'links.id')
             ->get();

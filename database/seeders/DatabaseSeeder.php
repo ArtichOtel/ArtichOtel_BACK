@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             ReviewSeeder::class,
             HeroSeeder::class,
             FooterSeeder::class,
-            SectionSeeder::class
+            SectionSeeder::class,
         ]);
     }
 }

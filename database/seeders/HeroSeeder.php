@@ -17,8 +17,14 @@ class HeroSeeder extends Seeder
     {
 
         Hero::factory()->count(1)->create();
-        Link::factory()->count(2)->create()->each(function ($link) {
+        Link::factory()->count(10)->create()->each(function ($link) {
             $link->heroes()->attach(array_slice([1], 0));
         });
+
+        // foreach (Hero::all() as $hero) {
+        //     foreach (Link::all() as $link) {
+        //         $hero->links()->attach($link->id);
+        //     }
+        // }
     }
 }

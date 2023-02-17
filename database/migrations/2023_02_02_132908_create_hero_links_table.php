@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('hero_link', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('hero_id');
-            $table->foreignId('link_id');
+            $table->foreignId('hero_id')->constrained('heroes');
+            $table->foreignId('link_id')->constrained('links');
         });
     }
 

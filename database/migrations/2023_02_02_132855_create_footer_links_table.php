@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('footer_link', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('footer_id');
-            $table->foreignId('link_id');
+            $table->foreignId('footer_id')->constrained('footers');
+            $table->foreignId('link_id')->constrained('links');
         });
     }
 
