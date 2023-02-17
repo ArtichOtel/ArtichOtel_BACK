@@ -29,6 +29,7 @@ class FooterController extends Controller
             ->select('footers.id AS footers_id', 'footers.title', 'footers.order', 'links.id AS links_id', 'links.url', 'links.text', 'links.icon')
             ->join('footer_link', 'footers.id', '=', 'footer_link.footer_id')
             ->join('links', 'links.id', '=', 'footer_link.link_id')
+            ->orderBy('footers.order')
             ->get();
 
 
