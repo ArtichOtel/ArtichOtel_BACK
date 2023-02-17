@@ -17,47 +17,12 @@ class FooterSeeder extends Seeder
      */
     public function run()
     {
-        Footer::factory()->count(5)->create();
-        // $ids = range(1, 30);
-        // Link::factory()->count(10)->create()->each(function ($link) use ($ids) {
-        //     shuffle($ids);
-        //     $link->footers()->attach(array_slice($ids, 0, rand(1, 4)));
-        // });
-        // Footer::factory()->count(10)->create();
-        // Link::factory()->count(10)->create()->each(function ($link) {
-        //     $link->heroes()->attach(array_slice([1], 0));
-        // });
+        Footer::factory()->count(3)->create();
 
-
-        //         SELECT * FROM footers f
-        // INNER JOIN footer_link fl ON f.id = fl.footer_id
-        // INNER JOIN links l ON l.id = fl.link_id
-
-        // Link::factory()->count(5)->create();
-
-        Link::factory()->count(5)->create()->each(function ($link) {
-            $link->footers()->attach(array_slice([1], 0));
-        });
-
-        // Footer_Link::create([
-        //     'footer_id' => 1,
-        //     'link_id' => 3
-        // ]);
-        // Footer_Link::create([
-        //     'footer_id' => 2,
-        //     'link_id' => 4
-        // ]);
-        // Footer_Link::create([
-        //     'footer_id' => 3,
-        //     'link_id' => 5
-        // ]);
-        // Footer_Link::create([
-        //     'footer_id' => 4,
-        //     'link_id' => 6
-        // ]);
-        // Footer_Link::create([
-        //     'footer_id' => 5,
-        //     'link_id' => 7
-        // ]);
+        foreach (Footer::all() as $footer) {
+            foreach (Link::all() as $link) {
+                $footer->links()->attach($link->id);
+            }
+        }
     }
 }
