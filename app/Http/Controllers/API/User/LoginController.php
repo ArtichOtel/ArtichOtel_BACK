@@ -40,12 +40,18 @@ class LoginController extends Controller
                 ->where('users.id', '=', $user_id)
                 ->get()[0]['abilities'];
 
+            $role = Role::query()
+                ->select('roles.name')
+                ->join('users', 'roles.id', '=', 'users.role_id')
+                ->where('users.id', '=', $user_id)
+                ->get()[0]['name'];
+
             return response()->json([
                 'message' => 'User logged in successfully',
                 'user_id' => $user_id,
+                'role' => $role,
                 'token' => $user->createToken('MyApp', $abilities)->plainTextToken
             ], Response::HTTP_OK);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'dev' => "bordel de merde",
