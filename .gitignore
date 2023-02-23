@@ -16,3 +16,12 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/adminer.css
+/public/adminer.php
+/logs
+/bootstrap/cache
+/bootstrap/cache/
+/bootstrap/cache/*
+routes-v7.php
+/storage/logs/laravel.log
+/storage
