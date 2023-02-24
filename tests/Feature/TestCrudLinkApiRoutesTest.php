@@ -7,7 +7,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\Feature\Utils\UserConnexion;
 use Tests\TestCase;
 
-class PrivatePostApiRoutesTest extends TestCase
+class TestCrudLinkApiRoutesTest extends TestCase
 {
 
   /**
