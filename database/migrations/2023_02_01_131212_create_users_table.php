@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email',320)->unique();
             $table->string('pseudo',45)->unique();
             $table->string('password',100);
-            $table->foreignId('role_id')->constrained();
+            $table->foreignId('role_id')->constrained('roles');
         });
     }
 
