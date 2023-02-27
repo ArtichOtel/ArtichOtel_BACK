@@ -15,4 +15,9 @@ class Advantage extends Model
         'icon',
         'order'
     ];
+
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array'
+    ];
 }
