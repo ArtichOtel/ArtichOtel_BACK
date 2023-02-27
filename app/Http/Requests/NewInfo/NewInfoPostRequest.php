@@ -27,7 +27,7 @@ class NewInfoPostRequest extends FormRequest
             'title' => ['required', 'max:60', 'string:ascii'],
             'description' => ['required', 'max:300', 'string:ascii'],
             'url_image' => ['required', 'max:255', 'url'],
-            'order' => ['required', 'numeric;integer']
+            'order' => ['required', 'numeric:integer']
         ];
     }
 }

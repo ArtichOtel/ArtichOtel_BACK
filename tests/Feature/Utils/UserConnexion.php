@@ -10,9 +10,9 @@ class UserConnexion {
 
     /**
      * It's getting the abillities of the user
-     * 
-     * @param User user The user object that you want to get the abilities from.
-     * 
+     *
+     * @param User $user The user object that you want to get the abilities from.
+     *
      * @return array It's returning the abillities of the user.
      */
     private static function getUserRoleAbilities(User $user): array {

@@ -27,7 +27,7 @@ class NewInfoUpdateRequest extends FormRequest
             'title' => ['sometimes', 'max:60', 'string:ascii'],
             'description' => ['sometimes', 'max:300', 'string:ascii'],
             'url_image' => ['sometimes', 'max:255', 'url'],
-            'order' => ['sometimes', 'numeric;integer']
+            'order' => ['sometimes', 'numeric:integer']
         ];
     }
 }

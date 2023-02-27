@@ -3,15 +3,19 @@
 namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\NewInfo;
 use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Laravel\Sanctum\Sanctum;
+use Tests\Feature\Utils\UserConnexion;
 use Tests\TestCase;
 
 class ApiNewInfosTest extends TestCase
 {
     // help :
     /*https://github.com/cnmichel/artichaut-backend/blob/feat/test/tests/Feature/ApiTest.php*/
+
+    public int $count = 0;
 
     /**
      * A basic test example.
@@ -25,64 +29,82 @@ class ApiNewInfosTest extends TestCase
         $response
             ->assertStatus(200)
             ->assertJsonIsArray();
+
+        $this->count = count($response->json());
+        //echo $this->count;
     }
 
 
     public function test_crud_on_api_news_admin()
     {
-        UserConnexion::
-        Sanctum::actingAs($admin);
+        UserConnexion::fakeAdmin();
+        $newInfo = NewInfo::factory()->definition();
+
+        // create
+        $post = $this->postJson('/api/new', $newInfo);
+
+        $post
+            ->assertCreated()
+            ->assertJson($newInfo);
 
 
-
-    }
-
-    public function test_crud_on_api_news_nonAdmin()
-    {
-        $any = User::factory()->create();
-        Sanctum::actingAs($any);
+        // prepare the futur
+        $id = $post->original->id;
 
 
+        // read
+        $getResp = $this->getJson('/api/new/'.$id);
 
-    }
-
-    public function test_api_new_get_by_id()
-    {
-        $id = 1;
-        $response = $this->getJson('/api/new/1');
-
-        $response
+        $getResp
+            ->assertStatus(200)
             ->assertJson(fn (AssertableJson $json) =>
-                $json->first(fn ($json) =>
-                    $json
-                        ->where('id', 1)
-                        ->where('title', 'Hero')
-                        ->where('uri', '/hero')
-                        ->etc()
-                    )
-                );
+            $json->hasAll(['id','title', 'description', 'url_image', 'order'])
+                ->whereAllType([
+                    'title' => 'string',
+                    'description' => 'string',
+                    'url_image' => 'string',
+                    'order' => 'number'
+                ])
+                ->etc()
+            );
+
+        // update
+        $payload = [
+            'title' => 'ACTU',
+            'description' => 'this is a description',
+            'url_image' => fake('fr_FR')->imageUrl(),
+            'order' => 99
+        ];
+
+        $putResp = $this->putJson('/api/new/'.$id, $payload);
+
+        $putResp
+            ->assertStatus(200)
+            ->assertJson(fn (AssertableJson $json) =>
+            $json->hasAll(['title', 'description', 'url_image', 'order'])
+                ->where('id', $id)
+                ->where('title', $payload['title'])
+                ->where('description', $payload['description'])
+                ->where('url_image', $payload['url_image'])
+                ->where('order', $payload['order'])
+                ->etc()
+            );
+
+
+        // delete
+        $delResp = $this->delete('api/new/'.$id);
+
+        $delResp
+            ->assertStatus(204);
+
+
+
+
     }
 
-    public function test_api_section_returns_error_on_post()
+    public function test_crud_on_api_news_fail_nonAdmin()
     {
-        $response = $this->postJson('/api/new', ['name'=>'tartempion']);
-
-        $response->assertStatus(405);
+        //UserConnexion::fakeUserCustomer();
     }
 
-
-    public function test_api_section_returns_error_on_put()
-    {
-        $response = $this->putJson('/api/new', ['name'=>'tartempion']);
-
-        $response->assertStatus(405);
-    }
-
-
-    public function test_api_section_returns_error_on_delete()
-    {
-        $response = $this->delete('/api/new');
-
-        $response->assertStatus(405);
-    }
 }
