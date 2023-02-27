@@ -25,4 +25,8 @@ class Customer extends Model
         return $this->belongsToMany(Review::class);
     }
 
+    function adresse() {
+        return $this->hasMany(Adresse::class, 'customer_id', 'id');
+    }
+
 }
