@@ -32,7 +32,7 @@ class UserController extends Controller
     public function store(UserCustomerPostRequest $request): JsonResponse
     {
         $validatedData = $request->validated();
-        $pseudo = $validatedData['first_name'] . $validatedData['last_name'];
+        $pseudo = ucfirst($validatedData['first_name']) . ucfirst($validatedData['last_name']);
         $user = new User([
             'email' => $validatedData['email'],
             'password' => $validatedData['password'],
