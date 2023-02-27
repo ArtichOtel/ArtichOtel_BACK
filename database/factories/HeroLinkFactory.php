@@ -16,9 +16,9 @@ class HeroLinkFactory extends Factory
      */
     public function definition()
     {
-        return [
+/*        return [
             'heroe_id' => fake()->numberBetween(1, 2),
             'link_id' => fake()->numberBetween(1, 2)
-        ];
+        ];*/
     }
 }
