@@ -15,4 +15,9 @@ class NewInfo extends Model
         'url_image',
         'order'
     ];
+
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array'
+    ];
 }
