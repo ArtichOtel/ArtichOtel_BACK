@@ -18,8 +18,10 @@ class OfferFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'description' => fake()->sentence(),
-            'url_image' => fake()->imageUrl(),
+            'description' => "Lorem ipsum dolor sit amet consectetur. Pretium gravida non integer magna.\n
+            Nibh facilisi eget justo tristique.\n
+            Nunc purus vehicula curabitur egestas.",
+            'url_image' => config('app.url') . '/img/offer.jpg',
             'begin_date' => fake()->date(),
             'end_date' => fake()->date()
         ];

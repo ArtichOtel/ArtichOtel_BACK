@@ -6,6 +6,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | DeepL Auth Key
+    |--------------------------------------------------------------------------
+    |
+    | https://github.com/DeepLcom/deepl-php
+    |
+    | usage:
+    |   $translator = new DeepL\Translator(config("app.deepl_auth"));
+    |   $result = $translator->translateText('Hello, world!', null, 'fr');
+    |   echo $result->text; // Bonjour, le monde!
+    |
+    */
+    'deepl_auth' => env('DEEPL_AUTH'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
     |
@@ -54,7 +69,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://127.0.0.1'),
+    'url' => env('APP_URL'),
 
     'asset_url' => env('ASSET_URL'),
 

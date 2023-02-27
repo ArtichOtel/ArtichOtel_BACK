@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\API\User;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\User\UserCustomerPostRequest;
 
 class UserController extends Controller
 {
@@ -27,10 +29,29 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function store(): JsonResponse
+    public function store(UserCustomerPostRequest $request): JsonResponse
     {
-        // add new user SPRINT 2
-        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
+        $validatedData = $request->validated();
+        $pseudo = ucfirst($validatedData['first_name']) . ucfirst($validatedData['last_name']);
+        $user = new User([
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password'],
+            'pseudo' => $validatedData['pseudo'] ? $validatedData['pseudo'] : $pseudo,
+            'role_id' => $validatedData['role_id'],
+        ]);
+
+        $user->save();
+
+
+        $customer = new Customer(
+            [
+                'first_name' => $validatedData['first_name'],
+                'last_name' => $validatedData['last_name'],
+                'user_id' => $user->id,
+            ]
+        );
+        $customer->save();
+        return response()->json([$user, $customer], Response::HTTP_CREATED);
     }
 
     /**
