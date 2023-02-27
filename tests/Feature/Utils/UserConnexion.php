@@ -30,7 +30,7 @@ class UserConnexion
     /**
      * Acting as the user 'Admin' with its abillity.
      */
-    public static function fakeUserAdmin(): void
+    public static function fakeAdmin(): void
     {
         /* It's getting the user with the pseudo Admin. */
         $user = User::query()
@@ -46,7 +46,7 @@ class UserConnexion
     /**
      * Acting as the user 'Admin' with its abillity.
      */
-    public static function fakeUserCustomer(): void
+    public static function fakeUser(): void
     {
         /* It's getting the user with the pseudo Admin. */
         $user = User::query()

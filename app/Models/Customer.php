@@ -14,17 +14,15 @@ class Customer extends Model
         'last_name',
         'phone_number',
         'lang',
-        'avatar_url',
-        'user_id'
+        'avatar_url'
     ];
 
-    function user()
-    {
+    function user() {
         return $this->hasOne(User::class);
     }
 
-    function review()
-    {
+    function review() {
         return $this->belongsToMany(Review::class);
     }
+
 }

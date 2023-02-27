@@ -14,7 +14,7 @@ class AdminConnectedTest extends TestCase
    */
   public function test_get_user()
   {
-    UserConnexion::fakeUserAdmin();
+    UserConnexion::fakeAdmin();
 
     $response = $this->get('/api/user');
     $response->assertOk();
@@ -26,7 +26,7 @@ class AdminConnectedTest extends TestCase
    */
   public function test_get_user_logout()
   {
-    UserConnexion::fakeUserAdmin();
+    UserConnexion::fakeAdmin();
 
     $response = $this->get('/api/user/logout');
     $response->assertStatus(200);

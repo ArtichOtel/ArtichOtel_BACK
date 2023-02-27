@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('first_name', 45);
-            $table->string('last_name', 45);
-            $table->string('phone_number', 10)->unique()->nullable();
-            $table->string('lang', 10)->nullable();
-            $table->string('avatar_url', 255)->unique()->nullable();
+            $table->string('first_name',45);
+            $table->string('last_name',45);
+            $table->string('phone_number',10)->unique();
+            $table->string('lang',10);
+            $table->string('avatar_url',255)->unique();
             $table->foreignId('user_id')->constrained();
         });
     }

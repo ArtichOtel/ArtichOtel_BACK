@@ -15,7 +15,6 @@ class User extends Authenticatable
         'email',
         'pseudo',
         'password',
-        'role_id'
     ];
 
     protected $hidden = [
@@ -27,13 +26,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime'
     ];
 
-    function role()
-    {
+    function role() {
         return $this->hasOne(Role::class);
     }
 
-    function customer()
-    {
+    function customer() {
         return $this->belongsTo(Customer::class);
     }
 }

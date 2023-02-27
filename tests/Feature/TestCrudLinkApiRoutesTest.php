@@ -19,7 +19,7 @@ class TestCrudLinkApiRoutesTest extends TestCase
   {
 
 
-    UserConnexion::fakeUserAdmin();
+    UserConnexion::fakeAdmin();
 
     // Create a link 
 
