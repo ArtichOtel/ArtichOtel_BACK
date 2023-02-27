@@ -19,7 +19,7 @@ class TestUserForbbidenApiRoutes extends TestCase
   {
 
 
-    UserConnexion::fakeUser();
+    UserConnexion::fakeUserCustomer();
 
     // Create a link 
 
