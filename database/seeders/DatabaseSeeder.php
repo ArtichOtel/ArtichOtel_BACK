@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             HeroSeeder::class,
             FooterSeeder::class,
             SectionSeeder::class,
+            LinkSeeder::class
         ]);
     }
 }
