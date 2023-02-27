@@ -40,6 +40,7 @@ Route::apiResource('/video', VideoController::class)->only(['index']);
 Route::apiResource('/reviews', ReviewController::class)->only(['index']);
 Route::apiResource('/footers', FooterController::class)->only(['index']);
 Route::apiResource('/links', LinkController::class)->only(['index']);
+Route::apiResource('/user/register', UserController::class)->only(['store']);
 
 Route::post('/user/login', LoginController::class);
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -51,7 +52,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 // GOD admin routes
 Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
-    Route::apiResource('user', UserController::class);
+    Route::apiResource('user', UserController::class)->except(['store']);
     Route::apiResource('hero', HeroController::class)->except(['index']);
     Route::apiResource('offer', OfferController::class)->except(['index']);
     Route::apiResource('advantage', AdvantageController::class)->except(['index']);
