@@ -14,4 +14,9 @@ class Video extends Model
         'description',
         'url_video'
     ];
+
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array'
+    ];
 }
