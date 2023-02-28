@@ -18,7 +18,10 @@ class FooterFactory extends Factory
     {
         static $order = 1;
         return [
-            'title' => fake()->name(),
+            'title' => [
+                'fr_FR' => fake()->name(),
+                'en_EN' => fake()->name()
+            ],
             'order' => $order++
         ];
     }

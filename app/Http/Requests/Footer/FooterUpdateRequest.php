@@ -24,7 +24,8 @@ class FooterUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['sometimes', 'max:60', 'string:ascii'],
+            'title' => ['sometimes', 'array'],
+            'title.*' => ['sometimes', 'max:60', 'string:ascii'],
             'order' => ['sometimes', 'numeric:integer'],
         ];
     }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title', 60);
+            $table->json('title');
             $table->integer('order');
         });
     }

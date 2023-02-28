@@ -24,7 +24,8 @@ class FooterPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:60', 'string:ascii'],
+            'title' => ['required', 'array'],
+            'title.*' => ['required', 'max:60', 'string:ascii'],
             'order' => ['required', 'numeric:integer'],
         ];
     }
