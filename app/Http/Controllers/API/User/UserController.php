@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\User\UserCustomerPostRequest;
+use App\Notifications\RegisterLogin;
 
 class UserController extends Controller
 {
@@ -51,6 +52,7 @@ class UserController extends Controller
             ]
         );
         $customer->save();
+        $user->notify(new RegisterLogin());
         return response()->json([$user, $customer], Response::HTTP_CREATED);
     }
 
