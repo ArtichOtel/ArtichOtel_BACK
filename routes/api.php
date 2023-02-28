@@ -63,6 +63,7 @@ Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
     Route::apiResource('footer', FooterController::class)->except(['index']);
     Route::apiResource('link', LinkController::class)->except(['index']);
     Route::apiResource('/optional-services', OptionalServiceController::class)->except(['index']);
+    Route::apiResource('/bookings', LinkController::class)->only(['index', 'update']);
 });
 
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->json('text');
             $table->longText('url');
-            $table->string('icon', 20);
+            $table->string('icon', 30)->nullable();
         });
     }
 
