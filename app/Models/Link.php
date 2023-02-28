@@ -15,6 +15,10 @@ class Link extends Model
         'icon'
     ];
 
+    protected $casts = [
+        'text' => 'array'
+    ];
+
     public function footers()
     {
         return $this->belongsToMany(Footer::class);

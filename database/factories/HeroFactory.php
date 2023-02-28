@@ -20,9 +20,15 @@ class HeroFactory extends Factory
     public function definition()
     {
         return [
-            'title' => 'Hôtel L\'Artichaut',
-            'subtitle' => 'Le confort que vous méritez sainement',
-            'url_image' => config("app.url") . '/img/base_hero.png', // TODO: Changing to env('APP_URL')
+            'title' => [
+                'fr_FR' => "Hôtel L'Artichaut",
+                'en_EN' => "L'Artichaut Hotel"
+            ],
+            'subtitle' => [
+                'fr_FR' => "Le confort que vous méritez sainement",
+                'en_EN' => "The comfort you healthily deserve"
+            ],
+            'url_image' => config("app.url") . '/img/base_hero.png',
         ];
     }
 }

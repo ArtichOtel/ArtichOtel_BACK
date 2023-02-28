@@ -17,8 +17,11 @@ class LinkFactory extends Factory
     public function definition()
     {
         return [
-            'text' => fake()->text(20),
-            'url' => fake()->url(255),
+            'text' => [
+                'fr_FR' => fake()->text(20),
+                'en_EN' => fake()->text(20),
+            ],
+            'url' => fake()->url(),
             'icon' => fake()->text(20)
         ];
     }
