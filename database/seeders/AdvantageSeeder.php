@@ -18,7 +18,7 @@ class AdvantageSeeder extends Seeder
         Advantage::create([
             'title' => 'Proximitée',
             'description' => "Proximité\nAutoroute\nAéroport",
-            'icon' => 'proximity',
+            'icon' => 'airplane',
             'order' => 1
         ]);
 
@@ -32,14 +32,14 @@ class AdvantageSeeder extends Seeder
         Advantage::create([
             'title' => 'Le calme de la campagne',
             'description' => "Loin du bruit,\nDans un cadre de verdure,\ncalme et reposant.",
-            'icon' => 'calm',
+            'icon' => 'tree',
             'order' => 3
         ]);
 
         Advantage::create([
             'title' => 'Petit déjeuner',
             'description' => "Sucré et salé, il est composé de sorte à ce que chacun y trouve son bonheur et se régale.",
-            'icon' => 'breakfast',
+            'icon' => 'coffee',
             'order' => 4
         ]);
 

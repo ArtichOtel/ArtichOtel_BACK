@@ -22,7 +22,7 @@ class HeroFactory extends Factory
         return [
             'title' => "Hôtel L'Artichaut",
             'subtitle' => "Le confort que vous méritez sainement",
-            'url_image' => config("app.url") . '/img/base_hero.png', // TODO: Changing to env('APP_URL')
+            'url_image' => config("app.url") . '/img/base_hero.png',
         ];
     }
 }
