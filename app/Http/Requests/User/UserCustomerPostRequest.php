@@ -29,6 +29,7 @@ class UserCustomerPostRequest extends FormRequest
             'pseudo' => ['nullable', 'string:ascii', 'max:45'],
             'first_name' => ['required', 'string:ascii', 'max:45'],
             'last_name' => ['required', 'string:ascii', 'max:45'],
+            'lang' => ['required', 'string:ascii']
         ];
     }
 }
