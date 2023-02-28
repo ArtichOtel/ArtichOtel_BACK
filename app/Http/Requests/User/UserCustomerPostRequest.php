@@ -27,7 +27,6 @@ class UserCustomerPostRequest extends FormRequest
             'email' => ['required', 'email:rfc,dns'],
             'password' => ['required', 'string:ascii', 'max:100'],
             'pseudo' => ['nullable', 'string:ascii', 'max:45'],
-            'role_id' => ['required', 'numeric:integer'],
             'first_name' => ['required', 'string:ascii', 'max:45'],
             'last_name' => ['required', 'string:ascii', 'max:45'],
         ];

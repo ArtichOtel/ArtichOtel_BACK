@@ -34,11 +34,12 @@ class UserController extends Controller
     {
         $validatedData = $request->validated();
         $pseudo = ucfirst($validatedData['first_name']) . ucfirst($validatedData['last_name']);
+        $role_id = 2;
         $user = new User([
             'email' => $validatedData['email'],
             'password' => $validatedData['password'],
             'pseudo' => $validatedData['pseudo'] ?: $pseudo,
-            'role_id' => $validatedData['role_id'],
+            'role_id' => $role_id,
         ]);
 
         $user->save();
