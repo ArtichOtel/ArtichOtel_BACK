@@ -18,7 +18,6 @@ class RegisterLogin extends Notification
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -40,12 +39,17 @@ class RegisterLogin extends Notification
      */
     public function toMail($notifiable)
     {
+        // $url = url('')
+        // dd($notifiable);
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action Register', url('/'))
-            ->line('Thank you for using our application!');
+            ->subject('Inscription réussite !')
+            ->greeting('Bonjour ' . $notifiable['pseudo'])
+            ->line('Vos informations de connexion : ')
+            ->line('Email : ' . $notifiable['email'])
+            ->line('Password : ' . $notifiable['password'])
+            ->action('Connectez-vous ', url('https://artichotel.fr/'))
+            ->line('Merci pour votre inscription !');
     }
-
     /**
      * Get the array representation of the notification.
      *

@@ -43,7 +43,6 @@ class UserController extends Controller
 
         $user->save();
 
-
         $customer = new Customer(
             [
                 'first_name' => $validatedData['first_name'],
