@@ -15,40 +15,60 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-/*        Section::create([
-            "title" => "Header",
-            "uri" => "header"
-        ]);*/
         Section::create([
-            "title" => "Hero",
+            'title' => [
+                'fr_FR' => 'Hero',
+                'en_EN' => 'Hero'
+            ],
             "uri" => "/hero"
         ]);
         Section::create([
-            "title" => "Offres du moment",
+            'title' => [
+                'fr_FR' => 'Offres du moment',
+                'en_EN' => 'Current offers'
+            ],
             "uri" => "/offers"
         ]);
         Section::create([
-            "title" => "Nos services",
+            'title' => [
+                'fr_FR' => 'Nos services',
+                'en_EN' => 'Our services'
+            ],
             "uri" => "/advantages"
         ]);
         Section::create([
-            "title" => "Actualités",
+            'title' => [
+                'fr_FR' => 'Actualités',
+                'en_EN' => 'News'
+            ],
             "uri" => "/news"
         ]);
         Section::create([
-            "title" => "Avis",
+            'title' => [
+                'fr_FR' => 'Avis',
+                'en_EN' => 'Reviews'
+            ],
             "uri" => "/reviews"
         ]);
         Section::create([
-            "title" => "Nos chambres",
+            'title' => [
+                'fr_FR' => 'Nos chambres',
+                'en_EN' => 'Our rooms'
+            ],
             "uri" => "/room-types"
         ]);
         Section::create([
-            "title" => "Visite guidée",
+            'title' => [
+                'fr_FR' => 'Visite guidée',
+                'en_EN' => 'Guided tour'
+            ],
             "uri" => "/video"
         ]);
         Section::create([
-            "title" => "Footers",
+            'title' => [
+                'fr_FR' => 'Footers',
+                'en_EN' => 'Footers'
+            ],
             "uri" => "/footers"
         ]);
     }
