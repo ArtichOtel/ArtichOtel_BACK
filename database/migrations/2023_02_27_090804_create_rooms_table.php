@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->integer('number');
             $table->foreignId('roomstypes_id')->constrained('rooms_types');
         });

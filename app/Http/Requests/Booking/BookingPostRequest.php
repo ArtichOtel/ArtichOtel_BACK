@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Booking;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserCustomerPostRequest extends FormRequest
+class BookingPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,10 @@ class UserCustomerPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email:rfc,dns'],
-            'password' => ['required', 'string:ascii', 'max:100'],
-            'pseudo' => ['nullable', 'string:ascii', 'max:45'],
-            'first_name' => ['required', 'string:ascii', 'max:45'],
-            'last_name' => ['required', 'string:ascii', 'max:45'],
+            'begin_date' => ['required', 'date'],
+            'end_date' => ['required', 'date'],
+            'rooms_id' => ['required', 'numeric:integer'],
+            'customers_id' => ['required', 'numeric:integer'],
         ];
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Hero\HeroController;
 use App\Http\Controllers\API\Link\LinkController;
 use App\Http\Controllers\API\User\UserController;
+use App\Http\Controllers\API\Rooms\RoomController;
 use App\Http\Controllers\API\User\LoginController;
 use App\Http\Controllers\API\Offer\OfferController;
 use App\Http\Controllers\API\User\LogoutController;
@@ -41,6 +42,7 @@ Route::apiResource('/reviews', ReviewController::class)->only(['index']);
 Route::apiResource('/footers', FooterController::class)->only(['index']);
 Route::apiResource('/links', LinkController::class)->only(['index']);
 Route::apiResource('/user/register', UserController::class)->only(['store']);
+Route::apiResource('/rooms', RoomController::class);
 
 Route::post('/user/login', LoginController::class);
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -61,6 +63,7 @@ Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
     //Route::apiResource('review', ReviewController::class)->except(['index']);        // SPRINT 2
     Route::apiResource('footer', FooterController::class)->except(['index']);
     Route::apiResource('link', LinkController::class)->except(['index']);
+    Route::apiResource('/bookings', LinkController::class)->only(['index', 'update']);
 });
 
 
