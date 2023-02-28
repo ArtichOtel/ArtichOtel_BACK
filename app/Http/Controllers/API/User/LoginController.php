@@ -21,8 +21,8 @@ class LoginController extends Controller
     {
         try {
             if (
-                !Auth::attempt($request->only(['pseudo', 'password']))
-                && !Auth::attempt($request->only(['email', 'password']))
+                !Auth::attempt($request(['pseudo', 'password']))
+                && !Auth::attempt($request(['email', 'password']))
             ) {
                 return response()->json([
                     'message' => 'Pseudo or email or password does not match.',

@@ -24,8 +24,8 @@ class LoginPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'pseudo' => ['sometimes', 'string', 'max:45'],
-            'email' => ['sometimes'],
+            'pseudo' => ['string', 'max:45'],
+            'email' => ['email'],
             'password' => ['required', 'string', 'max:100']
         ];
     }
