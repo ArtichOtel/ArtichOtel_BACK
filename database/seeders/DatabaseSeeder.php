@@ -37,10 +37,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CustomerSeeder::class,
             ReviewSeeder::class,
+            LinkSeeder::class,
             HeroSeeder::class,
             FooterSeeder::class,
-            SectionSeeder::class,
-            LinkSeeder::class
+            SectionSeeder::class
         ]);
     }
 }

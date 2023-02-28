@@ -16,7 +16,7 @@ class HeroSeeder extends Seeder
     public function run()
     {
 
-        Hero::factory()->count(1)->create();
+        Hero::factory()->create();
 
          foreach (Hero::all() as $hero) {
              foreach (Link::all() as $link) {
