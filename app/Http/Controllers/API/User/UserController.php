@@ -37,7 +37,7 @@ class UserController extends Controller
         $user = new User([
             'email' => $validatedData['email'],
             'password' => $validatedData['password'],
-            'pseudo' => $validatedData['pseudo'] ? $validatedData['pseudo'] : $pseudo,
+            'pseudo' => $validatedData['pseudo'] ?: $pseudo,
             'role_id' => $validatedData['role_id'],
         ]);
 

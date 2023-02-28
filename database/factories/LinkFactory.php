@@ -16,10 +16,10 @@ class LinkFactory extends Factory
      */
     public function definition()
     {
-        return [
+/*        return [
             'text' => fake()->text(20),
             'url' => fake()->url(255),
             'icon' => fake()->text(20)
-        ];
+        ];*/
     }
 }
