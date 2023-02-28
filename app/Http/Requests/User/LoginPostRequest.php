@@ -25,7 +25,7 @@ class LoginPostRequest extends FormRequest
     {
         return [
             'pseudo' => ['sometimes','string', 'max:45'],
-            'email' => ['sometimes','email'],
+            'email' => ['sometimes','string'],
             'password' => ['required', 'string', 'max:100']
         ];
     }
