@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\HeroSeeder;
 use Database\Seeders\RoleSeeder;
+use Database\Seeders\RoomSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\FooterSeeder;
 use Database\Seeders\ReviewSeeder;
@@ -40,7 +41,8 @@ class DatabaseSeeder extends Seeder
             LinkSeeder::class,
             HeroSeeder::class,
             FooterSeeder::class,
-            SectionSeeder::class
+            SectionSeeder::class,
+            RoomSeeder::class
         ]);
     }
 }
