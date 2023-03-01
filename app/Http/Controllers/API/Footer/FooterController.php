@@ -27,14 +27,14 @@ class FooterController extends Controller
         // $footers = Footer::all();
 
         $urls = Link::query()
-            ->select('links.id', 'links.url', 'links.text', 'links.icon')
-            ->join('footer_link', 'footer_link.id', '=', 'links.id')
+            ->select('links.id', 'links.url', 'links.text', 'links.icon', 'footers.id AS footer_id')
+            ->join('footer_link', 'footer_link.link_id', '=', 'links.id')
             ->join('footers', 'footers.id', '=', 'footer_link.footer_id')
             ->get();
 
 
         $footer = Footer::query()
-            ->select('title', 'order')
+            ->select('footers.title', 'footers.order')
             ->get();
 
         // Return all information Footers in JSON
