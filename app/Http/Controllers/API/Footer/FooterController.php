@@ -6,6 +6,7 @@ use App\Models\Footer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Footer\FooterPostRequest;
 use App\Http\Requests\Footer\FooterUpdateRequest;
+use App\Models\Link;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,16 +26,19 @@ class FooterController extends Controller
         // Recup all Footers
         // $footers = Footer::all();
 
-        $urls = Footer::query()
-            ->select('footers.id AS footers_id', 'footers.title', 'footers.order', 'links.id AS links_id', 'links.url', 'links.text', 'links.icon')
-            ->join('footer_link', 'footers.id', '=', 'footer_link.footer_id')
-            ->join('links', 'links.id', '=', 'footer_link.link_id')
-            ->orderBy('footers.order')
+        $urls = Link::query()
+            ->select('links.id', 'links.url', 'links.text', 'links.icon')
+            ->join('footer_link', 'footer_link.id', '=', 'links.id')
+            ->join('footers', 'footers.id', '=', 'footer_link.footer_id')
             ->get();
 
 
+        $footer = Footer::query()
+            ->select('title', 'order')
+            ->get();
+
         // Return all information Footers in JSON
-        return response()->json($urls, Response::HTTP_OK);
+        return response()->json([$footer, $urls], Response::HTTP_OK);
     }
 
 

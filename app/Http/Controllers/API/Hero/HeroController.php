@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Hero\HeroUpdateRequest;
+use App\Models\Link;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -23,10 +24,10 @@ class HeroController extends Controller
     {
         // Recup all Heros & Links
 
-        $urls =  Hero::query()
+        $urls =  Link::query()
             ->select('links.id', 'links.url', 'links.text', 'links.icon')
-            ->join('hero_link', 'heroes.id', '=', 'hero_link.hero_id')
-            ->join('links', 'hero_link.link_id', '=', 'links.id')
+            ->join('hero_link', 'hero_link.link_id', '=', 'links.id')
+            ->join('heroes', 'heroes.id', '=', 'hero_link.hero_id')
             ->get();
 
         $hero = Hero::query()
