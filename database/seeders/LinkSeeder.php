@@ -17,38 +17,56 @@ class LinkSeeder extends Seeder
     {
         // hero's links
         Link::create([
-            'text' => 'Je réserve',
+            'text' => [
+                'fr_FR' => 'Je réserve',
+                'en_EN' => 'I book'
+            ],
             'url' => "/booking",
             'icon' => "",
         ]);
 
         Link::create([
-            'text' => 'Choisir ma chambre',
+            'text' => [
+                'fr_FR' => 'Choisir ma chambre',
+                'en_EN' => 'I choose my room'
+            ],
             'url' => "/booking",
             'icon' => "",
         ]);
 
         // footer's links col 1
         Link::create([
-            'text' => 'Accueil',
+            'text' => [
+                'fr_FR' => 'Accueil',
+                'en_EN' => 'Home'
+            ],
             'url' => "/",
             'icon' => "",
         ]);
 
         Link::create([
-            'text' => 'À propos',
+            'text' => [
+                'fr_FR' => 'À propos',
+                'en_EN' => 'About'
+            ],
             'url' => "/about",
             'icon' => "",
         ]);
 
         Link::create([
-            'text' => 'Actualités',
+            'text' => [
+                'fr_FR' => 'Actualités',
+                'en_EN' => 'News'
+            ],
             'url' => "#news",
             'icon' => "",
         ]);
 
         Link::create([
-            'text' => 'Réservations',
+            'text' => [
+                'fr_FR' => 'Réservations',
+                'en_EN' => 'Bookings'
+            ],
             'url' => "/booking",
             'icon' => "",
         ]);
@@ -56,19 +74,28 @@ class LinkSeeder extends Seeder
 
         // footer's links col 2
         Link::create([
-            'text' => '(+33) 4 75 00 00 00',
+            'text' => [
+                'fr_FR' => '(+33) 4 75 00 00 00',
+                'en_EN' => '(+33) 4 75 00 00 00'
+            ],
             'url' => "tel:+33475000000",
             'icon' => 'phone-light',
         ]);
 
         Link::create([
-            'text' => '25 chemin du Verger, 30870 Clarensac',
+            'text' => [
+                'fr_FR' => '25 chemin du Verger, 30870 Clarensac',
+                'en_EN' => '25 chemin du Verger, 30870 Clarensac'
+            ],
             'url' => "",
             'icon' => 'map-marker',
         ]);
 
         Link::create([
-            'text' => 'info@hotelartichaut.fr',
+            'text' => [
+                'fr_FR' => 'info@hotelartichaut.fr',
+                'en_EN' => 'info@hotelartichaut.fr'
+            ],
             'url' => 'mailto:info@hotelartichaut.fr',
             'icon' => 'envelope-thin',
         ]);
@@ -76,13 +103,19 @@ class LinkSeeder extends Seeder
 
         // footer's links col 3
         Link::create([
-            'text' => 'Instagram',
+            'text' => [
+                'fr_FR' => 'Instagram',
+                'en_EN' => 'Instagram'
+            ],
             'url' => "https://www.instagram.com/techprevue",
             'icon' => 'instagram',
         ]);
 
         Link::create([
-            'text' => 'Facebook',
+            'text' => [
+                'fr_FR' => 'Facebook',
+                'en_EN' => 'Facebook'
+            ],
             'url' => "https://www.facebook.fr/artichotel",
             'icon' => 'facebook',
         ]);
