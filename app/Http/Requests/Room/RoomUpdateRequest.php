@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Room;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginPostRequest extends FormRequest
+class RoomUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class LoginPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'pseudo' => ['sometimes','string', 'max:45'],
-            'email' => ['sometimes','email'],
-            'password' => ['required', 'string', 'max:100']
+            'number' => ['sometimes', 'numeric:integer'],
         ];
     }
 }

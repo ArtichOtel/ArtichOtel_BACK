@@ -20,9 +20,12 @@ class LoginController extends Controller
     public function __invoke(LoginPostRequest $request): JsonResponse
     {
         try {
-            if (!Auth::attempt($request->only(['pseudo', 'password']))) {
+            if (
+                !Auth::attempt($request->all(['pseudo', 'password']))
+                && !Auth::attempt($request->all(['email', 'password']))
+            ) {
                 return response()->json([
-                    'message' => 'Pseudo or password does not match.',
+                    'message' => 'Pseudo or email or password does not match.',
                 ], Response::HTTP_BAD_REQUEST);
             }
 

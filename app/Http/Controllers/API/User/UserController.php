@@ -6,9 +6,10 @@ use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Notifications\RegisterLogin;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\User\UserCustomerPostRequest;
-use App\Notifications\RegisterLogin;
 
 class UserController extends Controller
 {
@@ -34,11 +35,12 @@ class UserController extends Controller
     {
         $validatedData = $request->validated();
         $pseudo = ucfirst($validatedData['first_name']) . ucfirst($validatedData['last_name']);
+        $role_id = 2;
         $user = new User([
             'email' => $validatedData['email'],
-            'password' => $validatedData['password'],
+            'password' => Hash::make($validatedData['password']),
             'pseudo' => $validatedData['pseudo'] ?: $pseudo,
-            'role_id' => $validatedData['role_id'],
+            'role_id' => $role_id,
         ]);
 
         $user->save();
@@ -47,6 +49,7 @@ class UserController extends Controller
             [
                 'first_name' => $validatedData['first_name'],
                 'last_name' => $validatedData['last_name'],
+                'lang' => $validatedData['lang'],
                 'user_id' => $user->id,
             ]
         );
