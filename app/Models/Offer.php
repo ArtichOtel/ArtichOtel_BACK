@@ -16,4 +16,9 @@ class Offer extends Model
         'begin_date',
         'end_date'
     ];
+
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array'
+    ];
 }

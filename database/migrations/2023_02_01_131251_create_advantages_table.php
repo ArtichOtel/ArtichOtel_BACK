@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('advantages', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 60);
-            $table->string('description', 300);
+            $table->json('title');
+            $table->json('description');
             $table->string('icon', 20);
             $table->integer('order');
             $table->timestamps();

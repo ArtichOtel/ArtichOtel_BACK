@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Footer;
+namespace App\Http\Requests\OptionalService;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FooterPostRequest extends FormRequest
+class OptionalServiceUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class FooterPostRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,9 +24,11 @@ class FooterPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'array'],
-            'title.*' => ['required', 'max:60', 'string:ascii'],
-            'order' => ['required', 'numeric:integer'],
+            'name' => ['sometimes', 'array'],
+            'name.*' => ['sometimes', 'string:ascii', 'max:100'],
+            'u_price' => ['sometimes', 'numeric'],
+            'by_person' => ['sometimes', 'boolean'],
+            'nb_day' => ['sometimes', 'numeric:integer']
         ];
     }
 }

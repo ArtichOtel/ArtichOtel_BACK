@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('heroes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title', 60);
-            $table->string('subtitle', 60);
+            $table->json('title');
+            $table->json('subtitle');
             $table->longText('url_image');
         });
     }

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('optional_services', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->json('name');
             $table->float('u_price');
             $table->boolean('by_person');
             $table->integer('nb_day');

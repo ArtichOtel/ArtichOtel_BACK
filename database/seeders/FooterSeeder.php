@@ -26,15 +26,24 @@ class FooterSeeder extends Seeder
         }*/
 
         Footer::create([
-            'title' => "Hôtel l'Artichaut",
+            'title' => [
+                'fr_FR' => "Hôtel L'Artichaut",
+                'en_EN' => "L'Artichaut Hotel"
+            ],
             'order' => 1
         ]);
         Footer::create([
-            'title' => "Contact",
+            'title' => [
+                'fr_FR' => "Contact",
+                'en_EN' => "Contact"
+            ],
             'order' => 2
         ]);
         Footer::create([
-            'title' => "Réseaux sociaux",
+            'title' => [
+                'fr_FR' => "Réseaux sociaux",
+                'en_EN' => "Social Networks"
+            ],
             'order' => 3
         ]);
 

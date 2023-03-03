@@ -24,8 +24,10 @@ class OfferPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:60', 'string:ascii'],
-            'description' => ['required', 'max:300', 'string:ascii'],
+            'title' => ['required', 'array'],
+            'title.*' => ['required', 'max:60', 'string:ascii'],
+            'description' => ['required', 'array'],
+            'description.*' => ['required', 'max:300', 'string:ascii'],
             'url_image' => ['required', 'max:255', 'url'],
             'begin_date' => ['sometimes', 'date'],
             'end_date' => ['sometimes', 'date']

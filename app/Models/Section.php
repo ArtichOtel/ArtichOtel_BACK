@@ -13,4 +13,8 @@ class Section extends Model
         'title',
         'uri'
     ];
+
+    protected $casts = [
+        'title' => 'array'
+    ];
 }

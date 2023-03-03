@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Advantage;
+namespace App\Http\Requests\Video;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdvantageUpdateRequest extends FormRequest
+class VideoUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,7 @@ class AdvantageUpdateRequest extends FormRequest
             'title.*' => ['sometimes', 'max:60', 'string:ascii'],
             'description' => ['sometimes', 'array'],
             'description.*' => ['sometimes', 'max:300', 'string:ascii'],
-            'icon' => ['sometimes', 'max:20', 'string:ascii'],
-            'order' => ['sometimes', 'numeric:integer'],
+            'url_video' => ['sometimes', 'max:255', 'url'],
         ];
     }
 }

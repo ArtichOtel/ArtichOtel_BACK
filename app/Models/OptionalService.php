@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class OptionalService extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'description',
-        'url_video'
+        'name',
+        'u_price',
+        'by_person',
+        'nb_day'
     ];
 
     protected $casts = [
-        'title' => 'array',
-        'description' => 'array'
+        'name' => 'array'
     ];
 }

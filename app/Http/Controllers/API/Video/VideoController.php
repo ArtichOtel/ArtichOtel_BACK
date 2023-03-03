@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API\Video;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Video\VideoUpdateRequest;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\Request;
 use App\Models\Video;
 
 class VideoController extends Controller
@@ -46,25 +46,17 @@ class VideoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Video $video
-     * @return JsonResponse
+     * @param VideoUpdateRequest $request The request object.
+     * @param Video $video The model that we're updating.
+     * 
+     * @return JsonResponse that was updated.
      */
-    public function update(Request $request, Video $video): JsonResponse
+    public function update(VideoUpdateRequest $request, Video $video): JsonResponse
     {
-        $request->validate([
-            'title' => 'required|max:60',
-            'description' => 'required|max:300',
-            'url_video' => 'required|max:255',
-        ]);
+        $validatedData = $request->validated();
+        $video->update($validatedData);
 
-        $video->title = $request->get('title');
-        $video->description = $request->get('description');
-        $video->url_video = $request->get('url_video');
-
-        $video->save();
-
-        return response()->json($video);
+        return response()->json($video, Response::HTTP_OK);
     }
 
     /**
