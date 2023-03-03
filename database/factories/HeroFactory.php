@@ -25,8 +25,8 @@ class HeroFactory extends Factory
                 'en_EN' => "L'Artichaut Hotel"
             ],
             'subtitle' => [
-                'fr_FR' => "Le confort que vous méritez sainement",
-                'en_EN' => "The comfort you healthily deserve"
+                'fr_FR' => "Le confort que vous méritez, sainement",
+                'en_EN' => "The comfort you deserve, healthily"
             ],
             'url_image' => config("app.url") . '/img/base_hero.png',
         ];
