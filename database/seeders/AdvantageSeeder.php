@@ -21,8 +21,8 @@ class AdvantageSeeder extends Seeder
                 'en_EN' => 'Proximity'
             ],
             'description' => [
-                'fr_FR' => "Proximité\nAutoroute\nAéroport",
-                'en_EN' => "Proximity\nHighway\nAirport"
+                'fr_FR' => "À 5min de l'autoroute, à 15min de l'aéroport.",
+                'en_EN' => "Just 5min from the highway and 15min from the airport."
             ],
             'icon' => 'proximity',
             'order' => 1

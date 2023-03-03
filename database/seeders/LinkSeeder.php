@@ -22,7 +22,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => 'I book'
             ],
             'url' => "/booking",
-            'icon' => "",
+            'icon' => null,
         ]);
 
         Link::create([
@@ -31,7 +31,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => 'I choose my room'
             ],
             'url' => "/booking",
-            'icon' => "",
+            'icon' => null,
         ]);
 
         // footer's links col 1
@@ -41,7 +41,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => 'Home'
             ],
             'url' => "/",
-            'icon' => "",
+            'icon' => null,
         ]);
 
         Link::create([
@@ -50,7 +50,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => 'About'
             ],
             'url' => "/about",
-            'icon' => "",
+            'icon' => null,
         ]);
 
         Link::create([
@@ -59,7 +59,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => 'News'
             ],
             'url' => "#news",
-            'icon' => "",
+            'icon' => null,
         ]);
 
         Link::create([
@@ -68,7 +68,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => 'Bookings'
             ],
             'url' => "/booking",
-            'icon' => "",
+            'icon' => null,
         ]);
 
 
