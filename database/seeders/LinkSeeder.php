@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Link;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class LinkSeeder extends Seeder
 {
@@ -79,7 +78,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => '(+33) 4 75 00 00 00'
             ],
             'url' => "tel:+33475000000",
-            'icon' => 'phone-light',
+            'icon' => 'call',
         ]);
 
         Link::create([
@@ -88,7 +87,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => '25 chemin du Verger, 30870 Clarensac'
             ],
             'url' => "",
-            'icon' => 'map-marker',
+            'icon' => 'location-pin',
         ]);
 
         Link::create([
@@ -97,7 +96,7 @@ class LinkSeeder extends Seeder
                 'en_EN' => 'info@hotelartichaut.fr'
             ],
             'url' => 'mailto:info@hotelartichaut.fr',
-            'icon' => 'envelope-thin',
+            'icon' => 'sms',
         ]);
 
 
