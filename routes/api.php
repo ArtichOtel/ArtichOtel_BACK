@@ -45,7 +45,7 @@ Route::apiResource('/links', LinkController::class)->only(['index']);
 Route::apiResource('/optional-services', OptionalServiceController::class)->only(['index']);
 Route::apiResource('/user/register', UserController::class)->only(['store']);
 Route::apiResource('/rooms', RoomController::class);
-Route::apiResource('/booking/search', BookingSelectionController::class)->only(['index']);
+Route::get('/search', BookingSelectionController::class);
 Route::post('/user/login', LoginController::class);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/logout', LogoutController::class);

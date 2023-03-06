@@ -10,37 +10,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BookingSelectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * 
-     * @return JsonResponse
-     */
-    public function index()
+    public function __invoke(Request $request): JsonResponse
     {
-        $roomsTypes =  RoomsType::query()
-            ->select('title', 'url_image', 'price')
+        $type = $request->query('type');
+
+        $roomsTypes = RoomsType::query()
+            ->select('rooms_types.title', 'rooms_types.url_image', 'rooms_types.description', 'rooms_types.price', 'rooms.number', 'rooms.id')
+            ->join('rooms', 'rooms.roomstypes_id', '=', 'rooms_types.id')
+            ->join('bookings', 'bookings.rooms_id', '=', 'rooms.id')
+            ->where('rooms_types.id', '=', $type)
             ->get();
 
+
         return response()->json($roomsTypes, Response::HTTP_OK);
-    }
-
-    public function store(): JsonResponse
-    {
-        return response()->json("RTF", Response::HTTP_METHOD_NOT_ALLOWED);
-    }
-
-    public function show(): JsonResponse
-    {
-        return response()->json("RTF", Response::HTTP_METHOD_NOT_ALLOWED);
-    }
-
-    public function update(): JsonResponse
-    {
-        return response()->json("RTF", Response::HTTP_METHOD_NOT_ALLOWED);
-    }
-
-    public function destroy(): JsonResponse
-    {
-        return response()->json("RTF", Response::HTTP_METHOD_NOT_ALLOWED);
     }
 }
