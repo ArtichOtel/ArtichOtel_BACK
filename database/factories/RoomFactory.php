@@ -18,7 +18,7 @@ class RoomFactory extends Factory
     {
         return [
             'number' => 101,
-            'roomstypes_id' => 1
+            'roomstypes_id' => 2
         ];
     }
 }

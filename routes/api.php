@@ -14,12 +14,14 @@ use App\Http\Controllers\API\User\LogoutController;
 use App\Http\Controllers\API\Video\VideoController;
 use App\Http\Controllers\API\Footer\FooterController;
 use App\Http\Controllers\API\Review\ReviewController;
+use App\Http\Controllers\API\Search\SearchController;
 use App\Http\Controllers\API\NewInfo\NewInfoController;
 use App\Http\Controllers\API\Section\SectionController;
+//use App\Http\Controllers\API\Booking\BookingSelectionController;
 use App\Http\Controllers\API\Advantage\AdvantageController;
-use App\Http\Controllers\API\Booking\BookingSelectionController;
 use App\Http\Controllers\API\RoomsType\RoomsTypesController;
 use App\Http\Controllers\API\OptionalService\OptionalServiceController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,7 +47,7 @@ Route::apiResource('/links', LinkController::class)->only(['index']);
 Route::apiResource('/optional-services', OptionalServiceController::class)->only(['index']);
 Route::apiResource('/user/register', UserController::class)->only(['store']);
 Route::apiResource('/rooms', RoomController::class);
-Route::get('/search', BookingSelectionController::class);
+Route::get('/search', SearchController::class);
 Route::post('/user/login', LoginController::class);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/logout', LogoutController::class);

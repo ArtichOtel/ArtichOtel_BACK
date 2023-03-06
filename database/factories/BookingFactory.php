@@ -17,10 +17,10 @@ class BookingFactory extends Factory
     public function definition()
     {
         return [
-            'begin_date' => fake()->date(),
-            'end_date' => fake()->date(),
-            'rooms_id' => fake()->randomDigitNotZero(),
-            'customers_id' => fake()->randomDigitNotZero(),
+            'begin_date' => '2000-01-01',
+            'end_date' => '2000-01-01',
+            'rooms_id' => 1,
+            'customers_id' => 1
         ];
     }
 }

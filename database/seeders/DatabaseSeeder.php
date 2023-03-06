@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Booking;
 use Illuminate\Database\Seeder;
 use Database\Seeders\HeroSeeder;
 use Database\Seeders\RoleSeeder;
@@ -42,7 +43,8 @@ class DatabaseSeeder extends Seeder
             HeroSeeder::class,
             FooterSeeder::class,
             SectionSeeder::class,
-            RoomSeeder::class
+            RoomSeeder::class,
+            BookingSeeder::class,
         ]);
     }
 }
