@@ -17,17 +17,29 @@ class SearchController extends Controller
         $queryDateS = $request->query('startDate');
         $queryDateE = $request->query('endDate');
         // dd($queryDateE, $queryDateS);
-        $roomsTypes = Room::query()
+
+        $roomsGoodType = Room::query()
+            ->select('rooms_types.title', 'rooms_types.url_image', 'rooms_types.description', 'rooms_types.price', 'rooms.number', 'rooms.id as room_id')
+            ->join('rooms_types', 'rooms.roomstypes_id', '=', 'rooms_types.id')
+            ->where('rooms_types.id', '=', $type)
+            ->groupby('room_id')
+            ->get();
+
+        $bookedRoom = Room::query()
             ->select('rooms_types.title', 'rooms_types.url_image', 'rooms_types.description', 'rooms_types.price', 'rooms.number', 'rooms.id as room_id')
             ->join('rooms_types', 'rooms.roomstypes_id', '=', 'rooms_types.id')
             ->join('bookings', 'bookings.rooms_id', '=', 'rooms.id')
             ->where('rooms_types.id', '=', $type)
-            ->where('bookings.end_date', '<', $queryDateS)
-            ->where('bookings.begin_date', '>', $queryDateE)
+            ->orWhere(function ($query) {
+            })
+            ->whereBetween('bookings.end_date', [$queryDateS, $queryDateE])
+            ->whereBetween('bookings.begin_date', [$queryDateS, $queryDateE])
             ->get();
 
+        //$result = $roomsGoodType
 
-        return response()->json($roomsTypes, Response::HTTP_OK);
+
+        return response()->json([$roomsGoodType, $bookedRoom], Response::HTTP_OK);
 
 
         //         SELECT rooms_types.title, rooms_types.url_image, rooms_types.description, rooms_types.price, rooms.number, rooms.id as room_id 
@@ -59,7 +71,7 @@ class SearchController extends Controller
 
         // SELECT * FROM t WHERE room_id NOT IN (SELECT * FROM v);
 
-        //         SELECT rooms_types.title, rooms_types.url_image, rooms_types.description, rooms_types.price, rooms.number, rooms.id as room_id 
+        // SELECT rooms_types.title, rooms_types.url_image, rooms_types.description, rooms_types.price, rooms.number, rooms.id as room_id 
         // FROM rooms
         // JOIN rooms_types ON rooms.roomstypes_id = rooms_types.id 
         // JOIN bookings ON bookings.rooms_id = rooms.id WHERE rooms_types.id = 1
