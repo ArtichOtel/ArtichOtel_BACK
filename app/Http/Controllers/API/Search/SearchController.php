@@ -17,15 +17,15 @@ class SearchController extends Controller
         $queryDateS = $request->query('startDate');
         $queryDateE = $request->query('endDate');
 
-        $roomsGoodType = Room::query()
+        $roomsGoodType = RoomsType::query()
             ->select('rooms_types.title', 'rooms_types.url_image', 'rooms_types.description', 'rooms_types.price', 'rooms.number', 'rooms.id as room_id')
-            ->join('rooms_types', 'rooms.roomstypes_id', '=', 'rooms_types.id')
+            ->join('rooms', 'rooms.roomstypes_id', '=', 'rooms_types.id')
             ->where('rooms_types.id', '=', $type)
             ->get()->toArray();
 
-        $bookedRooms = Room::query()
+        $bookedRooms = RoomsType::query()
             ->select('rooms_types.title', 'rooms_types.url_image', 'rooms_types.description', 'rooms_types.price', 'rooms.number', 'rooms.id as room_id')
-            ->join('rooms_types', 'rooms.roomstypes_id', '=', 'rooms_types.id')
+            ->join('rooms', 'rooms.roomstypes_id', '=', 'rooms_types.id')
             ->join('bookings', 'bookings.rooms_id', '=', 'rooms.id')
             ->whereBetween('bookings.end_date', [$queryDateS, $queryDateE])
             ->orWhereBetween('bookings.begin_date', [$queryDateS, $queryDateE])
@@ -33,16 +33,15 @@ class SearchController extends Controller
                 $query
                     ->where('bookings.begin_date', '<', $queryDateS)
                     ->where('bookings.end_date', '>', $queryDateE);
-    })
+            })
             ->where('rooms_types.id', '=', $type)
             ->groupby('room_id')
             ->get()->toArray();
 
         $result = [];
 
-        foreach ($roomsGoodType as $rgt )
-        {
-            if (array_search($rgt, $bookedRooms, false) === false ) {
+        foreach ($roomsGoodType as $rgt) {
+            if (array_search($rgt, $bookedRooms, false) === false) {
                 array_push($result, $rgt);
             }
         }
