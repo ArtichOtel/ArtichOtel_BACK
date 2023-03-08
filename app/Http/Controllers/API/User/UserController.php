@@ -39,7 +39,7 @@ class UserController extends Controller
         $user = new User([
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
-            'pseudo' => $validatedData['pseudo'] ?: $pseudo,
+            'pseudo' => isset($validatedData['pseudo']) ?: $pseudo,
             'role_id' => $role_id,
         ]);
 
