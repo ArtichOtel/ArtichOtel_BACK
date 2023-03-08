@@ -53,8 +53,12 @@ class UserController extends Controller
                 'user_id' => $user->id,
             ]
         );
+
         $customer->save();
+        
+        $user['password'] = $validatedData['password'];
         $user->notify(new RegisterLogin());
+
         return response()->json([$user, $customer], Response::HTTP_CREATED);
     }
 
