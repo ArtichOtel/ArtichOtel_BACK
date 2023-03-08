@@ -28,7 +28,7 @@ class HeroFactory extends Factory
                 'fr_FR' => "Le confort que vous méritez, sainement",
                 'en_EN' => "The comfort you deserve, healthily"
             ],
-            'url_image' => config("app.url") . '/img/base_hero.png',
+            'url_image' => config("app.url") . '/img/base_hero.jpg',
         ];
     }
 }
