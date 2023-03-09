@@ -20,7 +20,7 @@ class LinkSeeder extends Seeder
                 'fr_FR' => 'Je réserve',
                 'en_EN' => 'I book'
             ],
-            'url' => "/booking",
+            'url' => "/selection",
             'icon' => null,
         ]);
 
@@ -29,7 +29,7 @@ class LinkSeeder extends Seeder
                 'fr_FR' => 'Choisir ma chambre',
                 'en_EN' => 'I choose my room'
             ],
-            'url' => "/booking",
+            'url' => "/selection",
             'icon' => null,
         ]);
 
@@ -66,7 +66,7 @@ class LinkSeeder extends Seeder
                 'fr_FR' => 'Réservations',
                 'en_EN' => 'Bookings'
             ],
-            'url' => "/booking",
+            'url' => "/selection",
             'icon' => null,
         ]);
 

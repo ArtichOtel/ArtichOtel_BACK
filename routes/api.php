@@ -17,7 +17,7 @@ use App\Http\Controllers\API\Review\ReviewController;
 use App\Http\Controllers\API\Search\SearchController;
 use App\Http\Controllers\API\NewInfo\NewInfoController;
 use App\Http\Controllers\API\Section\SectionController;
-//use App\Http\Controllers\API\Booking\BookingSelectionController;
+use App\Http\Controllers\API\Booking\BookingController;
 use App\Http\Controllers\API\Advantage\AdvantageController;
 use App\Http\Controllers\API\RoomsType\RoomsTypesController;
 use App\Http\Controllers\API\OptionalService\OptionalServiceController;
@@ -68,7 +68,7 @@ Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
     Route::apiResource('footer', FooterController::class)->except(['index']);
     Route::apiResource('link', LinkController::class)->except(['index']);
     Route::apiResource('/optional-services', OptionalServiceController::class)->except(['index']);
-    Route::apiResource('/bookings', LinkController::class)->only(['index', 'update']);
+    Route::apiResource('/booking', BookingController::class)->only(['index', 'update']);
 });
 
 
