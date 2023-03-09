@@ -25,4 +25,4 @@ yarn-error.log
 /bootstrap/cache/*
 routes-v7.php
 /storage/logs/laravel.log
-/storage
+/storage/framework/*
