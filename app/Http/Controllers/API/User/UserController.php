@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\User;
 
+use App\Http\Requests\User\UserCustomerUpdateRequest;
 use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
@@ -70,6 +71,12 @@ class UserController extends Controller
      */
     public function show(User $user): JsonResponse
     {
+        if ($this->user()->cannot('view', $user)) {
+            return response()->json([
+                "message" => "You can't view an other User, unless you are an Admin."
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
         return response()->json($user, Response::HTTP_OK);
     }
 
@@ -78,10 +85,20 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function update(): JsonResponse
+    public function update(UserCustomerUpdateRequest $request, User $user): JsonResponse
     {
-        // user to update SPRINT 2
-        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
+        if ($request->user()->cannot('update', $user)) {
+            return response()->json([
+                "message" => "You can't update an other User, unless you are an Admin."
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        $validatedData = $request->validated();
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
+        $user->update($validatedData);
+
+        return response()->json($user, Response::HTTP_OK);
     }
 
     /**
@@ -89,9 +106,18 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function destroy(): JsonResponse
+    public function destroy(User $user): JsonResponse
     {
-        // user to delete SPRINT 2
-        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
+        if ($this->user()->cannot('delete', $user)) {
+            return response()->json([
+                "message" => "You can't delete an other User, unless you are an Admin."
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+        
+        $user->delete();
+
+        return response()->json([
+            "message" => "User perfetcly deleted."
+        ], Response::HTTP_OK);
     }
 }
