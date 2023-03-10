@@ -11,6 +11,8 @@ use App\Notifications\RegisterLogin;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\User\UserCustomerPostRequest;
+use App\Models\Adresse;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -113,8 +115,38 @@ class UserController extends Controller
                 "message" => "You can't delete an other User, unless you are an Admin."
             ], Response::HTTP_UNAUTHORIZED);
         }
-        
-        $user->delete();
+
+        // User anonymization //
+        $user->update([
+            'email' => "anonymous{$user->id}@anonymous.com",
+            'pseudo' => "anonymous{$user->id}",
+            'password' => Hash::make(Str::random()),
+        ]);
+
+        if (!$user->role_id === 1) { // Check if not Admin
+            // Customer anonymization
+            $customer = Customer::find($user->id);
+            $customer->update([
+                    'first_name' => "Anonymous",
+                    'last_name' => "Anonymous",
+                    'phone_number' => "anonymous",
+                    'avatar_url' => null
+                ]);
+            // Customer's addresses anonymization
+            $addresses = Adresse::query()
+                ->select(['addresses.*'])
+                ->where('addresses.customers_id', '=', $user->id)
+                ->get();
+            if (count($addresses) !== 0) {
+                foreach ($addresses as $addresse) {
+                    Adresse::find($addresse->id)
+                        ->update([
+                            'address' => 'anonymous'
+                        ]);
+                }
+            }
+            
+        }
 
         return response()->json([
             "message" => "User perfetcly deleted."
