@@ -54,7 +54,7 @@ Route::post('/user/login', LoginController::class);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/logout', LogoutController::class);
     Route::apiResource('/user', UserController::class)->except(['index', 'store']);
-    Route::apiResource('/booking', BookingController::class)->only(['store', 'update']);
+    Route::apiResource('/booking', BookingController::class);
 });
 
 
@@ -72,5 +72,5 @@ Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
     Route::apiResource('footer', FooterController::class)->except(['index']);
     Route::apiResource('link', LinkController::class)->except(['index']);
     Route::apiResource('/optional-services', OptionalServiceController::class)->except(['index']);
-    Route::apiResource('/booking', BookingController::class);
+    // Route::apiResource('/booking', BookingController::class)->except(['update']);
 });

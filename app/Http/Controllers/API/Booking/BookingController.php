@@ -60,7 +60,7 @@ class BookingController extends Controller
      * 
      * @return JsonResponse
      */
-    public function update(BookingUpdateResquest $request, Booking $booking): JsonResponse
+    public function update(BookingUpdateRequest $request, Booking $booking): JsonResponse
     {
         $validatedData =  $request->validated();
 

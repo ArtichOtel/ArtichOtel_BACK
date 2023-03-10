@@ -19,4 +19,9 @@ class OptionalService extends Model
     protected $casts = [
         'name' => 'array'
     ];
+
+
+    function bookings() {
+        return $this->belongsToMany(Booking::class);
+    }
 }

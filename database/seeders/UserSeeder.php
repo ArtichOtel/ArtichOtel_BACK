@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'email' => fake()->safeEmail(),
-            'pseudo' => fake()->userName(),
+            'pseudo' => 'bouboule',
             'password' => Hash::make('toto'),
             'role_id' => 2
         ]);

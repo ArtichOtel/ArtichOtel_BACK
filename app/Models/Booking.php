@@ -25,4 +25,8 @@ class Booking extends Model
     function customer() {
         return $this->belongsTo(Customer::class);
     }
+
+    function optionalServices() {
+        return $this->belongsToMany(OptionalService::class);
+    }
 }
