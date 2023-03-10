@@ -11,7 +11,8 @@ use App\Notifications\RegisterLogin;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\User\UserCustomerPostRequest;
-use App\Models\Adresse;
+use App\Models\Addresse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -71,9 +72,9 @@ class UserController extends Controller
      * @param User $user
      * @return JsonResponse
      */
-    public function show(User $user): JsonResponse
+    public function show(Request $request, User $user): JsonResponse
     {
-        if ($this->user()->cannot('view', $user)) {
+        if ($request->user()->cannot('view', $user)) {
             return response()->json([
                 "message" => "You can't view an other User, unless you are an Admin."
             ], Response::HTTP_UNAUTHORIZED);
@@ -108,9 +109,9 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function destroy(User $user): JsonResponse
+    public function destroy(Request $request, User $user): JsonResponse
     {
-        if ($this->user()->cannot('delete', $user)) {
+        if ($request->user()->cannot('delete', $user)) {
             return response()->json([
                 "message" => "You can't delete an other User, unless you are an Admin."
             ], Response::HTTP_UNAUTHORIZED);
@@ -123,7 +124,7 @@ class UserController extends Controller
             'password' => Hash::make(Str::random()),
         ]);
 
-        if (!$user->role_id === 1) { // Check if not Admin
+        if ($user->role_id !== 1) { // Check if not Admin
             // Customer anonymization
             $customer = Customer::find($user->id);
             $customer->update([
@@ -133,13 +134,13 @@ class UserController extends Controller
                     'avatar_url' => null
                 ]);
             // Customer's addresses anonymization
-            $addresses = Adresse::query()
+            $addresses = Addresse::query()
                 ->select(['addresses.*'])
                 ->where('addresses.customers_id', '=', $user->id)
                 ->get();
             if (count($addresses) !== 0) {
                 foreach ($addresses as $addresse) {
-                    Adresse::find($addresse->id)
+                    Addresse::find($addresse->id)
                         ->update([
                             'address' => 'anonymous'
                         ]);
