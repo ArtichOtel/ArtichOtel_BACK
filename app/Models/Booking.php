@@ -14,6 +14,8 @@ class Booking extends Model
         'end_date',
         'rooms_id',
         'customers_id',
+        'status',
+        'nbrs_people',
     ];
 
     function room() {

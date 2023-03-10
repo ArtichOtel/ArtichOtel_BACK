@@ -24,7 +24,9 @@ class BookingSeeder extends Seeder
                 'begin_date' => '2000-01-01',
                 'end_date' => '2000-01-01',
                 'rooms_id' => $iteration,
-                'customers_id' => 1
+                'customers_id' => 1,
+                'status' => 'confirmed',
+                'nbrs_people' => 1,
             ]);
         }
         foreach (range(1, 25) as $iteration) {
@@ -32,7 +34,9 @@ class BookingSeeder extends Seeder
                 'begin_date' => '2222-01-01',
                 'end_date' => '2222-01-01',
                 'rooms_id' => $iteration,
-                'customers_id' => 1
+                'customers_id' => 1,
+                'status' => 'confirmed',
+                'nbrs_people' => 1,
             ]);
         }
     }
