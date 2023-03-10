@@ -16,8 +16,7 @@ services:
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
-            # nest line was -off
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-develop}'
+            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
         volumes:
             - '.:/var/www/html'
@@ -45,18 +44,13 @@ services:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
-    phpmyadmin:
-        image: phpmyadmin
-        restart: always
-        ports:
-            - 8080:80
-        environment:
-            - PMA_ARBITRARY=1
-        networks:
-            - sail
 networks:
     sail:
         driver: bridge
 volumes:
     sail-mysql:
+        driver: local
+    sail-redis:
+        driver: local
+    sail-meilisearch:
         driver: local
