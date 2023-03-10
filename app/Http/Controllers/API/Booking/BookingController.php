@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Booking;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Booking\BookingPostRequest;
+use App\Http\Requests\Booking\BookingUpdateRequest;
 use App\Models\Booking;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,11 +55,18 @@ class BookingController extends Controller
      * Update the specified resource in storage.
      * Not implemented
      *
+     * @param Booking $booking The model name
+     * @param BookingUpdateRequest $request The request object
+     * 
      * @return JsonResponse
      */
-    public function update(): JsonResponse
+    public function update(BookingUpdateRequest $request, Booking $booking): JsonResponse
     {
-        return response()->json('RTFM', Response::HTTP_METHOD_NOT_ALLOWED);
+        $validatedData =  $request->validated();
+
+        $booking->update($validatedData);
+
+        return response()->json($booking, Response::HTTP_OK);
     }
 
     /**
