@@ -49,16 +49,20 @@ Route::apiResource('/user/register', UserController::class)->only(['store']);
 Route::apiResource('/rooms', RoomController::class);
 Route::get('/search', SearchController::class);
 Route::post('/user/login', LoginController::class);
+
+// USER routes
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/logout', LogoutController::class);
+    Route::apiResource('/user', UserController::class)->except(['index', 'store']);
+    Route::apiResource('/booking', BookingController::class);
 });
 
 
 
 
-// GOD admin routes
+// GOD admin ONLY routes
 Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
-    Route::apiResource('user', UserController::class)->except(['store']);
+    Route::apiResource('user', UserController::class)->only(['index']);
     Route::apiResource('hero', HeroController::class)->except(['index']);
     Route::apiResource('offer', OfferController::class)->except(['index']);
     Route::apiResource('advantage', AdvantageController::class)->except(['index']);
@@ -68,12 +72,5 @@ Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
     Route::apiResource('footer', FooterController::class)->except(['index']);
     Route::apiResource('link', LinkController::class)->except(['index']);
     Route::apiResource('/optional-services', OptionalServiceController::class)->except(['index']);
-    Route::apiResource('/booking', BookingController::class)->only(['index', 'update']);
+    // Route::apiResource('/booking', BookingController::class)->except(['update']);
 });
-
-
-// CUSTOMERS routes
-//Route::middleware(['auth:sanctum', 'ability:getReviews'])->group(function () {
-    //Route::get('/reviews', ReviewsController::class);
-    //Route::apiResource('review', ReviewController::class);        // SPRINT 2
-//});

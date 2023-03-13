@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\OptionalService;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OptionalServiceUpdateRequest extends FormRequest
+class UserCustomerUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class OptionalServiceUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['sometimes', 'array'],
-            'name.*' => ['sometimes', 'string:ascii', 'max:100'],
-            'u_price' => ['sometimes', 'numeric'],
-            'by_person' => ['sometimes', 'boolean'],
-            'nb_day' => ['sometimes', 'numeric:integer']
+            'password' => ['required', 'string:ascii', 'max:100'],
         ];
     }
 }

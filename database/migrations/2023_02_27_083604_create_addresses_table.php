@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('additional', 45)->nullable();
             $table->boolean('is_pro');
             $table->foreignId('customers_id')->constrained('customers');
+            $table->timestamps();
         });
     }
 

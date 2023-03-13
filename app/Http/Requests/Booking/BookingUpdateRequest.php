@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\OptionalService;
+namespace App\Http\Requests\Booking;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OptionalServiceUpdateRequest extends FormRequest
+class BookingUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,10 @@ class OptionalServiceUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['sometimes', 'array'],
-            'name.*' => ['sometimes', 'string:ascii', 'max:100'],
-            'u_price' => ['sometimes', 'numeric'],
-            'by_person' => ['sometimes', 'boolean'],
-            'nb_day' => ['sometimes', 'numeric:integer']
+            'begin_date' => ['sometimes', 'date'],
+            'end_date' => ['sometimes', 'date'],
+            'status' => ['sometimes', 'string:ascii', 'max:40'],
+            'nbrs_people' => ['sometimes', 'numeric:integer', 'between:1,3'],
         ];
     }
 }

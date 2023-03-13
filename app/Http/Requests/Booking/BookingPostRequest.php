@@ -28,6 +28,8 @@ class BookingPostRequest extends FormRequest
             'end_date' => ['required', 'date'],
             'rooms_id' => ['required', 'numeric:integer'],
             'customers_id' => ['required', 'numeric:integer'],
+            'status' => ['required', 'string:ascii', 'max:40'],
+            'nbrs_people' => ['required', 'numeric:integer', 'between:1,3'],
         ];
     }
 }
