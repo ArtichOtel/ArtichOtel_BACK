@@ -27,6 +27,6 @@ class Booking extends Model
     }
 
     function optionalServices() {
-        return $this->belongsToMany(OptionalService::class);
+        return $this->belongsToMany(Optional_service::class);
     }
 }

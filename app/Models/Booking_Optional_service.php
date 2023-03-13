@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking_OptionalService extends Model
+class Booking_Optional_service extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'bookings_id',
         'optional_services_id',
-        'multiplicator',
+        //'multiplicator',
     ];
 
     function booking() {
@@ -20,6 +20,6 @@ class Booking_OptionalService extends Model
     }
 
     function optionalService() {
-        return $this->hasOne(OptionalService::class);
+        return $this->hasOne(Optional_service::class);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API\Option;
 
-use App\Models\OptionalService;
+use App\Models\Optional_service;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class Options extends Controller
      */
     public function __invoke(): JsonResponse
     {
-        $options = OptionalService::all();
+        $options = Optional_service::all();
 
         return response()->json($options, Response::HTTP_OK);
     }

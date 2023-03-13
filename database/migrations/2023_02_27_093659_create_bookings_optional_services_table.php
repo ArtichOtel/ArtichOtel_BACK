@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bookings_optional_services', function (Blueprint $table) {
+        Schema::create('booking_optional_service', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bookings_id')->constrained('bookings');
-            $table->foreignId('optional_services_id')->constrained('optional_services');
-            $table->integer('multiplicator');
+            $table->foreignId('booking_id')->constrained('bookings');
+            $table->foreignId('optional_service_id')->constrained('optional_services');
+            //$table->integer('multiplicator');
             $table->timestamps();
         });
     }

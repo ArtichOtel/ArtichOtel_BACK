@@ -45,10 +45,11 @@ Route::apiResource('/reviews', ReviewController::class)->only(['index']);
 Route::apiResource('/footers', FooterController::class)->only(['index']);
 Route::apiResource('/links', LinkController::class)->only(['index']);
 Route::apiResource('/optional-services', OptionalServiceController::class)->only(['index']);
-Route::apiResource('/user/register', UserController::class)->only(['store']);
 Route::apiResource('/rooms', RoomController::class);
 Route::get('/search', SearchController::class);
 Route::post('/user/login', LoginController::class);
+// TODO : change user/register to Route::post
+Route::apiResource('/user/register', UserController::class)->only(['store']);
 
 // USER routes
 Route::middleware(['auth:sanctum'])->group(function () {

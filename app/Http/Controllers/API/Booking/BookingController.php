@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Booking\BookingPostRequest;
 use App\Http\Requests\Booking\BookingUpdateRequest;
 use App\Models\Booking;
+use App\Models\Booking_Optional_service;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,7 +28,7 @@ class BookingController extends Controller
      * It creates a new Booking object and saves it to the database.
      *
      * @param  BookingPostRequest $request The request object.
-     * 
+     *
      * @return JsonResponse of the newly created object.
      */
     public function store(BookingPostRequest $request): JsonResponse
@@ -57,23 +58,35 @@ class BookingController extends Controller
      *
      * @param Booking $booking The model name
      * @param BookingUpdateRequest $request The request object
-     * 
+     *
      * @return JsonResponse
      */
     public function update(BookingUpdateRequest $request, Booking $booking): JsonResponse
     {
-        $validatedData =  $request->validated();
+        $validatedData = $request->validated();
 
         $booking->update($validatedData);
 
-        return response()->json($booking, Response::HTTP_OK);
+        // update bookings_optianl_services
+        $listOfOptId = $request->get('optional_services_id');
+
+        foreach ($listOfOptId as $optId) {
+            $booking->optionalServices()->attach($optId);
+        }
+
+        $bokkingWithOpt = Booking::query()
+            ->with('optionalServices')
+            ->where('id', '=', $booking->id)
+            ->get();
+
+        return response()->json($bokkingWithOpt, Response::HTTP_OK);
     }
 
     /**
      * It deletes the booking from the database.
      *
      * @param  Booking  $booking The model that we're using.
-     * 
+     *
      * @return JsonResponse of the deleted object.
      */
     public function destroy(Booking $booking): JsonResponse

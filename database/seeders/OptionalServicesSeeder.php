@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\OptionalService;
+use App\Models\Optional_service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +15,7 @@ class OptionalServicesSeeder extends Seeder
      */
     public function run()
     {
-        OptionalService::create([
+        Optional_service::create([
             'name' => [
                 'fr_FR' => 'Demie-pension',
                 'en_EN' => 'Half-pension'
@@ -25,7 +25,7 @@ class OptionalServicesSeeder extends Seeder
             'nb_day' => 1
         ]);
 
-        OptionalService::create([
+        Optional_service::create([
             'name' => [
                 'fr_FR' => 'Pension complète',
                 'en_EN' => 'Full pension'
@@ -35,7 +35,7 @@ class OptionalServicesSeeder extends Seeder
             'nb_day' => 1
         ]);
 
-        OptionalService::create([
+        Optional_service::create([
             'name' => [
                 'fr_FR' => 'Petit déjeuner',
                 'en_EN' => 'Breakfast'
@@ -45,7 +45,7 @@ class OptionalServicesSeeder extends Seeder
             'nb_day' => 1
         ]);
 
-        OptionalService::create([
+        Optional_service::create([
             'name' => [
                 'fr_FR' => 'Service pressing',
                 'en_EN' => 'Laundry service'
@@ -54,8 +54,8 @@ class OptionalServicesSeeder extends Seeder
             'by_person' => 1,
             'nb_day' => 1
         ]);
-        
-        OptionalService::create([
+
+        Optional_service::create([
             'name' => [
                 'fr_FR' => 'Télévision',
                 'en_EN' => 'Television'
@@ -64,7 +64,7 @@ class OptionalServicesSeeder extends Seeder
             'by_person' => 0,
             'nb_day' => 7
         ]);
-        OptionalService::create([
+        Optional_service::create([
             'name' => [
                 'fr_FR' => 'Wifi',
                 'en_EN' => 'Wifi'
