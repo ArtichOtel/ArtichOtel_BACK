@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone_number', 10)->unique()->nullable();
             $table->string('lang', 10)->nullable();
             $table->string('avatar_url', 255)->unique()->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 

@@ -23,8 +23,8 @@ class BookingSeeder extends Seeder
             Booking::factory()->create([
                 'begin_date' => '2000-01-01',
                 'end_date' => '2000-01-01',
-                'rooms_id' => $iteration,
-                'customers_id' => 1,
+                'room_id' => $iteration,
+                'customer_id' => 1,
                 'status' => 'confirmed',
                 'nbrs_people' => 1,
             ]);
@@ -33,8 +33,8 @@ class BookingSeeder extends Seeder
             Booking::factory()->create([
                 'begin_date' => '2222-01-01',
                 'end_date' => '2222-01-01',
-                'rooms_id' => $iteration,
-                'customers_id' => 1,
+                'room_id' => $iteration,
+                'customer_id' => 1,
                 'status' => 'confirmed',
                 'nbrs_people' => 1,
             ]);

@@ -20,10 +20,10 @@ return new class extends Migration
             $table->date('end_date');
             $table->string('status',40);
             $table->integer('nbrs_people');
-            $table->foreignId('rooms_id')->constrained('rooms');
-            $table->foreignId('customers_id')->constrained('customers');
+            $table->foreignId('room_id')->constrained('rooms');
+            $table->foreignId('customer_id')->constrained('customers');
 
-            
+
         });
     }
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\API\User;
 
+use App\Models\Customer;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,23 +37,29 @@ class LoginController extends Controller
 
             // get abilities offered by role
             // select abilities from roles inner join users on roles.id = users.role_id where
-            $user_id = $user->getAuthIdentifier();
+
+            $customer_id = User::query()
+                ->select('*')
+                ->join('customers', 'users.id', '=', 'customers.user_id')
+                ->where('users.id', '=', $user->id)
+                ->first()['id'];
 
             $abilities = Role::query()
                 ->select(['roles.abilities'])
                 ->join('users', 'roles.id', '=', 'users.role_id')
-                ->where('users.id', '=', $user_id)
+                ->where('users.id', '=', $user->id)
                 ->get()[0]['abilities'];
 
             $role = Role::query()
                 ->select('roles.name')
                 ->join('users', 'roles.id', '=', 'users.role_id')
-                ->where('users.id', '=', $user_id)
+                ->where('users.id', '=', $user->id)
                 ->get()[0]['name'];
 
             return response()->json([
                 'message' => 'User logged in successfully',
-                'user_id' => $user_id,
+                'user_id' => $user->id,
+                'customer_id' => $customer_id,
                 'role' => $role,
                 'token' => $user->createToken('MyApp', $abilities)->plainTextToken
             ], Response::HTTP_OK);

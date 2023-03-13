@@ -26,8 +26,8 @@ class BookingPostRequest extends FormRequest
         return [
             'begin_date' => ['required', 'date'],
             'end_date' => ['required', 'date'],
-            'rooms_id' => ['required', 'numeric:integer'],
-            'customers_id' => ['required', 'numeric:integer'],
+            'room_id' => ['required', 'numeric:integer'],
+            'customer_id' => ['required', 'numeric:integer'],
             'status' => ['required', 'string:ascii', 'max:40'],
             'nbrs_people' => ['required', 'numeric:integer', 'between:1,3'],
         ];

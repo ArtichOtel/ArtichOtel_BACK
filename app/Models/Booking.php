@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Booking extends Model
 {
-    use HasFactory;
+    use HasFactory; use Notifiable;
 
     protected $fillable = [
         'begin_date',
@@ -18,15 +19,18 @@ class Booking extends Model
         'nbrs_people',
     ];
 
-    function room() {
+    function room(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
         return $this->hasOne(Room::class);
     }
 
-    function customer() {
+    function customer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(Customer::class);
     }
 
-    function optionalServices() {
+    function optionalServices(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
         return $this->belongsToMany(Optional_service::class);
     }
 }

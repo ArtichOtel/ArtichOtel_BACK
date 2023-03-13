@@ -7,8 +7,11 @@ use App\Http\Requests\Booking\BookingPostRequest;
 use App\Http\Requests\Booking\BookingUpdateRequest;
 use App\Models\Booking;
 use App\Models\Booking_Optional_service;
+use App\Notifications\BookingConfirmation;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Notification;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Str;
 
 class BookingController extends Controller
 {
@@ -65,21 +68,37 @@ class BookingController extends Controller
     {
         $validatedData = $request->validated();
 
+        // force change to update updated-at column
+        $booking->update(['status'=>'']);
+
+        // apply user changes
         $booking->update($validatedData);
 
         // update bookings_optianl_services
         $listOfOptId = $request->get('optional_services_id');
 
+        // cleaning whole
+        foreach (['1','2','3','4','5','6'] as $optId) {
+                $booking->optionalServices()->detach($optId);
+        }
+
         foreach ($listOfOptId as $optId) {
             $booking->optionalServices()->attach($optId);
         }
 
-        $bokkingWithOpt = Booking::query()
+
+        $bookingWithOpt = Booking::query()
             ->with('optionalServices')
-            ->where('id', '=', $booking->id)
+            ->withAggregate('customer', 'first_name')
+            ->withAggregate('customer', 'last_name')
+            ->where('bookings.id', '=', $booking->id)
             ->get();
 
-        return response()->json($bokkingWithOpt, Response::HTTP_OK);
+        //$bookingWithOpt->notify(new BookingConfirmation());
+
+        //Notification::route('mail')
+
+        return response()->json($bookingWithOpt, Response::HTTP_OK);
     }
 
     /**

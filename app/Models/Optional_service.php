@@ -21,7 +21,8 @@ class Optional_service extends Model
     ];
 
 
-    function bookings() {
+    function bookings(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
         return $this->belongsToMany(Booking::class);
     }
 }

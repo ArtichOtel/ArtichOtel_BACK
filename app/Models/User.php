@@ -35,6 +35,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'user_id','id');
     }
 }

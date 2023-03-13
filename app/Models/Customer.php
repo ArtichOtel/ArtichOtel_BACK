@@ -21,7 +21,7 @@ class Customer extends Model
         'user_id'
     ];
 
-    function user()
+    function user(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(User::class);
     }
@@ -31,9 +31,14 @@ class Customer extends Model
         return $this->belongsToMany(Review::class);
     }
 
-    function adresse()
+    function booking(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(Adresse::class, 'customer_id', 'id');
+        return $this->belongsToMany(Booking::class);
+    }
+
+    function address(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Address::class, 'customer_id', 'id');
     }
 
     protected function firstName(): Attribute

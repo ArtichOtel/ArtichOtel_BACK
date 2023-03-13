@@ -26,7 +26,7 @@ class SearchController extends Controller
         $bookedRooms = RoomsType::query()
             ->select('rooms_types.title', 'rooms_types.url_image', 'rooms_types.description', 'rooms_types.price', 'rooms.number', 'rooms.id as room_id')
             ->join('rooms', 'rooms.roomstypes_id', '=', 'rooms_types.id')
-            ->join('bookings', 'bookings.rooms_id', '=', 'rooms.id')
+            ->join('bookings', 'bookings.room_id', '=', 'rooms.id')
             ->whereBetween('bookings.end_date', [$queryDateS, $queryDateE])
             ->orWhereBetween('bookings.begin_date', [$queryDateS, $queryDateE])
             ->orWhere(function ($query) use ($queryDateE, $queryDateS) {

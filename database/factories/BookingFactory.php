@@ -19,8 +19,8 @@ class BookingFactory extends Factory
         return [
             'begin_date' => '2000-01-01',
             'end_date' => '2000-01-01',
-            'rooms_id' => 1,
-            'customers_id' => 1
+            'room_id' => 1,
+            'customer_id' => 1
         ];
     }
 }
