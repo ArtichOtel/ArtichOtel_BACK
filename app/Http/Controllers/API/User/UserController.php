@@ -11,7 +11,7 @@ use App\Notifications\RegisterLogin;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\User\UserCustomerPostRequest;
-use App\Models\Addresse;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -25,9 +25,8 @@ class UserController extends Controller
     public function index(): JsonResponse
     {
         // list of users
-        $users = User::all();
 
-        return response()->json($users, Response::HTTP_OK);
+        return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
 
     /**
@@ -59,7 +58,7 @@ class UserController extends Controller
         );
 
         $customer->save();
-        
+
         $user['password'] = $validatedData['password'];
         $user->notify(new RegisterLogin());
 
@@ -128,25 +127,24 @@ class UserController extends Controller
             // Customer anonymization
             $customer = Customer::find($user->id);
             $customer->update([
-                    'first_name' => "Anonymous",
-                    'last_name' => "Anonymous",
-                    'phone_number' => "anonymous",
-                    'avatar_url' => null
-                ]);
+                'first_name' => "Anonymous",
+                'last_name' => "Anonymous",
+                'phone_number' => "anonymous",
+                'avatar_url' => null
+            ]);
             // Customer's addresses anonymization
-            $addresses = Addresse::query()
+            $addresses = Address::query()
                 ->select(['addresses.*'])
                 ->where('addresses.customers_id', '=', $user->id)
                 ->get();
             if (count($addresses) !== 0) {
                 foreach ($addresses as $addresse) {
-                    Addresse::find($addresse->id)
+                    Address::find($addresse->id)
                         ->update([
                             'address' => 'anonymous'
                         ]);
                 }
             }
-            
         }
 
         return response()->json([
