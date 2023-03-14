@@ -38,12 +38,6 @@ class LoginController extends Controller
             // get abilities offered by role
             // select abilities from roles inner join users on roles.id = users.role_id where
 
-            $customer_id = User::query()
-                ->select('*')
-                ->join('customers', 'users.id', '=', 'customers.user_id')
-                ->where('users.id', '=', $user->id)
-                ->first()['id'];
-
             $abilities = Role::query()
                 ->select(['roles.abilities'])
                 ->join('users', 'roles.id', '=', 'users.role_id')
@@ -55,6 +49,16 @@ class LoginController extends Controller
                 ->join('users', 'roles.id', '=', 'users.role_id')
                 ->where('users.id', '=', $user->id)
                 ->get()[0]['name'];
+
+            $customer_id = null;
+            if ($role==='customer') {
+                $customer_id = User::query()
+                    ->select('*')
+                    ->join('customers', 'users.id', '=', 'customers.user_id')
+                    ->where('users.id', '=', $user->id)
+                    ->first()['id'];
+            }
+
 
             return response()->json([
                 'message' => 'User logged in successfully',
