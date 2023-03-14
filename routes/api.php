@@ -63,7 +63,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 // GOD admin ONLY routes
 Route::middleware(['auth:sanctum', 'ability:doAnything'])->group(function () {
-    Route::apiResource('user', UserController::class)->only(['index', 'show']);
+    Route::apiResource('user', UserController::class)->only(['index']);
     Route::apiResource('hero', HeroController::class)->except(['index']);
     Route::apiResource('offer', OfferController::class)->except(['index']);
     Route::apiResource('advantage', AdvantageController::class)->except(['index']);
