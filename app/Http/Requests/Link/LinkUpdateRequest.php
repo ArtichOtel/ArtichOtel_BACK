@@ -24,7 +24,8 @@ class LinkUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'text' => ['sometimes', 'max:20', 'string:ascii'],
+            'text' => ['sometimes', 'array'],
+            'text.*' => ['sometimes', 'max:20', 'string:ascii'],
             'url' => ['sometimes', 'url', 'max:255'],
             'icon' => ['sometimes', 'string:ascii', 'max:20']
         ];

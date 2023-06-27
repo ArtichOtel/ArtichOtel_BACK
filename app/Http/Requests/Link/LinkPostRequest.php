@@ -24,7 +24,8 @@ class LinkPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'text' => ['required', 'max:20', 'string:ascii'],
+            'text' => ['required', 'array'],
+            'text.*' => ['required', 'max:20', 'string:ascii'],
             'url' => ['required', 'url', 'max:255'],
             'icon' => ['sometimes', 'string:ascii', 'max:20']
         ];

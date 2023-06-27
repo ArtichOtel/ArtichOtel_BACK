@@ -16,6 +16,7 @@
     <summary>🔹 /api/users/login </summary>
     <br />
 
+
 | Method   | Summary                 | Responses | Reject responses | Content (application/json) |
 |----------|-------------------------|:---------:|:----------------:|----------------------------|
 | `POST`   | Send connection payload | 201       | 400, 401         | Connection data            |
@@ -23,6 +24,7 @@
 | `PUT`    |                         |           | 405              |                            |
 | `DELETE` |                         |           | 405              |                            |
 </details>
+
 
 <details>
     <summary>🔹 /api/sections </summary>

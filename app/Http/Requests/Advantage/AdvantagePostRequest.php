@@ -24,11 +24,12 @@ class AdvantagePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:60', 'string:ascii'],
-            'description' => ['required', 'max:300', 'string:ascii'],
+            'title' => ['required', 'json'],
+            'title.*' => ['required', 'max:60', 'string:ascii'],
+            'description' => ['required', 'json'],
+            'description.*' => ['required', 'max:300', 'string:ascii'],
             'icon' => ['required', 'max:20', 'string:ascii'],
             'order' => ['required', 'numeric:integer'],
-
         ];
     }
 }

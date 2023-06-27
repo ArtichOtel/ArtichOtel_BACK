@@ -17,10 +17,18 @@ class OfferFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->word(),
-            'description' => "Lorem ipsum dolor sit amet consectetur. Pretium gravida non integer magna.\n
-            Nibh facilisi eget justo tristique.\n
-            Nunc purus vehicula curabitur egestas.",
+            'title' => [
+                'fr_FR' => fake()->word(),
+                'en_EN' => fake()->word()
+            ],
+            'description' => [
+                'fr_FR' => "Lorem ipsum dolor sit amet consectetur. Pretium gravida non integer magna.\n
+                Nibh facilisi eget justo tristique.\n
+                Nunc purus vehicula curabitur egestas.",
+                'en_EN' => "Lorem ipsum dolor sit amet consectetur. Pretium gravida non integer magna.\n
+                Nibh facilisi eget justo tristique.\n
+                Nunc purus vehicula curabitur egestas."
+            ],
             'url_image' => config('app.url') . '/img/offer.jpg',
             'begin_date' => fake()->date(),
             'end_date' => fake()->date()

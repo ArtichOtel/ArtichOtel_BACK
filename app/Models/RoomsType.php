@@ -15,4 +15,9 @@ class RoomsType extends Model
         'url_image',
         'price'
     ];
+
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array'
+    ];
 }

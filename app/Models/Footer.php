@@ -14,6 +14,10 @@ class Footer extends Model
         'order',
     ];
 
+    protected $casts = [
+        'title' => 'array'
+    ];
+
     public function links()
     {
         return $this->belongsToMany(Link::class);

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 60);
-            $table->string('description', 300);
+            $table->json('title');
+            $table->json('description');
             $table->string('url_video', 255);
             $table->timestamps();
         });

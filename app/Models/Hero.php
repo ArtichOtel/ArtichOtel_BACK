@@ -15,6 +15,11 @@ class Hero extends Model
         'url_image'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+        'subtitle' => 'array'
+    ];
+
     public function links()
     {
         return $this->belongsToMany(Link::class);

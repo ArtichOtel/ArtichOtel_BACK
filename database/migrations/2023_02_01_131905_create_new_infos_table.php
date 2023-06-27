@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('new_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 60);
-            $table->string('description', 300);
+            $table->json('title');
+            $table->json('description');
             $table->string('url_image', 255);
             $table->integer('order');
             $table->timestamps();
