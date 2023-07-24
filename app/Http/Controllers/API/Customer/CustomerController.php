@@ -39,12 +39,17 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param Request $request
      * @param Customer $customer
      * @return JsonResponse
      */
     public function show(Request $request, Customer $customer): JsonResponse
     {
-        if ($request->user()->cannot('view', $customer)) {
+        $user = User::query()
+            ->where('customer_id','=',$customer->id)
+            ->get();
+
+        if ($request->user()->cannot('view', $user)) {
             return response()->json([
                 "message" => "You can't view an other Customer, unless you are an Admin."
             ], Response::HTTP_UNAUTHORIZED);
