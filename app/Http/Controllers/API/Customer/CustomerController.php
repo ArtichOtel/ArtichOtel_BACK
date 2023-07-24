@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Customer;
 
 use App\Http\Requests\User\UserCustomerUpdateRequest;
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
