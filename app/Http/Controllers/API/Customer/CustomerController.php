@@ -46,8 +46,13 @@ class CustomerController extends Controller
      */
     public function show(Request $request, Customer $customer): JsonResponse
     {
+        $user_id = Customer::query()
+            ->select('user_id')
+            ->where('id','=',$customer->id)
+            ->get();
+
         $user = User::query()
-            ->where('customer_id','=',$customer->id)
+            ->where('id', '=', $user_id)
             ->get();
 
         if ($request->user()->cannot('view', $user)) {
