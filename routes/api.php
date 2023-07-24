@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Hero\HeroController;
 use App\Http\Controllers\API\Link\LinkController;
 use App\Http\Controllers\API\User\UserController;
+use App\Http\Controllers\API\Customer\CustomerController;
 use App\Http\Controllers\API\Rooms\RoomController;
 use App\Http\Controllers\API\User\LoginController;
 use App\Http\Controllers\API\Offer\OfferController;
@@ -55,6 +56,7 @@ Route::apiResource('/user/register', UserController::class)->only(['store']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/logout', LogoutController::class);
     Route::apiResource('/user', UserController::class)->except(['index', 'store']);
+    Route::apiResource('/customer', CustomerController::class)->except(['index', 'store']);
     Route::apiResource('/booking', BookingController::class);
 });
 
