@@ -3,17 +3,14 @@
 namespace App\Http\Controllers\API\Customer;
 
 use App\Http\Requests\User\UserCustomerUpdateRequest;
-use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Notifications\RegisterLogin;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\User\UserCustomerPostRequest;
-use App\Models\Address;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+
 
 class CustomerController extends Controller
 {
@@ -42,10 +39,10 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param User $customer
+     * @param Customer $customer
      * @return JsonResponse
      */
-    public function show(Request $request, User $customer): JsonResponse
+    public function show(Request $request, Customer $customer): JsonResponse
     {
         if ($request->user()->cannot('view', $customer)) {
             return response()->json([
@@ -61,7 +58,7 @@ class CustomerController extends Controller
      *
      * @return JsonResponse
      */
-    public function update(UserCustomerUpdateRequest $request, User $customer): JsonResponse
+    public function update(UserCustomerUpdateRequest $request, Customer $customer): JsonResponse
     {
         if ($request->user()->cannot('update', $customer)) {
             return response()->json([
@@ -82,7 +79,7 @@ class CustomerController extends Controller
      *
      * @return JsonResponse
      */
-    public function destroy(Request $request, User $customer): JsonResponse
+    public function destroy(Request $request, Customer $customer): JsonResponse
     {
         return response()->json("RTFM", Response::HTTP_METHOD_NOT_ALLOWED);
     }
