@@ -1,3 +1,13 @@
+## How to run
+### PHP Artisan
+```bash
+php artisan serve
+```
+### Docker
+```bash
+sail up
+```
+
 ## API References
 
 <details>
