@@ -39,8 +39,6 @@ class RegisterLogin extends Notification
      */
     public function toMail($notifiable)
     {
-        // $url = url('')
-        // dd($notifiable);
         return (new MailMessage)
             ->subject('Inscription réussite !')
             ->greeting('Bonjour ' . $notifiable['pseudo'])
